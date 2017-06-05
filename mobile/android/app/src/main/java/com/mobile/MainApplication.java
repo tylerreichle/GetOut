@@ -1,4 +1,4 @@
-package com.src;
+package com.mobile;
 
 import android.app.Application;
 

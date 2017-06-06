@@ -14,9 +14,10 @@ export default class App extends Component {
 }
 
 // TODO:
-import { requestUser } from './actions/user_actions';
+import { requestCategories } from './actions/category_actions';
 
-window.requestUser = requestUser;
+window.requestCategories = requestCategories;
+
 
 const styles = StyleSheet.create({
   container: {

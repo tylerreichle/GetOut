@@ -7,8 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+<<<<<<< HEAD
     "babel-preset-es2015": "^6.24.1",
     "lodash": "^4.17.4",
+=======
+>>>>>>> 969477a097338e9fd9114a8994db557ee144b0ff
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.2",
     "react-redux": "^5.0.5",

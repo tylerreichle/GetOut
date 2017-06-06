@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput, Text, Button, ActivityIndicator } from 'react-native';
+import { View, TextInput, Text, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/session_actions';
 
-export default class SessionForm extends Component {
+export default class LoginForm extends Component {
 
   constructor(props) {
+    console.log(props);
     super(props);
     this.state = {
+      first_name: '',
+      last_name: '',
+      email: '',
       username: '',
       password: ''
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
+
   onButtonSubmit() {
-    console.log('Submitted: ', `${this.state.username} ${this.state.password}`);
-    const { username, password } = this.state;
-    this.props.login({ username, password });
+    const { first_name, last_name, email, username, password } = this.state;
+    this.props.signup({ first_name, last_name, email, username, password });
   }
 
   handleChange(value, name) {
@@ -42,14 +49,14 @@ export default class SessionForm extends Component {
     return null;
   }
 
+
   render() {
-    console.log(this.state);
     return (
       <View style={{
         flexDirection: 'column',
         height: 100,
         padding: 20,
-        marginTop: 100,
+        marginTop: 200,
         justifyContent: 'center',
         alignItems: 'center'
       }}>
@@ -68,7 +75,56 @@ export default class SessionForm extends Component {
             width: 300,
             height: 50,
             marginBottom: 20,
-            alignSelf: 'center'
+            alignSelf: 'center',
+            textAlign: 'center'
+          }}
+          id={"first_name"}
+          placeholder={'First Name'}
+          value={this.state.first_name}
+          onChangeText={(value) => this.handleChange(value , 'first_name')}
+        />
+
+        <TextInput
+          style={{
+            borderColor: '#000000',
+            borderWidth: 3,
+            width: 300,
+            height: 50,
+            marginBottom: 20,
+            alignSelf: 'center',
+            textAlign: 'center'
+          }}
+          id={"last_name"}
+          placeholder={'Last Name'}
+          value={this.state.last_name}
+          onChangeText={(value) => this.handleChange(value , 'last_name')}
+        />
+
+        <TextInput
+          style={{
+            borderColor: '#000000',
+            borderWidth: 3,
+            width: 300,
+            height: 50,
+            marginBottom: 20,
+            alignSelf: 'center',
+            textAlign: 'center'
+          }}
+          id={"email"}
+          placeholder={'Email'}
+          value={this.state.email}
+          onChangeText={(value) => this.handleChange(value , 'email')}
+        />
+
+        <TextInput
+          style={{
+            borderColor: '#000000',
+            borderWidth: 3,
+            width: 300,
+            height: 50,
+            marginBottom: 20,
+            alignSelf: 'center',
+            textAlign: 'center'
           }}
           id={"username"}
           placeholder={'Username'}
@@ -83,7 +139,8 @@ export default class SessionForm extends Component {
             width: 300,
             height: 50,
             alignSelf: 'center',
-            marginBottom: 30
+            marginBottom: 30,
+            textAlign: 'center'
           }}
           placeholder={'Password'}
           value={this.state.password}

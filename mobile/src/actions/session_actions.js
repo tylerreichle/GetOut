@@ -19,8 +19,8 @@ export const loginUser = (user) => dispatch => {
 export const signupUser = (user) => dispatch => {
   return APIUtil.signup(user).then(
     (resp) => {
-      const currentUser = JSON.parse(resp._bodyText);
-      dispatch(receiveCurrentUser(currentUser));
+      resp.json()
+        .then((obj) => dispatch(receiveCurrentUser(obj)));
     }
   );
 };

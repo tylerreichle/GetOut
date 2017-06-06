@@ -5,7 +5,7 @@ class Api::CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(name: params[:name])
+    @category = Category.find_by(title: params[:title])
     render "api/categories/show"
   end
 end

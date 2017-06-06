@@ -4,7 +4,12 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    if @user
+      render "api/users/show"
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
   end
 
   def create
@@ -20,6 +25,6 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :email, :signin)
+    params.require(:user).permit(:username, :password, :email, :first_name, :last_name, :signin)
   end
 end

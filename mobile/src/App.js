@@ -13,6 +13,11 @@ export default class App extends Component {
   }
 }
 
+// TODO:
+import { requestUser } from './actions/user_actions';
+
+window.requestUser = requestUser;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

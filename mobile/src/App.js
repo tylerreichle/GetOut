@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import SessionForm from './components/session/sessionContainer';
+import LoginForm from './components/session/LoginFormContainer';
+import SignUpForm from './components/session/SignUpFormContainer';
 
 export default class App extends Component {
 
   render() {
     return (
       <View>
-        < SessionForm />
+        < LoginForm />
       </View>
     );
   }

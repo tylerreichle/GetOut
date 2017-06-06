@@ -12,11 +12,11 @@ export const login = (user) => (
       })
     }
   )
-)
+);
 
 export const logout = () => (
   fetch(
-    'http://localhost:8081/api/session',
+    'http://localhost:3000/api/session',
     {
       method: 'DELETE',
       headers: {
@@ -25,11 +25,11 @@ export const logout = () => (
       }
     }
   )
-)
+);
 
 export const signup = (user) => (
   fetch(
-    'http://localhost:8081/api/user',
+    'http://localhost:3000/api/users',
     {
       method: 'POST',
       headers: {
@@ -41,4 +41,4 @@ export const signup = (user) => (
       })
     }
   )
-)
+);

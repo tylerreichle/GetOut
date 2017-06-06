@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20170606000125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
   create_table "categories", force: :cascade do |t|
     t.string   "title",      null: false
     t.datetime "created_at", null: false

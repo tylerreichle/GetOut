@@ -7,3 +7,13 @@ export const fetchCategories = () => (
         }
     })
 );
+
+export const fetchSingleCategory = (id) => (
+    fetch(`http://localhost:3000/api/categories/${id}`, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+);

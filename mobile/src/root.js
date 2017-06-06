@@ -8,6 +8,7 @@ export default class Root extends React.Component {
   constructor() {
     super();
     this.store = configureStore();
+    window.store = this.store;
   }
 
   render() {

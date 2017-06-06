@@ -14,9 +14,9 @@ export default class App extends Component {
 }
 
 // TODO:
-import { requestUser } from './actions/user_actions';
+import { fetchCategories } from './util/categories_API';
 
-window.requestUser = requestUser;
+window.fetchCategories = fetchCategories;
 
 const styles = StyleSheet.create({
   container: {

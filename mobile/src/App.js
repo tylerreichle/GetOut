@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends Component {
+
   render() {
     return (
       <View style={styles.container}>
@@ -21,9 +22,9 @@ export default class App extends Component {
 }
 
 // TODO:
-import { fetchUser } from './util/user_API';
+import { requestUser } from './actions/user_actions';
 
-window.fetchUser = fetchUser;
+window.requestUser = requestUser;
 
 const styles = StyleSheet.create({
   container: {

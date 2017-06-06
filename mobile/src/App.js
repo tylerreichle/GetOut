@@ -20,6 +20,11 @@ export default class App extends Component {
   }
 }
 
+// TODO:
+import { fetchUser } from './util/user_API';
+
+window.fetchUser = fetchUser;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

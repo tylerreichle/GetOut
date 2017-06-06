@@ -7,7 +7,7 @@ import configureStore from './store/store';
 export default class Root extends React.Component {
   constructor() {
     super();
-    this.store = configureStore();
+    // this.store = configureStore();
   }
 
   render() {

@@ -7,6 +7,13 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+
+  has_many :user_categories
+
+  has_many :categories,
+    through: :user_categories,
+    source: :category
+
   def self.find_by_credentials(signin, password)
     user = User.find_by(username: signin)
     user = User.find_by(email: signin) if user.nil?

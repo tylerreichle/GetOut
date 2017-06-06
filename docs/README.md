@@ -35,7 +35,7 @@
 * Each member researched and learned React Native basic setup and usage
 * Each member learned sockets and how to establish simple connection
 * Set up Project repo and database
-* Researched different APIs and how to implement them
+* Researched google map API implementation and docs
 
 ## Group Members & Work Breakdown
 ### Team Members
@@ -49,33 +49,28 @@
   - [ ] User/session MVC (Jill)
   - [ ] Bootstrap & Basic User Show (Tyler)
   - [ ] Components/forms [Signup/Login] (Eric)
-
-### Day 2:
-* By end of day:
 - [ ] Categories Index and Index Items
   - [ ] Categories MVC (Tyler)
   - [ ] Category Index Component (Jill)
   - [ ] Category Index Item Component (Eric)
 
-### Day 3:
+### Day 2:
 * By end of day:
 - [ ] Category show and start chat/maps implementation
-  - [ ] Users Index (Jill)
-  - [ ] Create Message/Chat join table and association (Tyler)
-  - [ ] Google map API requests (Eric)
+  - [ ] Users Index Component and user show (Jill)
+  - [ ] Create Message/Chat join table, association and complete BE and start FE (Tyler)
+  - [ ] Google map API requests and seed data testing (Eric)
 
-### Day 4:
-* By end of day:
-- [ ] Chat implementation
-  - [ ] Add to user show (Tyler)
-  - [ ] Styling (Jill)
-  - [ ] Seed data (Eric)
-
-### Day 5 and weekend:
+### Day 3-4
 * By end of day:
 - [ ] Google Map implementation
   - [ ] Add to user show (Jill)
   - [ ] Additional Styling (Eric)
-  - [ ] Production README and app store submission (Tyler)
+  - [ ] Continue message component (Tyler)
+
+### Day 5 through end of weekend:
+* By end of weekend:
+  - [ ] Production README (all)
+  - [ ] app store submission (all)
   - [ ] Demo site (all)
   - [ ] UX testing (all)

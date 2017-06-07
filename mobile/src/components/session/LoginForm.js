@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput, Text, Button, ActivityIndicator } from 'react-native';
-import { connect } from 'react-redux';
-import { loginUser } from '../../actions/session_actions';
+import { View, TextInput, Text, Button } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
-export default class SessionForm extends Component {
+export default class LoginForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: ''
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   onButtonSubmit() {
-    console.log('Submitted: ', `${this.state.username} ${this.state.password}`);
     const { username, password } = this.state;
     this.props.login({ username, password });
   }
@@ -28,7 +26,7 @@ export default class SessionForm extends Component {
   }
 
   renderError() {
-    if (this.props.error) {
+    if (this.props.errors) {
       return (
         <Text
           style={{
@@ -42,25 +40,19 @@ export default class SessionForm extends Component {
     return null;
   }
 
+
   render() {
-    console.log(this.state);
     return (
       <View style={{
         flexDirection: 'column',
         height: 100,
         padding: 20,
-        marginTop: 100,
+        marginTop: 200,
         justifyContent: 'center',
         alignItems: 'center'
-      }}>
-      {this.renderError()}
-      <Text style={{
-        marginTop: 30,
-        marginBottom: 20,
-        fontSize: 30
-      }}>
-      LunchWithStrangers
-      </Text>
+      }}
+      linkAction={ Actions.loginForm }
+      >
         <TextInput
           style={{
             borderColor: '#000000',
@@ -68,7 +60,8 @@ export default class SessionForm extends Component {
             width: 300,
             height: 50,
             marginBottom: 20,
-            alignSelf: 'center'
+            alignSelf: 'center',
+            textAlign: 'center'
           }}
           id={"username"}
           placeholder={'Username'}
@@ -83,7 +76,8 @@ export default class SessionForm extends Component {
             width: 300,
             height: 50,
             alignSelf: 'center',
-            marginBottom: 30
+            marginBottom: 30,
+            textAlign: 'center'
           }}
           placeholder={'Password'}
           value={this.state.password}
@@ -91,7 +85,7 @@ export default class SessionForm extends Component {
           secureTextEntry
         />
         <View
-          style={{backgroundColor: 'green', width: 80}}>
+          style={{backgroundColor: 'green', width: 150}}>
           <Button
             color= 'white'
             title="Login"

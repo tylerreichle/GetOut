@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
-import SessionForm from './components/session/sessionContainer';
+import Routes from './routes';
 
 export default class App extends Component {
   componentWillMount() {
     let username = AsyncStorage.getItem('username').then(user => console.log(user));
-    debugger
   }
 
   render() {
     return (
-      <View>
-        < SessionForm />
+      <View style={ styles.viewStyle}>
+        < Routes />
       </View>
     );
   }
 }
 
 // TODO:
-import { requestUser } from './actions/user_actions';
+import { requestCategories } from './actions/category_actions';
 
-window.requestUser = requestUser;
+window.requestCategories = requestCategories;
 
-const styles = StyleSheet.create({
-  container: {
+
+const styles = {
+  viewStyle: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+    backgroundColor: '#008080'
+  }
+};

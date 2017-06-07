@@ -18,6 +18,12 @@ export default class SignUpForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if(!Array.isArray(newProps.currentUser)) {
+      Actions.categoriesIndex();
+    }
+  }
+  
   onButtonSubmit() {
     const { first_name, last_name, email, username, password } = this.state;
     this.props.signup({ first_name, last_name, email, username, password });

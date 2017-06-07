@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_NULL_USER } from '../actions/session_actions';
 
 const nullUser = {
   currentUser: null,
@@ -10,6 +11,8 @@ const sessionReducer = (state = nullUser, action) => {
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       return action.currentUser;
+    // case RECEIVE_NULL_USER:
+    //   return nullUser;
     default:
       return state;
   }

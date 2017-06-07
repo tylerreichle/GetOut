@@ -1,12 +1,14 @@
 class User < ApplicationRecord
+  attr_reader :password
+
   validates :username, :email, :first_name, :last_name, :password_digest, :session_token, presence: true
   validates :username, :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 8, allow_nil: true }
 
   before_validation :ensure_session_token
 
-  attr_reader :password
-
+  has_many :messages
+  has_many :chatrooms, through: :messages
   has_many :user_categories
 
   has_many :categories,

@@ -16,9 +16,7 @@ export const loginUser = (user) => dispatch => {
       resp.json()
         .then((obj) => {
           dispatch(receiveCurrentUser(obj));
-          AsyncStorage.multiSet([
-            ['username', obj.username]
-          ]);
+          AsyncStorage.setItem('sessionToken', obj.sessionToken);
         });
     }
   ), err => (

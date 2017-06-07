@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :categories, only: [:index, :show]
 
-    GET 'verify' => 'sessions#verify_access_token'
+    get 'verify' => 'sessions#verify_session_token'
   end
 end

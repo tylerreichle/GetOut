@@ -2,6 +2,7 @@ import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './components/session/LoginFormContainer';
 import SignUpForm from './components/session/SignUpFormContainer';
+import CategoriesIndex from './components/categories/categories_container';
 import Splash from './components/splash/splash';
 
 const Routes = () => (
@@ -25,6 +26,13 @@ const Routes = () => (
       key='signupForm'
       component={ SignUpForm }
       title='Sign Up'
+      hideNavBar={false}
+    />
+
+    <Scene
+      key='categoriesIndex'
+      component={ CategoriesIndex }
+      title='Categories Index'
       hideNavBar={false}
     />
   </Router>

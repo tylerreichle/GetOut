@@ -13,12 +13,6 @@ export default class App extends Component {
   }
 }
 
-// TODO:
-import { requestCategories } from './actions/category_actions';
-
-window.requestCategories = requestCategories;
-
-
 const styles = {
   viewStyle: {
     flex: 1,

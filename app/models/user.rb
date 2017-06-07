@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-
   has_many :user_categories
 
   has_many :categories,

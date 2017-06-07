@@ -2,7 +2,6 @@ import * as APIUtil from '../util/session_api_util';
 import { AsyncStorage } from 'react-native';
 import { receiveErrors } from './error_actions';
 
-
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 
 export const receiveCurrentUser = currentUser => ({

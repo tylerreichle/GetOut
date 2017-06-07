@@ -13,7 +13,7 @@ export default class App extends Component {
   componentWillMount() {
     this.getToken();
   }
-
+  
   async getToken() {
     try {
       let sessionToken = await this.props.storage.getItem('sessionToken');
@@ -30,14 +30,14 @@ export default class App extends Component {
 
   async verifyToken(token) {
     const sessionToken = token;
-    
+
     try {
       let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         //Verified token means user is logged in so we redirect them home.
         console.log('user still logged in');
-        this.props.navigation.navigate('Home');
+        // this.props.navigation.navigate('Home');
       } else {
         //Handle error
         const error = res;

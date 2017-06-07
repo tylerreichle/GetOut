@@ -12,7 +12,7 @@ export const login = (user) => (
       })
     }
   )
-)
+);
 
 export const logout = () => (
   fetch(
@@ -25,7 +25,7 @@ export const logout = () => (
       }
     }
   )
-)
+);
 
 export const signup = (user) => (
   fetch(
@@ -41,4 +41,4 @@ export const signup = (user) => (
       })
     }
   )
-)
+);

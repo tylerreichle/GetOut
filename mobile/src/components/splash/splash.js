@@ -3,6 +3,7 @@ import { View, TextInput, Text, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 export default class Splash extends Component {
+  
 
   render() {
     return (

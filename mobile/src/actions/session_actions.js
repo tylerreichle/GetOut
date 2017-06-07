@@ -1,5 +1,7 @@
 import * as APIUtil from '../util/session_api_util';
+import { AsyncStorage } from 'react-native';
 import { receiveErrors } from './error_actions';
+
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 
@@ -12,7 +14,10 @@ export const loginUser = (user) => dispatch => {
   return APIUtil.login(user).then(
     (resp) => {
       resp.json()
-        .then((obj) => dispatch(receiveCurrentUser(obj)));
+        .then((obj) => {
+          dispatch(receiveCurrentUser(obj));
+          AsyncStorage.setItem('sessionToken', obj.sessionToken);
+        });
     }
   ), err => (
     dispatch(receiveErrors(err.responseJSON))

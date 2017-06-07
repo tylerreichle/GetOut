@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Button } from 'react-native';
-import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 export default class LoginForm extends Component {
 
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       username: '',
@@ -13,10 +12,6 @@ export default class LoginForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
   }
 
   onButtonSubmit() {
@@ -31,7 +26,7 @@ export default class LoginForm extends Component {
   }
 
   renderError() {
-    if (this.props.error) {
+    if (this.props.errors) {
       return (
         <Text
           style={{
@@ -52,18 +47,12 @@ export default class LoginForm extends Component {
         flexDirection: 'column',
         height: 100,
         padding: 20,
-        marginTop: 100,
+        marginTop: 200,
         justifyContent: 'center',
         alignItems: 'center'
-      }}>
-      {this.renderError()}
-      <Text style={{
-        marginTop: 30,
-        marginBottom: 20,
-        fontSize: 30
-      }}>
-      LunchWithStrangers
-      </Text>
+      }}
+      linkAction={ Actions.loginForm }
+      >
         <TextInput
           style={{
             borderColor: '#000000',
@@ -96,7 +85,7 @@ export default class LoginForm extends Component {
           secureTextEntry
         />
         <View
-          style={{backgroundColor: 'green', width: 80}}>
+          style={{backgroundColor: 'green', width: 150}}>
           <Button
             color= 'white'
             title="Login"

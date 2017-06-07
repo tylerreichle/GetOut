@@ -17,6 +17,7 @@ export default class LoginForm extends Component {
   onButtonSubmit() {
     const { username, password } = this.state;
     this.props.login({ username, password });
+    Actions.categoriesIndex();
   }
 
   handleChange(value, name) {
@@ -64,6 +65,7 @@ export default class LoginForm extends Component {
             textAlign: 'center'
           }}
           id={"username"}
+          autoCapitalize="none"
           placeholder={'Username'}
           value={this.state.username}
           onChangeText={(value) => this.handleChange(value , 'username')}

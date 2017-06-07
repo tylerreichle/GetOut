@@ -33,7 +33,7 @@ const Routes = () => (
       key='categoriesIndex'
       component={ CategoriesIndex }
       title='Categories Index'
-      hideNavBar={false}
+      hideNavBar={true}
     />
   </Router>
 );

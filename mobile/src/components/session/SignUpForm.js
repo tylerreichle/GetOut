@@ -3,10 +3,9 @@ import { View, TextInput, Text, Button } from 'react-native';
 import { loginUser } from '../../actions/session_actions';
 import { Actions } from 'react-native-router-flux';
 
-export default class LoginForm extends Component {
+export default class SignUpForm extends Component {
 
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       first_name: '',
@@ -17,10 +16,6 @@ export default class LoginForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
   }
 
   onButtonSubmit() {
@@ -104,6 +99,7 @@ export default class LoginForm extends Component {
             alignSelf: 'center',
             textAlign: 'center'
           }}
+          autoCapitalize="none"
           id={"email"}
           placeholder={'Email'}
           value={this.state.email}
@@ -121,6 +117,7 @@ export default class LoginForm extends Component {
             textAlign: 'center'
           }}
           id={"username"}
+          autoCapitalize="none"
           placeholder={'Username'}
           value={this.state.username}
           onChangeText={(value) => this.handleChange(value , 'username')}

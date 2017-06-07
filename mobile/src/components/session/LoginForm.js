@@ -63,6 +63,7 @@ export default class LoginForm extends Component {
             alignSelf: 'center',
             textAlign: 'center'
           }}
+          autoCapitalize="none"
           id={"username"}
           placeholder={'Username'}
           value={this.state.username}

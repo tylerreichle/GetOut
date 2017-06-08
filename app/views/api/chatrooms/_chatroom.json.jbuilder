@@ -1,0 +1,1 @@
+json.extract! chatroom, :id, :user_id, :message_id

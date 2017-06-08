@@ -4,7 +4,11 @@ class Api::MessagesController < ApplicationController
     @message.user_id = current_user.id
 
     if @message.save
-      # send message
+      # broadcast message after save to DB
+      ActionCable.server.broadcast 'messages',
+        message: @message.body
+        user_id: @message.user_id
+      head :ok
     else
       render json: @message.errors.full_messages
     end

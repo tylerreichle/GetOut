@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button } from 'react-native';
+import { View, TextInput, Text, Button, AsyncStorage } from 'react-native';
 import { loginUser } from '../../actions/session_actions';
 import { Actions } from 'react-native-router-flux';
 
@@ -18,15 +18,13 @@ export default class SignUpForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if(!Array.isArray(newProps.currentUser)) {
-      Actions.categoriesIndex();
-    }
-  }
-  
   onButtonSubmit() {
     const { first_name, last_name, email, username, password } = this.state;
     this.props.signup({ first_name, last_name, email, username, password });
+
+    setTimeout(() => {
+      this.getToken();
+    }, 300);
   }
 
   handleChange(value, name) {
@@ -40,16 +38,48 @@ export default class SignUpForm extends Component {
       return (
         <Text
           style={{
-          textAlign: 'center',
-          fontSize: 20,
-          color: '#cc3333'
-        }}
+            textAlign: 'center',
+            fontSize: 20,
+            color: '#cc3333'
+          }}
         >Sorry authentication failed!</Text>
       );
     }
     return null;
   }
 
+  async getToken() {
+    try {
+
+      let sessionToken = await AsyncStorage.getItem('sessionToken');
+
+      if (!sessionToken) {
+        console.log("Session token not set");
+      } else {
+        this.verifyToken(sessionToken)
+      }
+    } catch (error) {
+      console.log("Error getting session token");
+    }
+  }
+
+  async verifyToken(token) {
+    const sessionToken = token;
+
+    try {
+      let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
+      let res = await response.text();
+      if (response.status >= 200 && response.status < 300) {
+        Actions.categoriesIndex();
+      } else {
+        //Handle error
+        const error = res;
+        throw error;
+      }
+    } catch (error) {
+      console.log("Error fetching session token");
+    }
+  }
 
   render() {
     return (
@@ -61,7 +91,7 @@ export default class SignUpForm extends Component {
         justifyContent: 'center',
         alignItems: 'center'
       }}
-      linkAction={ Actions.signupForm }
+        linkAction={Actions.signupForm}
       >
         <TextInput
           style={{
@@ -76,7 +106,7 @@ export default class SignUpForm extends Component {
           id={"first_name"}
           placeholder={'First Name'}
           value={this.state.first_name}
-          onChangeText={(value) => this.handleChange(value , 'first_name')}
+          onChangeText={(value) => this.handleChange(value, 'first_name')}
         />
 
         <TextInput
@@ -92,7 +122,7 @@ export default class SignUpForm extends Component {
           id={"last_name"}
           placeholder={'Last Name'}
           value={this.state.last_name}
-          onChangeText={(value) => this.handleChange(value , 'last_name')}
+          onChangeText={(value) => this.handleChange(value, 'last_name')}
         />
 
         <TextInput
@@ -109,7 +139,7 @@ export default class SignUpForm extends Component {
           id={"email"}
           placeholder={'Email'}
           value={this.state.email}
-          onChangeText={(value) => this.handleChange(value , 'email')}
+          onChangeText={(value) => this.handleChange(value, 'email')}
         />
 
         <TextInput
@@ -126,7 +156,7 @@ export default class SignUpForm extends Component {
           autoCapitalize="none"
           placeholder={'Username'}
           value={this.state.username}
-          onChangeText={(value) => this.handleChange(value , 'username')}
+          onChangeText={(value) => this.handleChange(value, 'username')}
         />
 
         <TextInput
@@ -145,9 +175,9 @@ export default class SignUpForm extends Component {
           secureTextEntry
         />
         <View
-          style={{backgroundColor: 'green', width: 150}}>
+          style={{ backgroundColor: 'green', width: 150 }}>
           <Button
-            color= 'white'
+            color='white'
             title="Register"
             onPress={this.onButtonSubmit.bind(this)}
           >

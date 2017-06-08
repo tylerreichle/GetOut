@@ -15,10 +15,6 @@ export default class App extends Component {
     this.getToken();
   }
 
-  componentDidMount() {
-    this.getToken();
-  }
-
   async getToken() {
     try {
       let sessionToken = await this.props.storage.getItem('sessionToken');

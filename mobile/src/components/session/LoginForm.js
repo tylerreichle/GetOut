@@ -15,19 +15,13 @@ export default class LoginForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (!Array.isArray(newProps.currentUser)) {
-      Actions.categoriesIndex();
-    }
-  }
-
   onButtonSubmit() {
     const { username, password } = this.state;
     this.props.login({ username, password });
 
     setTimeout(() => {
       this.getToken();
-    }, 400);
+    }, 600);
   }
 
   handleChange(value, name) {
@@ -52,12 +46,14 @@ export default class LoginForm extends Component {
   }
 
   async getToken() {
+    console.log('get token');
     try {
       let sessionToken = await AsyncStorage.getItem('sessionToken');
 
       if (!sessionToken) {
         console.log("Token not set");
       } else {
+        console.log('token set')
         this.verifyToken(sessionToken)
       }
     } catch (error) {

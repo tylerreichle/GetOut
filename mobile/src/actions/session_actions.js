@@ -18,25 +18,39 @@ export const receiveNullUser =  () => ({
 export const loginUser = (user) => dispatch => {
   return APIUtil.login(user).then(
     (resp) => {
-      resp.json()
-        .then((obj) => {
-          dispatch(receiveCurrentUser(obj));
-          AsyncStorage.setItem('sessionToken', obj.sessionToken);
-        });
+      if (resp.ok) {
+        resp.json()
+          .then((obj) => {
+            dispatch(receiveCurrentUser(obj));
+            AsyncStorage.setItem('sessionToken', obj.sessionToken);
+          });
+      } else {
+        resp.json()
+          .then((err) => {
+           dispatch(receiveErrors(err));
+          }
+        );
+      }
     }
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
   );
 };
 
 export const signupUser = (user) => dispatch => {
   return APIUtil.signup(user).then(
     (resp) => {
-      resp.json()
-      .then((obj) => {
-        dispatch(receiveCurrentUser(obj));
-        AsyncStorage.setItem('sessionToken', obj.sessionToken);
-      });
+      if (resp.ok) {
+        resp.json()
+          .then((obj) => {
+            dispatch(receiveCurrentUser(obj));
+            AsyncStorage.setItem('sessionToken', obj.sessionToken);
+          });
+      } else {
+        resp.json()
+          .then((err) => {
+           dispatch(receiveErrors(err));
+          }
+        );
+      }
     }
   );
 };

@@ -3,7 +3,7 @@ import { View, TextInput, Text, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 export default class Splash extends Component {
-  
+
 
   render() {
     return (
@@ -15,6 +15,7 @@ export default class Splash extends Component {
         justifyContent: 'center',
         alignItems: 'center'
       }}
+      linkAction={ Actions.splash }
       >
       <Text style={{
         marginTop: 30,

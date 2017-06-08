@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ListView, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { toArray } from '../../reducers/selectors';
+import { AsyncStorage } from 'react-native';
 
 class CategoriesIndex extends Component {
     constructor(props) {
@@ -14,8 +15,23 @@ class CategoriesIndex extends Component {
         this.props.requestCategories();
     }
 
+    componentWillReceiveProps(newProps) {
+      if (!AsyncStorage.getItem('username')) {
+        Actions.splash();
+      }
+      // console.log("newProps", newProps);
+      // console.log("props", this.props);
+      // if(!newProps.currentUser && this.props.currentUser) {
+      //   Actions.splash();
+      // }
+    }
+
     handlePress() {
         console.log('hi');
+    }
+
+    onButtonSubmit() {
+      this.props.logout();
     }
 
     render() {
@@ -30,12 +46,17 @@ class CategoriesIndex extends Component {
                     dataSource={categories}
                     enableEmptySections={true}
                     renderRow={(rowData) =>
-                        <Button 
+                        <Button
                             color= 'white'
                             categories={rowData}
                             title={rowData.title}
                             onPress={this.handlePress.bind(this)}/>}
                 />
+              <Button
+                style={{marginTop: 20}}
+                onPress={this.onButtonSubmit.bind(this)}
+                title="Log Out">
+              </Button>
             </View>
         );
     }

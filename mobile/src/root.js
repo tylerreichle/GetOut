@@ -6,16 +6,12 @@ import App from './App';
 import configureStore from './store/store';
 
 export default class Root extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       store: configureStore()
     };
-  }
-
-  compentWillMount() {
-    this.getToken();
   }
 
   render() {

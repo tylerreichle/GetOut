@@ -42,6 +42,7 @@ export default class App extends Component {
       if (response.status >= 200 && response.status < 300) {
         //Verified token means user is logged in so we redirect them home.
         console.log('user still logged in');
+
         Actions.categoriesIndex();
       } else {
         //Handle error

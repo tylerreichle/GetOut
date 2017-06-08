@@ -3,7 +3,6 @@ import { AsyncStorage } from 'react-native';
 import { receiveErrors } from './error_actions';
 import { Actions } from 'react-native-router-flux';
 
-
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_NULL_USER = 'RECEIVE_NULL_USER';
 

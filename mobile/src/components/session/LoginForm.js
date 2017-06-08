@@ -14,10 +14,15 @@ export default class LoginForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if(!Array.isArray(newProps.currentUser)) {
+      Actions.categoriesIndex();
+    }
+  }
+
   onButtonSubmit() {
     const { username, password } = this.state;
     this.props.login({ username, password });
-    Actions.categoriesIndex();
   }
 
   handleChange(value, name) {

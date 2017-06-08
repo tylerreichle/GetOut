@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Routes from './routes';
+import { Actions } from 'react-native-router-flux';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,6 +12,10 @@ export default class App extends Component {
   }
 
   componentWillMount() {
+    this.getToken();
+  }
+
+  componentDidMount() {
     this.getToken();
   }
 
@@ -30,14 +35,14 @@ export default class App extends Component {
 
   async verifyToken(token) {
     const sessionToken = token;
-    
+
     try {
       let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         //Verified token means user is logged in so we redirect them home.
         console.log('user still logged in');
-        this.props.navigation.navigate('Home');
+        Actions.categoriesIndex();
       } else {
         //Handle error
         const error = res;

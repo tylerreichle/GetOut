@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Routes from './routes';
+import Routes from './Routes';
 import { Actions } from 'react-native-router-flux';
+import ChatroomShow from './components/chat/ChatroomShow';
 
 export default class App extends Component {
   constructor(props) {
@@ -33,15 +34,11 @@ export default class App extends Component {
     const sessionToken = token;
 
     try {
-      let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
-      let res = await response.text();
+      const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
+      const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
-        //Verified token means user is logged in so we redirect them home.
-        console.log('user still logged in');
-
         Actions.categoriesIndex();
       } else {
-        //Handle error
         const error = res;
         throw error;
       }
@@ -53,7 +50,8 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.viewStyle}>
-        < Routes />
+        {/*< Routes />*/}
+        <ChatroomShow />
       </View>
     );
   }

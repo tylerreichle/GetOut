@@ -23,7 +23,7 @@ class ChatroomShow extends Component {
   componentDidMount() {
     const channel = this.pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-    alert('An event was triggered with message: ' + data.message);
+    alert(data.name + ': ' + data.message);
     });
   }
 
@@ -41,7 +41,7 @@ class ChatroomShow extends Component {
         <Text
           style={{
             fontSize: 24
-          }}>Chatroom</Text>
+          }}>Chat</Text>
       </View>
     );
   }

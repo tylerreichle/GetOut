@@ -26,3 +26,5 @@ class MessageIndex extends React.Component {
     );
   }
 }
+
+export default MessageIndex;

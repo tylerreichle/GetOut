@@ -139,6 +139,7 @@ export default class SignUpForm extends Component {
           }}
           id={"first_name"}
           placeholder={'First Name'}
+          autoCorrect={false}
           value={this.state.first_name}
           onChangeText={(value) => this.handleChange(value, 'first_name')}
         />
@@ -155,6 +156,7 @@ export default class SignUpForm extends Component {
           }}
           id={"last_name"}
           placeholder={'Last Name'}
+          autoCorrect={false}
           value={this.state.last_name}
           onChangeText={(value) => this.handleChange(value, 'last_name')}
         />
@@ -170,6 +172,7 @@ export default class SignUpForm extends Component {
             textAlign: 'center'
           }}
           autoCapitalize="none"
+          autoCorrect={false}
           id={"email"}
           placeholder={'Email'}
           value={this.state.email}
@@ -188,6 +191,7 @@ export default class SignUpForm extends Component {
           }}
           id={"username"}
           autoCapitalize="none"
+          autoCorrect={false}
           placeholder={'Username'}
           value={this.state.username}
           onChangeText={(value) => this.handleChange(value, 'username')}

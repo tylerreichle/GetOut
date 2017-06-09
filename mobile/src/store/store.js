@@ -9,7 +9,7 @@ const configureStore = (preloadedState = {}) => {
     applyMiddleware(thunk)
   );
 
-  window.store = store.getState();
+  window.store = store;
   return store;
 };
 

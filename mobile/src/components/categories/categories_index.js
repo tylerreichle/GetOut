@@ -11,8 +11,6 @@ class CategoriesIndex extends Component {
 
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.handlePress = this.handlePress.bind(this);
-        this.renderList = this.renderList.bind(this);
-        this.buttonTitle = this.buttonTitle.bind(this);
     }
 
     componentWillMount() {
@@ -20,41 +18,11 @@ class CategoriesIndex extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-      if (newProps.categories.title) {
-        Actions.CategoriesIndexItem();
-      }
       if (!AsyncStorage.getItem('username')) {
         Actions.splash();
       }
     }
-
-    buttonTitle(data) {
-      if (data.title) {
-        return data.title;
-      } else {
-        return 'title';
-      }
-    }
-
-    renderList() {
-      const categories = this.ds.cloneWithRows(this.props.categories);
-
-      if (this.props.categories) {
-        return(
-          <ListView
-            dataSource={categories}
-            enableEmptySections={true}
-            renderRow={(rowData) =>
-                <Button
-                    color= 'white'
-                    categories={rowData}
-                    title={this.buttonTitle(rowData)}
-                    id={rowData.id}
-                    onPress={ val => this.handlePress(val, rowData.id) }/>}
-            />
-        );
-      }
-    }
+    
 
     handlePress(val, id) {
         val.preventDefault();
@@ -66,6 +34,8 @@ class CategoriesIndex extends Component {
     }
 
     render() {
+      const categories = this.ds.cloneWithRows(this.props.categories);
+
 
       return(
           <View
@@ -73,7 +43,17 @@ class CategoriesIndex extends Component {
               style={{backgroundColor: 'green', width: 150}}>
               <Text>Categories</Text>
 
-              {this.renderList()}
+              <ListView
+                dataSource={categories}
+                enableEmptySections={true}
+                renderRow={(rowData) =>
+                    <Button
+                        color= 'white'
+                        categories={rowData}
+                        title={rowData.title}
+                        id={rowData.id}
+                        onPress={ val => this.handlePress(val, rowData.id) }/>}
+              />
 
             <Button
               style={{marginTop: 20}}

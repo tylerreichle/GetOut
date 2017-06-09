@@ -5,6 +5,7 @@ import { logoutUser } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => ({
     categories: state.categories,
+    category: state.category,
     currentUser: state.session.currentUser,
     category_id: ownProps.data
 });

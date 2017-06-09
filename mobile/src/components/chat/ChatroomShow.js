@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View, ListView, Button } from 'react-native';
-
 import Pusher from 'pusher-js/react-native';
+
+import ChatInput from './ChatInputContainer';
 // Enable pusher logging - don't include this in production
 Pusher.logToConsole = true;
 
@@ -10,7 +11,7 @@ Pusher.logToConsole = true;
 // pass array into messages index
 // new channel event will trigger fetchChat to get new message
 
-class ChatroomShow extends Component {
+class ChatroomShow extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,7 +23,7 @@ class ChatroomShow extends Component {
       cluster: 'us2',
       encrypted: true
     });
-    this.chatRoom = this.pusher.subscribe('messages');
+    // this.chatRoom = this.pusher.subscribe('messages');
   }
 
   componentDidMount() {
@@ -33,8 +34,8 @@ class ChatroomShow extends Component {
   }
 
   componentWIllUnmount() {
-    this.chatRoom.unbind();
-    this.pusher.unsubscribe(this.chatRoom);
+    // this.chatRoom.unbind();
+    // this.pusher.unsubscribe(this.chatRoom);
   }
 
   render() {
@@ -47,6 +48,8 @@ class ChatroomShow extends Component {
           style={{
             fontSize: 24
           }}>Chat</Text>
+
+        <ChatInput chatroomID={2}/>
       </View>
     );
   }

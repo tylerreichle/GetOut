@@ -12,7 +12,9 @@ export default class SignUpForm extends Component {
       last_name: '',
       email: '',
       username: '',
-      password: ''
+      password: '',
+      latitude: null,
+      longitude: null
     };
 
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -23,9 +25,23 @@ export default class SignUpForm extends Component {
     this.onButtonSubmit = this.onButtonSubmit.bind(this);
   }
 
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      }
+    );
+  }
+
   onButtonSubmit() {
-    const { first_name, last_name, email, username, password } = this.state;
-    this.props.signup({ first_name, last_name, email, username, password });
+    const { first_name, last_name, email, username,
+      password, latitude, longitude } = this.state;
+
+    this.props.signup({ first_name, last_name, email,
+      username, password, latitude, longitude });
 
     setTimeout(() => {
       this.getToken();

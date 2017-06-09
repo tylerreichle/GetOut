@@ -5,6 +5,11 @@ import Pusher from 'pusher-js/react-native';
 // Enable pusher logging - don't include this in production
 Pusher.logToConsole = true;
 
+// Gameplan: Chat returned from backend w/ messages
+// selector to extract message info
+// pass array into messages index
+// new channel event will trigger fetchChat to get new message
+
 class ChatroomShow extends Component {
   constructor(props) {
     super(props);

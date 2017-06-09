@@ -6,6 +6,17 @@ class Api::ChatroomsController < ApplicationController
     )
   end
 
+  def show
+    @chatroom = Chatroom.find_by(id: params[:id])
+    
+    if @chatroom.user_id == current_user.id || @chatroom.user_two_id == current_user.id
+      @message = Message.new
+      render 'api/chatrooms/show'
+    else
+      render json: 'Cannot view private chat', status: 403
+    end
+  end
+
   def create
     @chatroom = Chatroom.new(chatroom_params)
     @chatroom.user_id = current_user.id
@@ -17,19 +28,8 @@ class Api::ChatroomsController < ApplicationController
       render json: @chatroom.errors.full_messages
     end
   end
-
-  def show
-    @chatroom = Chatroom.find_by(id: params[:id])
-    
-    if @chatroom.user_id == current_user.id || @chatroom.user_two_id == current_user.id
-      @message = Message.new
-      render 'api/chatrooms/show'
-    else
-      render json: 'Cannot view private chat', status: 403
-    end
-  end
   
-  def delete
+  def destroy
     @chatroom = Chatroom.find_by(id: params[:id])
 
     if @chatroom.user_id == current_user.id || @chatroom.user_two_id == current_user.id

@@ -12,9 +12,7 @@ class ChatroomShow extends Component {
     this.state = {
       body: ''
     };
-  }
 
-  componentWillMount() {
     this.pusher = new Pusher('a82f64a23895b9cddd1a', {
       cluster: 'us2',
       encrypted: true
@@ -22,7 +20,12 @@ class ChatroomShow extends Component {
     this.chatRoom = this.pusher.subscribe('messages');
   }
 
+  componentWillMount() {
+
+  }
+
   componentDidMount() {
+    const channel = this.pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
     alert('An event was triggered with message: ' + data.message);
     });
@@ -36,23 +39,16 @@ class ChatroomShow extends Component {
   render() {
     return (
       <View
-        style={{ backgroundColor: 'green', width: 150 }}>
-        <Text>Chatroom</Text>
-
+        style={{ 
+          padding: 25
+        }}>
+        <Text
+          style={{
+            fontSize: 24
+          }}>Chatroom</Text>
       </View>
     );
   }
 }
 
 export default ChatroomShow;
-
-
-var pusher = new Pusher('a82f64a23895b9cddd1a', {
-  cluster: 'us2',
-  encrypted: true
-});
-
-var channel = pusher.subscribe('my-channel');
-channel.bind('my-event', function (data) {
-  alert(data.message);
-});

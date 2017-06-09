@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607183545) do
+ActiveRecord::Schema.define(version: 20170609050721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,13 @@ ActiveRecord::Schema.define(version: 20170607183545) do
   end
 
   create_table "chatrooms", force: :cascade do |t|
-    t.integer  "message_id", null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "message_id",  null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_two_id", null: false
     t.index ["message_id", "user_id"], name: "index_chatrooms_on_message_id_and_user_id", using: :btree
+    t.index ["user_id", "user_two_id"], name: "index_chatrooms_on_user_id_and_user_two_id", unique: true, using: :btree
   end
 
   create_table "messages", force: :cascade do |t|

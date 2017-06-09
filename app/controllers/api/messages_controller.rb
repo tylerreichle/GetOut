@@ -5,10 +5,11 @@ class Api::MessagesController < ApplicationController
 
     if @message.save
       # broadcast message after save to DB
-      ActionCable.server.broadcast 'messages',
-        message: @message.body
-        user_id: @message.user_id
-      head :ok
+      # ActionCable.server.broadcast 'messages',
+      #   message: @message.body
+      #   user_id: @message.user_id
+      # head :ok
+      
     else
       render json: @message.errors.full_messages
     end

@@ -60,6 +60,6 @@ export default class App extends Component {
 const styles = {
   viewStyle: {
     flex: 1,
-    backgroundColor: '#008080'
+    backgroundColor: '#FFFFFF'
   }
 };

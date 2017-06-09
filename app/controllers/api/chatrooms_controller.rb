@@ -34,6 +34,7 @@ class Api::ChatroomsController < ApplicationController
 
     if @chatroom.user_id == current_user.id || @chatroom.user_two_id == current_user.id
       @chatroom.delete
+      render 'api/chatrooms/show'
     else
       render json: 'Cannot remove another person\'s chat', status: 403
     end

@@ -1,3 +1,13 @@
+export const fetchMessages = () => (
+    fetch(`http://localhost:3000/api/messages`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+    })
+);
+
 export const createMessage = message => (
   fetch(
     'http://localhost:3000/api/messages',

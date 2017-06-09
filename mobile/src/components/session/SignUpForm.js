@@ -12,7 +12,9 @@ export default class SignUpForm extends Component {
       last_name: '',
       email: '',
       username: '',
-      password: ''
+      password: '',
+      latitude: null,
+      longitude: null
     };
 
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -23,9 +25,23 @@ export default class SignUpForm extends Component {
     this.onButtonSubmit = this.onButtonSubmit.bind(this);
   }
 
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      }
+    );
+  }
+
   onButtonSubmit() {
-    const { first_name, last_name, email, username, password } = this.state;
-    this.props.signup({ first_name, last_name, email, username, password });
+    const { first_name, last_name, email, username,
+      password, latitude, longitude } = this.state;
+
+    this.props.signup({ first_name, last_name, email,
+      username, password, latitude, longitude });
 
     setTimeout(() => {
       this.getToken();
@@ -52,9 +68,7 @@ export default class SignUpForm extends Component {
 
   renderErrors() {
     if (this.props.errors.length > 0) {
-      console.log(this.props.errors);
       const errors = this.ds.cloneWithRows(this.props.errors);
-      console.log(errors);
       return (
         <View>
           <ListView
@@ -125,6 +139,7 @@ export default class SignUpForm extends Component {
           }}
           id={"first_name"}
           placeholder={'First Name'}
+          autoCorrect={false}
           value={this.state.first_name}
           onChangeText={(value) => this.handleChange(value, 'first_name')}
         />
@@ -141,6 +156,7 @@ export default class SignUpForm extends Component {
           }}
           id={"last_name"}
           placeholder={'Last Name'}
+          autoCorrect={false}
           value={this.state.last_name}
           onChangeText={(value) => this.handleChange(value, 'last_name')}
         />
@@ -156,6 +172,7 @@ export default class SignUpForm extends Component {
             textAlign: 'center'
           }}
           autoCapitalize="none"
+          autoCorrect={false}
           id={"email"}
           placeholder={'Email'}
           value={this.state.email}
@@ -174,6 +191,7 @@ export default class SignUpForm extends Component {
           }}
           id={"username"}
           autoCapitalize="none"
+          autoCorrect={false}
           placeholder={'Username'}
           value={this.state.username}
           onChangeText={(value) => this.handleChange(value, 'username')}

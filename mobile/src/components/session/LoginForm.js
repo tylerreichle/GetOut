@@ -9,7 +9,9 @@ export default class LoginForm extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      latitude: null,
+      longitude: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,14 +19,19 @@ export default class LoginForm extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.errors);
-    Actions.refresh(this.props.errors);
-    console.log(this.props.errors);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      }
+    );
   }
 
   onButtonSubmit() {
-    const { username, password } = this.state;
-    this.props.login({ username, password });
+    const { username, password, latitude, longitude } = this.state;
+    this.props.login({ username, password, latitude, longitude });
 
     setTimeout(() => {
       this.getToken();
@@ -107,9 +114,9 @@ export default class LoginForm extends Component {
             alignSelf: 'center',
             textAlign: 'center'
           }}
-          autoCapitalize="none"
           id={"username"}
           autoCapitalize="none"
+          autoCorrect={false}
           placeholder={'Username'}
           value={this.state.username}
           onChangeText={(value) => this.handleChange(value, 'username')}

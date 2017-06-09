@@ -52,9 +52,7 @@ export default class SignUpForm extends Component {
 
   renderErrors() {
     if (this.props.errors.length > 0) {
-      console.log(this.props.errors);
       const errors = this.ds.cloneWithRows(this.props.errors);
-      console.log(errors);
       return (
         <View>
           <ListView

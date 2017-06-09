@@ -16,12 +16,6 @@ export default class LoginForm extends Component {
     this.onButtonSubmit = this.onButtonSubmit.bind(this);
   }
 
-  componentWillMount() {
-    console.log(this.props.errors);
-    Actions.refresh(this.props.errors);
-    console.log(this.props.errors);
-  }
-
   onButtonSubmit() {
     const { username, password } = this.state;
     this.props.login({ username, password });

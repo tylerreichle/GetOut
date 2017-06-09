@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button, AsyncStorage } from 'react-native';
+import { View, TextInput, Text, Button, ListView, AsyncStorage } from 'react-native';
 import { loginUser } from '../../actions/session_actions';
 import { Actions } from 'react-native-router-flux';
 
@@ -15,7 +15,12 @@ export default class SignUpForm extends Component {
       password: ''
     };
 
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+    this.renderRow = this.renderRow.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onButtonSubmit = this.onButtonSubmit.bind(this);
   }
 
   onButtonSubmit() {
@@ -33,16 +38,31 @@ export default class SignUpForm extends Component {
     this.setState(newState);
   }
 
-  renderError() {
-    if (this.props.errors) {
+  renderRow(rowData) {
+    return(
+      <Text
+        style={{
+          textAlign: 'center',
+          fontSize: 12,
+          color: '#cc3333',
+        }}
+        >{rowData}</Text>
+    )
+  }
+
+  renderErrors() {
+    if (this.props.errors.length > 0) {
+      console.log(this.props.errors);
+      const errors = this.ds.cloneWithRows(this.props.errors);
+      console.log(errors);
       return (
-        <Text
-          style={{
-            textAlign: 'center',
-            fontSize: 20,
-            color: '#cc3333'
-          }}
-        >Sorry authentication failed!</Text>
+        <View>
+          <ListView
+            dataSource={errors}
+            enableEmptySections={true}
+            renderRow={(rowData) => this.renderRow(rowData)}
+            />
+        </View>
       );
     }
     return null;
@@ -87,7 +107,7 @@ export default class SignUpForm extends Component {
         flexDirection: 'column',
         height: 100,
         padding: 20,
-        marginTop: 250,
+        marginTop: 280,
         justifyContent: 'center',
         alignItems: 'center'
       }}
@@ -175,14 +195,15 @@ export default class SignUpForm extends Component {
           secureTextEntry
         />
         <View
-          style={{ backgroundColor: 'green', width: 150 }}>
+          style={{ backgroundColor: 'green', width: 150, marginBottom: 20 }}>
           <Button
             color='white'
             title="Register"
-            onPress={this.onButtonSubmit.bind(this)}
+            onPress={() => this.onButtonSubmit()}
           >
           </Button>
         </View>
+        {this.renderErrors()}
       </View>
     );
   }

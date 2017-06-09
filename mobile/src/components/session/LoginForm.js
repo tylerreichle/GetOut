@@ -13,6 +13,13 @@ export default class LoginForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.onButtonSubmit = this.onButtonSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    console.log(this.props.errors);
+    Actions.refresh(this.props.errors);
+    console.log(this.props.errors);
   }
 
   onButtonSubmit() {
@@ -31,7 +38,8 @@ export default class LoginForm extends Component {
   }
 
   renderError() {
-    if (this.props.errors) {
+    if (this.props.errors.length > 0) {
+      const error = this.props.errors[0];
       return (
         <Text
           style={{
@@ -39,7 +47,7 @@ export default class LoginForm extends Component {
             fontSize: 20,
             color: '#cc3333'
           }}
-        >Sorry authentication failed!</Text>
+        >{error}</Text>
       );
     }
     return null;
@@ -123,14 +131,15 @@ export default class LoginForm extends Component {
           secureTextEntry
         />
         <View
-          style={{ backgroundColor: 'green', width: 150 }}>
+          style={{ backgroundColor: 'green', width: 150, marginBottom: 30 }}>
           <Button
             color='white'
             title="Login"
-            onPress={this.onButtonSubmit.bind(this)}
+            onPress={() => this.onButtonSubmit()}
           >
           </Button>
         </View>
+        { this.renderError() }
       </View>
     );
   }

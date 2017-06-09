@@ -20,10 +20,6 @@ class ChatroomShow extends Component {
     this.chatRoom = this.pusher.subscribe('messages');
   }
 
-  componentWillMount() {
-
-  }
-
   componentDidMount() {
     const channel = this.pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {

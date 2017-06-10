@@ -12,7 +12,8 @@ eric = User.create(
     first_name: 'Eric',
     last_name: 'Adams',
     email: 'eadams@email.com',
-    password: 'password'
+    password: 'password',
+    img_url: 'https://avatars1.githubusercontent.com/u/25959584?v=3&s=400'
 )
 
 tyler = User.create(
@@ -20,7 +21,8 @@ tyler = User.create(
     first_name: 'Tyler',
     last_name: 'Reichle',
     email: 'treichle@email.com',
-    password: 'password'
+    password: 'password',
+    img_url: 'https://avatars2.githubusercontent.com/u/8896924?v=3&s=400'
 )
 
 jill = User.create(
@@ -28,7 +30,8 @@ jill = User.create(
     first_name: 'Jill',
     last_name: 'de los Angeles',
     email: 'jilldela@email.com',
-    password: 'password'
+    password: 'password',
+    img_url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'
 )
 
 Category.destroy_all

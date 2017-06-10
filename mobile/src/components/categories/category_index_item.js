@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, ListView, Button, StyleSheet } from 'react-native';
+import { Text, View, ListView, Button, StyleSheet, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class CategoriesIndexItem extends Component {
   constructor(props) {
     super(props);
 
+    this.props.requestSingleCategory(this.props.category_id);
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
     this.state = {
@@ -13,14 +14,15 @@ class CategoriesIndexItem extends Component {
     }
   }
 
-  componentWillMount() {
-    this.props.requestSingleCategory(this.props.category_id);
+  _onPressButton() {
+    console.log('hi');
   }
 
   render() {
     if (this.props.category.users) {
       const users = this.ds.cloneWithRows(this.props.category.users);
 
+      console.log(this.props.category.users);
       return (
         <View
           linkAction={ Actions.CategoriesIndexItem }
@@ -38,14 +40,18 @@ class CategoriesIndexItem extends Component {
             dataSource={users}
             enableEmptySections={true}
             renderRow={(rowData) =>
-              <Text
-                color= 'white'
-                categories={rowData}
+              <TouchableHighlight
                 title={rowData.username}
                 id={rowData.id}
-                onPress={ val => this.handlePress(val, rowData.id) }>
-                {rowData.username}
-                </Text>}
+                onPress={this._onPressButton}>
+                <View>
+                  <Text>{rowData.username}</Text>
+                  <Image
+                    style={{width: 50, height: 50}}
+                    source={{uri: `${rowData.img_url}`}}
+                  />
+                </View>
+              </TouchableHighlight>}
             />
 
         </View>

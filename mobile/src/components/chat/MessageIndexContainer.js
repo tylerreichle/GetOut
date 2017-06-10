@@ -1,5 +1,5 @@
 import { connect } from 'react';
-import MessageIndex from 'MessageIndex';
+import MessageIndex from './MessageIndex';
 import { fetchMessages } from '../../actions/message_actions';
 import { chatMessages } from '../../reducers/selectors';
 

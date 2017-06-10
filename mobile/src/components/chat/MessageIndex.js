@@ -9,7 +9,7 @@ class MessageIndex extends React.Component {
   }
 
   render() {
-    const { messages } = this.props;
+    const { messages } = this.props || [];
     // const currentUserID = this.props.currentUser.id;
     const currentUserID = 1;
 

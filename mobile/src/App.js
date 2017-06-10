@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Routes from './Routes';
 import { Actions } from 'react-native-router-flux';
-import ChatroomShow from './components/chat/ChatroomShow';
+import ChatroomIndex from './components/chat/ChatroomIndexContainer';
 
 export default class App extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ export default class App extends Component {
     return (
       <View style={styles.viewStyle}>
         {/*< Routes />*/}
-        <ChatroomShow />
+        <ChatroomIndex />
       </View>
     );
   }

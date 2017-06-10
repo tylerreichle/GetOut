@@ -1,14 +1,18 @@
 class Api::ChatroomsController < ApplicationController
   def index
     @chatrooms = Chatroom.where(
-      :user_id == current_user.id,
-      :user_two_id == current_user.id
+      :user_id == 1,
+      :user_two_id == 1
     )
+    # @chatrooms = Chatroom.where(
+    #   :user_id == current_user.id,
+    #   :user_two_id == current_user.id
+    # )
   end
 
   def show
     @chatroom = Chatroom.find_by(id: params[:id])
-    
+
     if @chatroom.user_id == current_user.id || @chatroom.user_two_id == current_user.id
       @message = Message.new
       render 'api/chatrooms/show'
@@ -28,7 +32,7 @@ class Api::ChatroomsController < ApplicationController
       render json: @chatroom.errors.full_messages
     end
   end
-  
+
   def destroy
     @chatroom = Chatroom.find_by(id: params[:id])
 
@@ -45,5 +49,5 @@ class Api::ChatroomsController < ApplicationController
   def chatroom_params
     params.require(:chatroom).permit(:message_id, :user_two_id)
   end
-  
+
 end

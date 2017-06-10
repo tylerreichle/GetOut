@@ -18,15 +18,15 @@ class ChatroomShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      body: '',
-    };
-
     this.pusher = new Pusher('a82f64a23895b9cddd1a', {
       cluster: 'us2',
       encrypted: true,
     });
     // this.chatRoom = this.pusher.subscribe('messages');
+  }
+
+  componentWillMount() {
+    this.props.fetchSingleChatroom(this.props.chatroom.id);
   }
 
   componentDidMount() {
@@ -42,6 +42,8 @@ class ChatroomShow extends React.Component {
   // }
 
   render() {
+    const { chatroomID } = this.props.chatroom.id;
+
     return (
       <View
         style={{
@@ -54,8 +56,8 @@ class ChatroomShow extends React.Component {
           }}
         >Chat</Text>
 
-        <MessageIndex />
-        <ChatInput chatroomID={2} />
+        <MessageIndex chatroomID={chatroomID} />
+        <ChatInput chatroomID={chatroomID} />
       </View>
     );
   }

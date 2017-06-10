@@ -14,7 +14,7 @@ Pusher.logToConsole = true;
 
 // one channel per user? with different listeners per chat
 
-class ChatroomShow extends React.Component {
+export default class ChatroomShow extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,10 +23,6 @@ class ChatroomShow extends React.Component {
       encrypted: true,
     });
     // this.chatRoom = this.pusher.subscribe('messages');
-  }
-
-  componentWillMount() {
-    this.props.fetchSingleChatroom(this.props.chatroom.id);
   }
 
   componentDidMount() {
@@ -62,5 +58,3 @@ class ChatroomShow extends React.Component {
     );
   }
 }
-
-export default ChatroomShow;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import Pusher from 'pusher-js/react-native';
 
-import MessageIndex from './MessageIndex';
+import MessageIndex from './MessageIndexContainer';
 import ChatInput from './ChatInputContainer';
 // Enable pusher logging - don't include this in production
 Pusher.logToConsole = true;
@@ -38,7 +38,7 @@ export default class ChatroomShow extends React.Component {
   // }
 
   render() {
-    const { chatroomID } = this.props.chatroom.id;
+    const { chatroomID } = this.props;
 
     return (
       <View

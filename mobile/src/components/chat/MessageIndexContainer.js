@@ -1,4 +1,4 @@
-import { connect } from 'react';
+import { connect } from 'react-redux';
 import MessageIndex from './MessageIndex';
 import { fetchMessages } from '../../actions/message_actions';
 import { chatMessages } from '../../reducers/selectors';

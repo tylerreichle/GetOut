@@ -37,7 +37,7 @@ export default class App extends Component {
       const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
-        Actions.categoriesIndex();
+        Actions.ChatroomIndex();
       } else {
         const error = res;
         throw error;
@@ -50,8 +50,8 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.viewStyle}>
-        {/*< Routes />*/}
-        <ChatroomIndex />
+        < Routes />
+        {/*<ChatroomIndex />*/}
       </View>
     );
   }

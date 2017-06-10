@@ -41,7 +41,6 @@ export default class ChatroomIndex extends React.Component {
             />
           }
         />
-        {/*<ChatroomShow chatroom={chatroom} key={chatroom.id}/>*/}
       </View>
     );
   }

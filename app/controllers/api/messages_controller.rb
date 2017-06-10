@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = current_user.chatrooms.messages
+    @messages = User.first.chatrooms.first.messages
   end
 
 
@@ -8,6 +8,7 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
     # @message.user_id = current_user.id
     @message.user_id = 1
+
     if @message.save
       # broadcast message after save to DB
       Pusher.trigger('my-channel', 'my-event', {

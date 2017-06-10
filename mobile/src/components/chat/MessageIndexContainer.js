@@ -1,14 +1,17 @@
 import { connect } from 'react';
 import MessageIndex from 'MessageIndex';
+import { fetchMessages } from '../../actions/message_actions';
+import { chatMessages } from '../../reducers/selectors';
 
-const mapStateToProps = state => ({
-  currentUser: state.currentUser,
-  messages: state.messages
+// own props to select w/ chatID
+const mapStateToProps = (store, ownProps) => ({
+  currentUser: store.currentUser,
+  messages: chatMessages(store, ownProps.chatroomID)
 });
 
-
+// fetch all messages on mount
 const mapDispatchToProps = dispatch => ({
-
+  fetchMessages: () => dispatch(fetchMessages())
 });
 
 export default connect(

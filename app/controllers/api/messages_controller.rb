@@ -1,4 +1,9 @@
 class Api::MessagesController < ApplicationController
+  def index
+    @messages = current_user.chatrooms.messages
+  end
+
+
   def create
     @message = Message.new(message_params)
     # @message.user_id = current_user.id

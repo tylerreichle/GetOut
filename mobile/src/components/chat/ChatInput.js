@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, TextInput, Keyboard, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+import { TextInput, StyleSheet } from 'react-native';
 
-class ChatInput extends React.Component {
+export default class ChatInput extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
       body: ''
     };
 
@@ -23,25 +24,27 @@ class ChatInput extends React.Component {
 
   render() {
     return (
-        <TextInput
-          value={this.state.body}
-          onChangeText={(body) => this.setState({ body })}
-          onSubmitEditing={this.sendMessage}
-          placeholder="Type a message"
-          autoCapitalize="none"
-          autoCorrect={false}
-          autoFocus={true}
-          style={styles.textInput}
-        />
+      <TextInput
+        value={this.state.body}
+        onChangeText={body => this.setState({ body })}
+        onSubmitEditing={this.sendMessage}
+        placeholder="Send a message"
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.textInput}
+        autoFocus
+      />
     );
   }
 }
-
-export default ChatInput;
+ChatInput.propTypes = {
+  chatroomID: PropTypes.number.isRequired,
+  createMessage: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   textInput: {
     color: '#000000',
-    margin: 25
-  }
+    margin: 25,
+  },
 });

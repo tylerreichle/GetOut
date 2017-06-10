@@ -1,11 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class Message extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class Message extends React.Component {
   render() {
     const { currentUserId, userId, body } = this.props;
 
@@ -30,4 +26,3 @@ class Message extends React.Component {
     }
   }
 }
-export default Message;

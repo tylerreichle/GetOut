@@ -1,27 +1,31 @@
-import React from './react';
+import React from 'react';
 import { View, ListView, Text } from 'react-native';
 import Message from './Message';
 
 class MessageIndex extends React.Component {
-  constructor(props) {
-    super(props);
+
+  componentWillMount() {
+    this.props.fetchMessages();
   }
 
   render() {
-    const messages = this.ds.cloneWithRows(this.props.messages);
-    const { currentUserID } = this.props.currentUser.id;
+    const { messages } = this.props;
+    // const currentUserID = this.props.currentUser.id;
+    const currentUserID = 1;
 
     return (
       <View>
-        <ListView
-          dataSource={messages}
-          renderRow={(message) =>
-            <Message
+        {
+          messages.forEach(message => {
+            return (
+              <Message
               currentUserID={currentUserID}
               userID = {message.user_id}
               body={message.body}
-            />}
-        />
+            />
+            );
+          })
+        }
       </View>
     );
   }

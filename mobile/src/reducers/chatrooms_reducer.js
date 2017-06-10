@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 import {
-  RECEIEVE_CHATROOMS,
+  RECEIVE_CHATROOMS,
   RECEIVE_SINGLE_CHATROOM,
   REMOVE_CHATROOM
  } from '../actions/chatroom_actions';
@@ -10,7 +10,7 @@ const chatroomsReducer = (state = {}, action) => {
   let newState;
 
   switch (action.type) {
-    case RECEIEVE_CHATROOMS:
+    case RECEIVE_CHATROOMS:
       return action.chatrooms;
 
     case RECEIVE_SINGLE_CHATROOM:
@@ -22,10 +22,10 @@ const chatroomsReducer = (state = {}, action) => {
       newState = merge({}, state);
       delete newState[action.chatroom.id];
       return newState;
-      
+
     default:
       return state;
   }
-}; 
+};
 
 export default chatroomsReducer;

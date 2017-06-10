@@ -1,9 +1,6 @@
 class Api::ChatroomsController < ApplicationController
   def index
-    @chatrooms = Chatroom.where(
-      :user_id == 1,
-      :user_two_id == 1
-    )
+    @chatrooms = Chatroom.where("chatrooms.user_id = ? OR chatrooms.user_two_id = ?", 1, 1)
     # @chatrooms = Chatroom.where(
     #   :user_id == current_user.id,
     #   :user_two_id == current_user.id

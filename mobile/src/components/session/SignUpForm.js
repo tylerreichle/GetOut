@@ -3,6 +3,9 @@ import { View, TextInput, Text, Button, ListView, AsyncStorage } from 'react-nat
 import { loginUser } from '../../actions/session_actions';
 import { Actions } from 'react-native-router-flux';
 
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
+
 export default class SignUpForm extends Component {
 
   constructor(props) {
@@ -118,18 +121,20 @@ export default class SignUpForm extends Component {
   render() {
     return (
       <View style={{
+        flex: 1,
         flexDirection: 'column',
-        height: 100,
-        padding: 20,
-        marginTop: 280,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: "black",
+        opacity: .5,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height
       }}
         linkAction={Actions.signupForm}
       >
         <TextInput
           style={{
-            borderColor: '#000000',
+            borderColor: '#8abcdf',
             borderWidth: 3,
             width: 300,
             height: 50,
@@ -146,7 +151,7 @@ export default class SignUpForm extends Component {
 
         <TextInput
           style={{
-            borderColor: '#000000',
+            borderColor: '#8abcdf',
             borderWidth: 3,
             width: 300,
             height: 50,
@@ -163,7 +168,7 @@ export default class SignUpForm extends Component {
 
         <TextInput
           style={{
-            borderColor: '#000000',
+            borderColor: '#8abcdf',
             borderWidth: 3,
             width: 300,
             height: 50,
@@ -181,7 +186,7 @@ export default class SignUpForm extends Component {
 
         <TextInput
           style={{
-            borderColor: '#000000',
+            borderColor: '#8abcdf',
             borderWidth: 3,
             width: 300,
             height: 50,
@@ -199,7 +204,7 @@ export default class SignUpForm extends Component {
 
         <TextInput
           style={{
-            borderColor: '#000000',
+            borderColor: '#8abcdf',
             borderWidth: 3,
             width: 300,
             height: 50,
@@ -213,7 +218,7 @@ export default class SignUpForm extends Component {
           secureTextEntry
         />
         <View
-          style={{ backgroundColor: 'green', width: 150, marginBottom: 20 }}>
+          style={{ backgroundColor: '#8abcdf', width: 150, marginBottom: 20 }}>
           <Button
             color='white'
             title="Register"

@@ -35,10 +35,6 @@ class CategoriesIndexItem extends Component {
 
     const miles = geolib.convertUnit('mi', distance, 2)
 
-    console.log('initialPoint', initialPoint);
-    console.log('latitude', rowData.latitude);
-    console.log('longitude', rowData.longitude);
-    console.log(miles);
     return miles;
   }
 

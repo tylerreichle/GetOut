@@ -49,7 +49,7 @@ const Routes = () => (
     <Scene
       key='ChatroomIndex'
       component={ ChatroomIndex }
-      title='Chatroom Index'
+      title='Chats'
       hideNavBar={false}
     />
 

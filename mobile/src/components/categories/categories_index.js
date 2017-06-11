@@ -9,12 +9,10 @@ class CategoriesIndex extends Component {
     constructor(props) {
         super(props);
 
+        this.props.requestCategories();
+
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.handlePress = this.handlePress.bind(this);
-    }
-
-    componentWillMount() {
-        this.props.requestCategories();
     }
 
     componentWillReceiveProps(newProps) {
@@ -40,15 +38,23 @@ class CategoriesIndex extends Component {
       return(
           <View
               linkAction={ Actions.categoriesIndex }
-              style={{backgroundColor: 'green', width: 150}}>
-              <Text>Categories</Text>
+              style={{
+                flex: 1
+                }}>
+              <Text
+                style={{
+                  fontSize: 24, 
+                  textAlign: 'center',
+                  padding: 20
+                  }}>
+                Categories</Text>
 
               <ListView
                 dataSource={categories}
                 enableEmptySections={true}
                 renderRow={(rowData) =>
                     <Button
-                        color= 'white'
+                        style={{flex: 1}}
                         categories={rowData}
                         title={rowData.title}
                         id={rowData.id}
@@ -56,7 +62,9 @@ class CategoriesIndex extends Component {
               />
 
             <Button
-              style={{marginTop: 20}}
+              style={{
+                padding: 20, 
+                backgroundColor: 'blue'}}
               onPress={this.onButtonSubmit.bind(this)}
               title="Log Out">
             </Button>

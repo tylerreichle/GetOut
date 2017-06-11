@@ -35,13 +35,13 @@ jill = User.create(
 )
 
 Category.destroy_all
-tech = Category.create(title: 'tech')
-movies = Category.create(title: 'movies')
-music = Category.create(title: 'music')
-sports = Category.create(title: 'sports')
-food = Category.create(title: 'food')
-travel = Category.create(title: 'travel')
-art = Category.create(title: 'art')
+tech = Category.create(title: 'Technology')
+movies = Category.create(title: 'Movies & Television')
+music = Category.create(title: 'Music')
+sports = Category.create(title: 'Sports')
+food = Category.create(title: 'Food')
+travel = Category.create(title: 'Travel')
+art = Category.create(title: 'Art')
 
 UserCategory.destroy_all
 

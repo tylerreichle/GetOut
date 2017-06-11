@@ -99,11 +99,9 @@ export default class LoginForm extends Component {
     return (
       <View style={{
         flexDirection: 'column',
-        height: 100,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: "#8abcdf",
-        opacity: .7,
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height
       }}

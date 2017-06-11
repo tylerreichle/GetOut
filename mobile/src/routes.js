@@ -5,6 +5,7 @@ import SignUpForm from './components/session/SignUpFormContainer';
 import CategoriesIndex from './components/categories/categories_container';
 import CategoriesIndexItem from './components/categories/categories_index_item_container';
 import Splash from './components/splash/splash';
+import Profile from './components/user_profile/profile_container';
 
 const Routes = () => (
   <Router sceneStyle={{ backgroundColor: 'white' }}>
@@ -41,6 +42,13 @@ const Routes = () => (
       key='CategoriesIndexItem'
       component={ CategoriesIndexItem }
       title='Categories Index Item'
+      hideNavBar={false}
+    />
+
+    <Scene
+      key='Profile'
+      component={ Profile }
+      title='Profile'
       hideNavBar={false}
     />
   </Router>

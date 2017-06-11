@@ -14,8 +14,11 @@ class CategoriesIndexItem extends Component {
     }
   }
 
-  _onPressButton() {
-    console.log('hi');
+  _onPressButton(val, id) {
+    console.log(val);
+    console.log(id);
+    val.preventDefault();
+    Actions.Profile(id);
   }
 
   render() {
@@ -43,13 +46,17 @@ class CategoriesIndexItem extends Component {
               <TouchableHighlight
                 title={rowData.username}
                 id={rowData.id}
-                onPress={this._onPressButton}>
-                <View>
-                  <Text>{rowData.username}</Text>
+                onPress={ val => this._onPressButton(val, rowData.id) }>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    flex: 1
+                  }}>
                   <Image
                     style={{width: 50, height: 50}}
                     source={{uri: `${rowData.img_url}`}}
                   />
+                  <Text>{rowData.username}</Text>
                 </View>
               </TouchableHighlight>}
             />

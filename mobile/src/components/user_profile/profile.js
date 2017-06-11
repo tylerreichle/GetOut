@@ -1,14 +1,23 @@
 import React from 'react';
-import { Text, View} from 'react-native';
+import { Text, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 import ProfilePic from './profile_pic';
 
 class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+
+    console.log(this.props);
+  }
+
   render() {
     const { user, profilePic, aboutMe, location } = this.props;
 
     return (
-      <View style={styles.viewStyle}>
+      <View 
+        linkAction={ Actions.Profile }
+        style={styles.viewStyle}>
         <View style={styles.containerStyle}>
 
           <ProfilePic userID={user.id}/>
@@ -30,6 +39,7 @@ class Profile extends React.Component {
     );
   }
 }
+
 const styles = {
   viewStyle: {
     justifyContent: 'space-between',
@@ -56,3 +66,5 @@ const styles = {
     width: null
   }
 };
+
+export default Profile;

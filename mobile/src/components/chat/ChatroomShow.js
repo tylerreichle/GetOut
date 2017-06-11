@@ -38,7 +38,7 @@ export default class ChatroomShow extends React.Component {
   // }
 
   render() {
-    const { chatroomID } = this.props;
+    const chatroomID = this.props.data;
 
     return (
       <View

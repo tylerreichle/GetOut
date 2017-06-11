@@ -26,12 +26,12 @@ export default class ChatInput extends React.Component {
     return (
       <TextInput
         value={this.state.body}
+        style={styles.textInput}
         onChangeText={body => this.setState({ body })}
         onSubmitEditing={this.sendMessage}
         placeholder="Send a message"
         autoCapitalize="none"
         autoCorrect={false}
-        style={styles.textInput}
         autoFocus
       />
     );

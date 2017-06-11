@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = Chatroom.where(id: params[:chatID]).messages
+    @messages = Chatroom.find_by_id(params[:chatID]).messages
   end
 
   def create

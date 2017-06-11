@@ -14,8 +14,5 @@ class Message < ApplicationRecord
   validates :body, :user, :chatroom, presence: true
 
   belongs_to :user
-  belongs_to :chatroom,
-    primary_key: :id,
-    foreign_key: :chatroom_id,
-    class_name: :Chatroom
+  belongs_to :chatroom
 end

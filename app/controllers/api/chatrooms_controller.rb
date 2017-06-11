@@ -10,9 +10,9 @@ class Api::ChatroomsController < ApplicationController
 
     @chatrooms.each do |chatroom|
       if chatroom.user_id == current_user.id
-        otherUsername = User.find_by(id: chatroom.user_two_id).username
+        otherUsername = User.find_by_id(chatroom.user_two_id).username
       else
-        otherUsername = User.find_by(id: chatroom.user_id).username
+        otherUsername = User.find_by_id(chatroom.user_id).username
       end
 
       @otherUsers[chatroom.id] = otherUsername
@@ -37,7 +37,7 @@ class Api::ChatroomsController < ApplicationController
       # subscribe to chat
       render 'api/chatrooms/show'
     else
-      render json: @chatroom.errors.full_messages
+      render json: 'Chat already exists!', status: 422
     end
   end
 

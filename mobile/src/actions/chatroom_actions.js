@@ -1,5 +1,4 @@
 import * as ChatroomUtil from '../util/chatrooms_api';
-import { receiveErrors, clearErrors } from './error_actions';
 
 export const RECEIVE_CHATROOMS = 'RECEIVE_CHATROOMS';
 export const RECEIVE_SINGLE_CHATROOM = 'RECEIVE_SINGLE_CHATROOM';
@@ -11,42 +10,67 @@ export const receiveChatrooms = chatrooms => ({
 });
 
 export const receiveSingleChatroom = chatroom => ({
-   type: RECEIVE_SINGLE_CHATROOM,
-   chatroom
+    type: RECEIVE_SINGLE_CHATROOM,
+    chatroom
 });
 
 export const removeChatroom = chatroom => ({
-  type: REMOVE_CHATROOM,
-  chatroom
+    type: REMOVE_CHATROOM,
+    chatroom
 });
 
-export const fetchChatrooms = () => dispatch => (
-    ChatroomUtil.fetchChatrooms()
-        .then(resp => resp.json())
-        .then(chatrooms => dispatch(receiveChatrooms(chatrooms)))
-);
+export const fetchChatrooms = () => dispatch => {
+    return ChatroomUtil.fetchChatrooms().then(
+        (resp) => {
+            if (resp.ok) {
+                resp.json()
+                    .then((chatrooms) => {
+                        dispatch(receiveChatrooms(chatrooms));
+                    });
+            } else {
+                resp.json()
+                    .then((err) => {
+                        console.log(err);
+                    });
+            }
+        }
+    );
+};
 
-export const fetchSingleChatroom = id => dispatch => (
-    ChatroomUtil.fetchSingleChatroom(id)
-        .then(resp => resp.json())
-        .then(chatroom => dispatch(receiveSingleChatroom(chatroom)))
-);
+export const fetchSingleChatroom = id => dispatch => {
+    return ChatroomUtil.fetchSingleChatroom(id).then(
+        (resp) => {
+            if (resp.ok) {
+                resp.json()
+                    .then((chatroom) => {
+                        dispatch(receiveSingleChatroom(chatroom));
+                    });
+            } else {
+                resp.json()
+                    .then((err) => {
+                        console.log(err);
+                    });
+            }
+        }
+    );
+};
 
 export const createChatroom = chatroom => dispatch => {
-  return ChatroomUtil.createChatroom(chatroom).then(
-    (resp) => {
-      if (resp.ok) {
-        resp.json()
-          .then((newChatroom) => {
-            dispatch(receiveSingleChatroom(newChatroom));
-            dispatch(clearErrors());
-          });
-      } else {
-        resp.json()
-          .then((err) => { console.log(err); });
-      }
-    }
-  );
+    return ChatroomUtil.createChatroom(chatroom).then(
+        (resp) => {
+            if (resp.ok) {
+                resp.json()
+                    .then((newChatroom) => {
+                        dispatch(receiveSingleChatroom(newChatroom));
+                    });
+            } else {
+                resp.json()
+                    .then((err) => {
+                        console.log(err);
+                    });
+            }
+        }
+    );
 };
 
 export const deleteChatroom = chatroomID => dispatch => (

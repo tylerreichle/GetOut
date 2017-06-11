@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import geolib from 'geolib';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
 
     this.props.requestUser(this.props.userId);
-
   }
 
   render() {
@@ -30,7 +30,7 @@ class Profile extends React.Component {
           </Text>
 
           <Text style={styles.location}> 
-            location
+            {this.props.distance} miles away
           </Text>
 
           <Text style={styles.aboutMe}>

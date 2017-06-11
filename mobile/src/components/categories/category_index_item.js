@@ -17,9 +17,9 @@ class CategoriesIndexItem extends Component {
     this.getDistance = this.getDistance.bind(this);
   }
 
-  _onPressButton(val, id) {
+  _onPressButton(val, userId, distance) {
     val.preventDefault();
-    Actions.Profile(id);
+    Actions.Profile({userId, distance});
   }
 
   getDistance(rowData) {
@@ -72,7 +72,7 @@ class CategoriesIndexItem extends Component {
                 }}
                 title={rowData.username}
                 id={rowData.id}
-                onPress={ val => this._onPressButton(val, rowData.id) }>
+                onPress={ val => this._onPressButton(val, rowData.id, this.getDistance(rowData)) }>
                 <View
                   style={{
                     flexDirection: 'row',

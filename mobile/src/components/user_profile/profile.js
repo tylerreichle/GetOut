@@ -19,7 +19,6 @@ export default class Profile extends React.Component {
       user_two_id: this.props.userId
     };
     this.props.createChatroom(chatroom);
-    Actions.ChatroomIndex();
   }
 
   render() {

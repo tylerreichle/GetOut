@@ -1,4 +1,5 @@
 import * as ChatroomUtil from '../util/chatrooms_api';
+import { Actions } from 'react-native-router-flux';
 
 export const RECEIVE_CHATROOMS = 'RECEIVE_CHATROOMS';
 export const RECEIVE_SINGLE_CHATROOM = 'RECEIVE_SINGLE_CHATROOM';
@@ -62,12 +63,10 @@ export const createChatroom = chatroom => dispatch => {
                 resp.json()
                     .then((newChatroom) => {
                         dispatch(receiveSingleChatroom(newChatroom));
+                        Actions.ChatroomShow(newChatroom.id);
                     });
             } else {
-                resp.json()
-                    .then((err) => {
-                        console.log(err);
-                    });
+                Actions.ChatroomIndex();
             }
         }
     );

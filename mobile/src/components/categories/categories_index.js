@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { toArray } from '../../reducers/selectors';
 import { AsyncStorage } from 'react-native';
 import CategoriesIndexItem from './categories_index_item_container';
+import NavBar from '../../nav_bar';
 
 export default class CategoriesIndex extends Component {
   constructor(props) {
@@ -76,6 +77,7 @@ export default class CategoriesIndex extends Component {
           onPress={this.onButtonSubmit.bind(this)}
           title="Log Out">
         </Button>
+        <NavBar logOut={this.props.logout}/>
       </View>
     );
   }

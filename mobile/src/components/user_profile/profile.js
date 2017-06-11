@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 import ProfilePic from './profile_pic';
@@ -8,10 +8,12 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props);
+    this.props.requestUser(this.props.userId);
+
   }
 
   render() {
+    console.log(this.props);
     const { user, profilePic, aboutMe, location } = this.props;
 
     return (
@@ -20,10 +22,13 @@ class Profile extends React.Component {
         style={styles.viewStyle}>
         <View style={styles.containerStyle}>
 
-          <ProfilePic userID={user.id}/>
+          <Image
+            style={{width: 100, height: 100}}
+            source={{uri: `${user.img_url}`}}
+          />
           
           <Text style={styles.username}>
-            user
+            {user.firstName} {user.lastName}
           </Text>
 
           <Text style={styles.location}> 
@@ -31,7 +36,8 @@ class Profile extends React.Component {
           </Text>
 
           <Text style={styles.aboutMe}>
-            aboutMe
+            About Me
+            {user.description}
           </Text>
 
         </View>
@@ -46,6 +52,7 @@ const styles = {
     flex: 1
   },
   containerStyle: {
+    marginTop: 50,
     padding: 20,
   },
   username: {

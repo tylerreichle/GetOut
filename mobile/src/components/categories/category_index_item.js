@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, ListView, Button, StyleSheet, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import geolib from 'geolib';
 
 class CategoriesIndexItem extends Component {
   constructor(props) {
@@ -12,20 +13,35 @@ class CategoriesIndexItem extends Component {
     this.state = {
       users: []
     };
+
+    this.getDistance = this.getDistance.bind(this);
   }
 
-  _onPressButton(val, id) {
-    console.log(val);
-    console.log(id);
+  _onPressButton(val, userId, distance) {
     val.preventDefault();
-    Actions.Profile(id);
+    Actions.Profile({userId, distance});
+  }
+
+  getDistance(rowData) {
+    const initialPoint = {
+        latitude: this.props.currentUser.latitude,
+        longitude: this.props.currentUser.longitude
+      };
+
+    const distance = geolib.getDistance(initialPoint, {
+                      latitude: rowData.latitude,
+                      longitude: rowData.longitude
+                    }, 10);
+
+    const miles = geolib.convertUnit('mi', distance, 2);
+
+    return miles;
   }
 
   render() {
     if (this.props.category.users) {
       const users = this.ds.cloneWithRows(this.props.category.users);
 
-      console.log(this.props.category.users);
       return (
         <View
           linkAction={Actions.CategoriesIndexItem}
@@ -35,6 +51,9 @@ class CategoriesIndexItem extends Component {
           }}>
           <Text style={{
             fontSize: 24,
+            color: 'white',
+            backgroundColor: '#8abcdf',
+            padding: 15,
             textAlign: 'center'
           }}>{this.props.category.title}</Text>
 
@@ -43,9 +62,13 @@ class CategoriesIndexItem extends Component {
             enableEmptySections={true}
             renderRow={(rowData) =>
               <TouchableHighlight
+                style={{
+                  borderBottomWidth: 1,
+                  borderBottomColor: '#8abcdf',
+                }}
                 title={rowData.username}
                 id={rowData.id}
-                onPress={val => this._onPressButton(val, rowData.id)}>
+                onPress={ val => this._onPressButton(val, rowData.id, this.getDistance(rowData)) }>
                 <View
                   style={{
                     flexDirection: 'row',
@@ -57,6 +80,7 @@ class CategoriesIndexItem extends Component {
                     style={{ width: 50, height: 50 }}
                     source={{ uri: `${rowData.img_url}` }}
                   />
+                  <Text>{this.getDistance(rowData)} miles away</Text>
                   <Text>{rowData.username}</Text>
                 </View>
               </TouchableHighlight>}

@@ -34,34 +34,51 @@ export default class CategoriesIndex extends Component {
     this.props.logout();
   }
 
-  render() {
-    const categories = this.ds.cloneWithRows(this.props.categories);
+      return(
+          <View
+              linkAction={ Actions.categoriesIndex }
+              style={{
+                flex: 1,
+                }}>
+              <Text
+                style={{
+                  backgroundColor: '#8abcdf',
+                  color: 'white',
+                  fontSize: 24,
+                  textAlign: 'center',
+                  padding: 20,
+                  }}>
+                Categories</Text>
 
-    return (
-      <View
-        linkAction={Actions.categoriesIndex}
-        style={{
-          flex: 1
-        }}>
-        <Text
-          style={{
-            fontSize: 24,
-            textAlign: 'center',
-            padding: 20
-          }}>
-          Categories</Text>
+              <ListView
+                style={{flex: 7}}
+                dataSource={categories}
+                enableEmptySections={true}
+                renderRow={(rowData) =>
+                    <Button
+                        style={{flex: 1}}
+                        categories={rowData}
+                        title={rowData.title}
+                        id={rowData.id}
+                        onPress={ val => this.handlePress(val, rowData.id) }/>}
+              />
 
         <ListView
           dataSource={categories}
           enableEmptySections={true}
           renderRow={(rowData) =>
             <Button
-              style={{ flex: 1 }}
-              categories={rowData}
-              title={rowData.title}
-              id={rowData.id}
-              onPress={val => this.handlePress(val, rowData.id)} />}
-        />
+              style={{
+                padding: 20,
+                backgroundColor: 'blue',
+                flex: 1}}
+              onPress={this.onButtonSubmit.bind(this)}
+              title="Log Out">
+            </Button>
+          </View>
+      );
+    }
+}
 
         <Button
           style={{

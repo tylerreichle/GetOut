@@ -2,9 +2,8 @@ import { connect } from 'react-redux';
 import Profile from './profile';
 import { requestUser } from '../../actions/user_actions';
 
-const mapStateToProps = ({ user }, ownProps) => ({
-  user,
-  userId: ownProps.data
+const mapStateToProps = ({ user, session }, ownProps) => ({
+  user, session
 });
 
 const mapDispatchToProps = dispatch => ({

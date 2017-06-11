@@ -2,8 +2,6 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-import ProfilePic from './profile_pic';
-
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +21,7 @@ class Profile extends React.Component {
         <View style={styles.containerStyle}>
 
           <Image
-            style={{width: 100, height: 100}}
+            style={{width: 200, height: 200}}
             source={{uri: `${user.img_url}`}}
           />
           
@@ -54,6 +52,7 @@ const styles = {
   containerStyle: {
     marginTop: 50,
     padding: 20,
+    alignItems: 'center'
   },
   username: {
     fontSize: 22,

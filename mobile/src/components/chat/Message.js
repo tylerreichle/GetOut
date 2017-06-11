@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   sentMessage: {
     color: '#ffffff',
     backgroundColor: '#0084ff',
+    overflow: 'hidden',
     textAlign: 'right',
     fontSize: 16,
     margin: 5,
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
   receivedMessage: {
     color: '#000000',
     backgroundColor: '#f1f0f0',
+    overflow: 'hidden',
     fontSize: 16,
     padding: 5,
     paddingLeft: 10,

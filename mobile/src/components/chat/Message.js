@@ -3,19 +3,20 @@ import { View, Text } from 'react-native';
 
 export default class Message extends React.Component {
   render() {
-    const { currentUserId, userId, body } = this.props;
-    if (currentUserId === userId) {
+    const { currentUserID, userID, body } = this.props;
+
+    if (currentUserID === userID) {
       // render sent bubble
       return (
         <Text>
-          {body}
+          sent: {body}
         </Text>
       );
     } else {
       return (
         // render from bubble
         <Text>
-          {body}
+          received: {body}
         </Text>
       );
     }

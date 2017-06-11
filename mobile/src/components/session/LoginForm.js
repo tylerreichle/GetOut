@@ -3,13 +3,18 @@ import { View, TextInput, Text, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { AsyncStorage } from 'react-native';
 
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
+
 export default class LoginForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      latitude: null,
+      longitude: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,12 +22,19 @@ export default class LoginForm extends Component {
   }
 
   componentWillMount() {
-    Actions.refresh(this.props.errors);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      }
+    );
   }
 
   onButtonSubmit() {
-    const { username, password } = this.state;
-    this.props.login({ username, password });
+    const { username, password, latitude, longitude } = this.state;
+    this.props.login({ username, password, latitude, longitude });
 
     setTimeout(() => {
       this.getToken();
@@ -43,7 +55,7 @@ export default class LoginForm extends Component {
           style={{
             textAlign: 'center',
             fontSize: 20,
-            color: '#cc3333'
+            color: 'white'
           }}
         >{error}</Text>
       );
@@ -72,14 +84,14 @@ export default class LoginForm extends Component {
       let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
-        Actions.categoriesIndex();
+        currentUserID = await AsyncStorage.getItem('id');
+        Actions.categoriesIndex(currentUserID);
       } else {
-        //Handle error
         const error = res;
         throw error;
       }
     } catch (error) {
-      console.log("Error fetching token");
+      console.log("Error: " + error);
     }
   }
 
@@ -87,51 +99,62 @@ export default class LoginForm extends Component {
     return (
       <View style={{
         flexDirection: 'column',
-        height: 100,
-        padding: 20,
-        marginTop: 200,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: "#8abcdf",
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height
       }}
         linkAction={Actions.loginForm}
       >
+      <View
+        style={{
+          backgroundColor: "white",
+          width: 300,
+          height: 50,
+          marginBottom: 20
+        }}>
         <TextInput
           style={{
-            borderColor: '#000000',
-            borderWidth: 3,
             width: 300,
             height: 50,
-            marginBottom: 20,
             alignSelf: 'center',
             textAlign: 'center'
           }}
-          autoCapitalize="none"
           id={"username"}
           autoCapitalize="none"
+          autoCorrect={false}
           placeholder={'Username'}
           value={this.state.username}
           onChangeText={(value) => this.handleChange(value, 'username')}
-        />
+          />
+      </View>
 
+      <View
+        style={{
+          backgroundColor: "white",
+          width: 300,
+          height: 50,
+          marginBottom: 30
+        }}>
         <TextInput
           style={{
-            borderColor: '#000000',
-            borderWidth: 3,
             width: 300,
             height: 50,
             alignSelf: 'center',
-            marginBottom: 30,
             textAlign: 'center'
           }}
           placeholder={'Password'}
           value={this.state.password}
           onChangeText={(value) => this.handleChange(value, 'password')}
           secureTextEntry
-        />
+          />
+      </View>
+
         <View
-          style={{ backgroundColor: 'green', width: 150, marginBottom: 30 }}>
+          style={{ backgroundColor: 'white', width: 150, marginBottom: 30 }}>
           <Button
-            color='white'
+            color='#8abcdf'
             title="Login"
             onPress={() => this.onButtonSubmit()}
           >

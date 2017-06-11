@@ -6,3 +6,5 @@ json.username user.username
 json.email user.email
 json.img_url user.img_url
 json.description user.description
+json.latitude user.latitude
+json.longitude user.longitude

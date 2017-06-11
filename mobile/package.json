@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
+    "geolib": "^2.0.22",
     "lodash": "^4.17.4",
     "prop-types": "15.5.10",
     "pusher-js": "^4.1.0",

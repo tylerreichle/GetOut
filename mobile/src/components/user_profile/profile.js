@@ -1,28 +1,40 @@
 import React from 'react';
-import { Text, View} from 'react-native';
-
-import ProfilePic from './profile_pic';
+import { Text, View, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import geolib from 'geolib';
 
 class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.props.requestUser(this.props.userId);
+  }
+
   render() {
     const { user, profilePic, aboutMe, location } = this.props;
 
     return (
-      <View style={styles.viewStyle}>
+      <View 
+        linkAction={ Actions.Profile }
+        style={styles.viewStyle}>
         <View style={styles.containerStyle}>
 
-          <ProfilePic userID={user.id}/>
+          <Image
+            style={{width: 200, height: 200}}
+            source={{uri: `${user.img_url}`}}
+          />
           
           <Text style={styles.username}>
-            user
+            {user.firstName} {user.lastName}
           </Text>
 
           <Text style={styles.location}> 
-            location
+            {this.props.distance} miles away
           </Text>
 
           <Text style={styles.aboutMe}>
-            aboutMe
+            About Me
+            {user.description}
           </Text>
 
         </View>
@@ -30,13 +42,16 @@ class Profile extends React.Component {
     );
   }
 }
+
 const styles = {
   viewStyle: {
     justifyContent: 'space-between',
     flex: 1
   },
   containerStyle: {
+    marginTop: 50,
     padding: 20,
+    alignItems: 'center'
   },
   username: {
     fontSize: 22,
@@ -56,3 +71,5 @@ const styles = {
     width: null
   }
 };
+
+export default Profile;

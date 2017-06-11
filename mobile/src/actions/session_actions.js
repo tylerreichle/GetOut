@@ -12,7 +12,7 @@ export const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
-export const receiveNullUser =  () => ({
+export const receiveNullUser = () => ({
   type: RECEIVE_NULL_USER
 });
 
@@ -52,9 +52,9 @@ export const loginUser = (user) => dispatch => {
       } else {
         resp.json()
           .then((err) => {
-           dispatch(receiveErrors(err));
+            dispatch(receiveErrors(err));
           }
-        );
+          );
       }
     }
   );
@@ -76,9 +76,9 @@ export const signupUser = (user) => dispatch => {
       } else {
         resp.json()
           .then((err) => {
-           dispatch(receiveErrors(err));
+            dispatch(receiveErrors(err));
           }
-        );
+          );
       }
     }
   );
@@ -90,5 +90,5 @@ export const logoutUser = () => dispatch => {
       AsyncStorage.multiRemove(['sessionToken', 'id']);
       dispatch(receiveNullUser());
       Actions.splash();
-  });
+    });
 };

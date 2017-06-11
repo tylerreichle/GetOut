@@ -12,7 +12,10 @@ eric = User.create(
     first_name: 'Eric',
     last_name: 'Adams',
     email: 'eadams@email.com',
-    password: 'password'
+    password: 'password',
+    img_url: 'https://avatars1.githubusercontent.com/u/25959584?v=3&s=400',
+    latitude: 37.759773,
+    longitude: -122.427063
 )
 
 tyler = User.create(
@@ -20,7 +23,10 @@ tyler = User.create(
     first_name: 'Tyler',
     last_name: 'Reichle',
     email: 'treichle@email.com',
-    password: 'password'
+    password: 'password',
+    img_url: 'https://avatars2.githubusercontent.com/u/8896924?v=3&s=400',
+    latitude: 37.774446,
+    longitude: -122.443914
 )
 
 jill = User.create(
@@ -28,17 +34,20 @@ jill = User.create(
     first_name: 'Jill',
     last_name: 'de los Angeles',
     email: 'jilldela@email.com',
-    password: 'password'
+    password: 'password',
+    img_url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg',
+    latitude: 37.785834,
+    longitude: -122.406417
 )
 
 Category.destroy_all
-tech = Category.create(title: 'tech')
-movies = Category.create(title: 'movies')
-music = Category.create(title: 'music')
-sports = Category.create(title: 'sports')
-food = Category.create(title: 'food')
-travel = Category.create(title: 'travel')
-art = Category.create(title: 'art')
+tech = Category.create(title: 'Technology')
+movies = Category.create(title: 'Movies & Television')
+music = Category.create(title: 'Music')
+sports = Category.create(title: 'Sports')
+food = Category.create(title: 'Food')
+travel = Category.create(title: 'Travel')
+art = Category.create(title: 'Art')
 
 UserCategory.destroy_all
 

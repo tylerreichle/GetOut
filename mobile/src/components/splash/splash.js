@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button } from 'react-native';
+import { View, TextInput, Text, Button, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
 
 export default class Splash extends Component {
 
@@ -8,46 +11,65 @@ export default class Splash extends Component {
   render() {
     return (
       <View style={{
+        flex: 1,
         flexDirection: 'column',
-        height: 100,
-        padding: 20,
-        marginTop: 200,
+        paddingTop: 30,
         justifyContent: 'center',
         alignItems: 'center'
       }}
       linkAction={ Actions.splash }
       >
-      <Text style={{
-        marginTop: 30,
-        marginBottom: 20,
-        fontSize: 30
-      }}>
-      LunchWithStrangers
-      </Text>
-        <View
+        <Image
+          source={require('../../images/splash_background.png')}
           style={{
-            backgroundColor: 'green',
-            width: 150,
-            marginTop: 30
-          }}>
-          <Button
-          onPress={ () => Actions.signupForm()}
-          title = "Sign Up"
-          color = "white"
-          ></Button>
-        </View>
-        <View
-          style={{
-            backgroundColor: 'green',
-            width: 150,
-            marginTop: 30
-          }}>
-          <Button
-          onPress={ () => Actions.loginForm()}
-          title = "Login"
-          color = "white"
-          ></Button>
-        </View>
+            flex: 2,
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height}}
+          >
+          <View
+            style={{
+              flex: 3,
+              flexDirection: "column",
+              alignItems: 'center',
+              backgroundColor:'transparent'}}
+            >
+            <Text style={{
+                marginTop: 30,
+                marginBottom: 360,
+                fontSize: 32,
+                fontFamily: 'Baskerville',
+                fontWeight: 'bold',
+                color: 'black',
+                opacity: .6
+              }}>
+              LunchWithStrangers
+            </Text>
+            <View
+              style={{
+                backgroundColor: 'white',
+                width: 150,
+                marginTop: 80
+              }}>
+              <Button
+                onPress={ () => Actions.signupForm()}
+                title = "Sign Up"
+                color = "#8abcdf"
+                ></Button>
+            </View>
+            <View
+              style={{
+                backgroundColor: 'white',
+                width: 150,
+                marginTop: 30
+              }}>
+              <Button
+                onPress={ () => Actions.loginForm()}
+                title = "Login"
+                color = "#8abcdf"
+                ></Button>
+            </View>
+          </View>
+        </Image>
       </View>
     );
   }

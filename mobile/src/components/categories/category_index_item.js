@@ -1,20 +1,41 @@
 import React, { Component } from 'react';
-import { Text, View, ListView, Button, StyleSheet } from 'react-native';
+import { Text, View, ListView, Button, StyleSheet, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import geolib from 'geolib';
 
 class CategoriesIndexItem extends Component {
   constructor(props) {
     super(props);
 
-    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.props.requestSingleCategory(this.props.category_id);
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
     this.state = {
       users: []
-    }
+    };
+
+    this.getDistance = this.getDistance.bind(this);
   }
 
-  componentWillMount() {
-    this.props.requestSingleCategory(this.props.category_id);
+  _onPressButton(val, userId, distance) {
+    val.preventDefault();
+    Actions.Profile({userId, distance});
+  }
+
+  getDistance(rowData) {
+    const initialPoint = {
+        latitude: this.props.currentUser.latitude,
+        longitude: this.props.currentUser.longitude
+      };
+
+    const distance = geolib.getDistance(initialPoint, {
+                      latitude: rowData.latitude,
+                      longitude: rowData.longitude
+                    }, 10);
+
+    const miles = geolib.convertUnit('mi', distance, 2);
+
+    return miles;
   }
 
   render() {
@@ -23,38 +44,56 @@ class CategoriesIndexItem extends Component {
 
       return (
         <View
-          linkAction={ Actions.CategoriesIndexItem }
+          linkAction={Actions.CategoriesIndexItem}
           style={{
             marginTop: 63,
             flex: 1,
-            backgroundColor: 'blue'
           }}>
           <Text style={{
-            fontSize: 20,
-            flex: 2
+            fontSize: 24,
+            color: 'white',
+            backgroundColor: '#8abcdf',
+            padding: 15,
+            textAlign: 'center'
           }}>{this.props.category.title}</Text>
 
           <ListView
             dataSource={users}
             enableEmptySections={true}
             renderRow={(rowData) =>
-              <Text
-                color= 'white'
-                categories={rowData}
+              <TouchableHighlight
+                style={{
+                  borderBottomWidth: 1,
+                  borderBottomColor: '#8abcdf',
+                }}
                 title={rowData.username}
                 id={rowData.id}
-                onPress={ val => this.handlePress(val, rowData.id) }>
-                {rowData.username}
-                </Text>}
-            />
+                onPress={ val => this._onPressButton(val, rowData.id, this.getDistance(rowData)) }>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    padding: 10,
+                    flex: 1
+                  }}>
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={{ uri: `${rowData.img_url}` }}
+                  />
+                  <Text>{this.getDistance(rowData)} miles away</Text>
+                  <Text>{rowData.username}</Text>
+                </View>
+              </TouchableHighlight>}
+          />
 
         </View>
-    )} else {
+      );
+    } else {
       return (
         <View>
           <Text>Hi</Text>
         </View>
-      )
+      );
     }
   }
 }

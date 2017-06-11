@@ -44,7 +44,7 @@ export default class App extends Component {
         throw error;
       }
     } catch (error) {
-      console.log("error response: " + error);
+      console.log("Error: " + error);
     }
   }
 

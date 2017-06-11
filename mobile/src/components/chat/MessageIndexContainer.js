@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import MessageIndex from './MessageIndex';
 import { fetchMessages } from '../../actions/message_actions';
 import { chatMessages } from '../../reducers/selectors';
-
+// chatMessages(store, ownProps.chatroomID)
 // own props to select w/ chatID
 const mapStateToProps = (store, ownProps) => ({
   currentUser: store.currentUser,
-  messages: chatMessages(store, ownProps.chatroomID)
+  messages: store.messages
 });
 
 // fetch all messages on mount

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Routes from './Routes';
 import { Actions } from 'react-native-router-flux';
+import Routes from './Routes';
 import ChatroomIndex from './components/chat/ChatroomIndexContainer';
 
 export default class App extends Component {
@@ -51,7 +51,6 @@ export default class App extends Component {
     return (
       <View style={styles.viewStyle}>
         < Routes />
-        {/*<ChatroomIndex />*/}
       </View>
     );
   }

@@ -5,7 +5,7 @@ import SignUpForm from './components/session/SignUpFormContainer';
 import CategoriesIndex from './components/categories/categories_container';
 import CategoriesIndexItem from './components/categories/categories_index_item_container';
 import Splash from './components/splash/splash';
-import ChatroomShow from './components/chat/ChatroomShow';
+import ChatroomShow from './components/chat/ChatroomShowContainer';
 import ChatroomIndex from './components/chat/ChatroomIndexContainer';
 
 const Routes = () => (

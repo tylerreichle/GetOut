@@ -13,10 +13,6 @@ export default class MessageIndex extends React.Component {
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   }
 
-  componentDidMount() {
-    this.props.fetchMessages();
-  }
-
   componentWillReceiveProps(newProps) {
     if (this.state.messages !== newProps.messages) {
       this.setState({ messages: newProps.messages });

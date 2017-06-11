@@ -25,11 +25,17 @@ export default class ChatroomShow extends React.Component {
     // this.chatRoom = this.pusher.subscribe('messages');
   }
 
+  componentWillMount() {
+    this.props.fetchMessages();
+  }
+
   componentDidMount() {
+    const self = this;
     const channel = this.pusher.subscribe('my-channel');
-    // channel.bind('my-event', function (data) {
-    //   alert(`${data.name}: ${data.message}`);
-    // });
+    channel.bind('my-event', function (data) {
+      // alert(`${data.name}: ${data.message}`);
+      self.props.fetchMessages();
+    });
   }
 
   // componentWIllUnmount() {
@@ -38,6 +44,7 @@ export default class ChatroomShow extends React.Component {
   // }
 
   render() {
+    const { messages } = this.props;
     const chatroomID = this.props.data;
 
     return (
@@ -52,7 +59,7 @@ export default class ChatroomShow extends React.Component {
           }}
         >Chat</Text>
 
-        <MessageIndex chatroomID={chatroomID} />
+        <MessageIndex messages={messages} />
         <ChatInput chatroomID={chatroomID} />
       </View>
     );

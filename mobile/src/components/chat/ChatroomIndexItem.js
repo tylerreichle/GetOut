@@ -19,11 +19,9 @@ export default class ChatroomIndexItem extends React.Component {
 
     return (
       <TouchableHighlight
-        onPress={target => this.handlePress(target, chatroom.id)}
-      >
-        <Text
-          style={styles.chatroomButton}
-        >{chatroom.id}</Text>
+        onPress={target => this.handlePress(target, chatroom.id)}>
+
+        <Text style={styles.chatroomButton}>{chatroom.id}</Text>
 
       </TouchableHighlight>
     );

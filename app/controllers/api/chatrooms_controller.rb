@@ -5,13 +5,24 @@ class Api::ChatroomsController < ApplicationController
       current_user.id,
       current_user.id,
     )
+
+    @otherUsers = {}
+
+    @chatrooms.each do |chatroom|
+      if chatroom.user_id == current_user.id
+        otherUsername = User.find_by(id: chatroom.user_two_id).username
+      else
+        otherUsername = User.find_by(id: chatroom.user_id).username
+      end
+
+      @otherUsers[chatroom.id] = otherUsername
+    end
   end
 
   def show
     @chatroom = Chatroom.find_by(id: params[:id])
 
     if @chatroom.user_id == current_user.id || @chatroom.user_two_id == current_user.id
-      @message = Message.new
       render 'api/chatrooms/show'
     else
       render json: 'Cannot view private chat', status: 403
@@ -43,8 +54,8 @@ class Api::ChatroomsController < ApplicationController
 
   private
 
+end
   def chatroom_params
     params.require(:chatroom).permit(:message_id, :user_two_id)
   end
 
-end

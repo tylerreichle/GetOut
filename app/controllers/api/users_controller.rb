@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.img_url = 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'
 
     if @user.save
       login(@user)

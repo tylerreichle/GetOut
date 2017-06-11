@@ -3,6 +3,9 @@ import { View, TextInput, Text, Button, ListView, AsyncStorage } from 'react-nat
 import { loginUser } from '../../actions/session_actions';
 import { Actions } from 'react-native-router-flux';
 
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
+
 export default class SignUpForm extends Component {
 
   constructor(props) {
@@ -119,103 +122,129 @@ export default class SignUpForm extends Component {
     return (
       <View style={{
         flexDirection: 'column',
-        height: 100,
-        padding: 20,
-        marginTop: 280,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: "#8abcdf",
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height
       }}
         linkAction={Actions.signupForm}
       >
-        <TextInput
-          style={{
-            borderColor: '#000000',
-            borderWidth: 3,
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-            alignSelf: 'center',
-            textAlign: 'center'
-          }}
-          id={"first_name"}
-          placeholder={'First Name'}
-          autoCorrect={false}
-          value={this.state.first_name}
-          onChangeText={(value) => this.handleChange(value, 'first_name')}
-        />
-
-        <TextInput
-          style={{
-            borderColor: '#000000',
-            borderWidth: 3,
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-            alignSelf: 'center',
-            textAlign: 'center'
-          }}
-          id={"last_name"}
-          placeholder={'Last Name'}
-          autoCorrect={false}
-          value={this.state.last_name}
-          onChangeText={(value) => this.handleChange(value, 'last_name')}
-        />
-
-        <TextInput
-          style={{
-            borderColor: '#000000',
-            borderWidth: 3,
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-            alignSelf: 'center',
-            textAlign: 'center'
-          }}
-          autoCapitalize="none"
-          autoCorrect={false}
-          id={"email"}
-          placeholder={'Email'}
-          value={this.state.email}
-          onChangeText={(value) => this.handleChange(value, 'email')}
-        />
-
-        <TextInput
-          style={{
-            borderColor: '#000000',
-            borderWidth: 3,
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-            alignSelf: 'center',
-            textAlign: 'center'
-          }}
-          id={"username"}
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholder={'Username'}
-          value={this.state.username}
-          onChangeText={(value) => this.handleChange(value, 'username')}
-        />
-
-        <TextInput
-          style={{
-            borderColor: '#000000',
-            borderWidth: 3,
-            width: 300,
-            height: 50,
-            alignSelf: 'center',
-            marginBottom: 30,
-            textAlign: 'center'
-          }}
-          placeholder={'Password'}
-          value={this.state.password}
-          onChangeText={(value) => this.handleChange(value, 'password')}
-          secureTextEntry
-        />
         <View
-          style={{ backgroundColor: 'green', width: 150, marginBottom: 20 }}>
+          style={{
+            backgroundColor: "white",
+            width: 300,
+            height: 50,
+            marginBottom: 20
+          }}>
+          <TextInput
+            style={{
+              width: 300,
+              height: 50,
+              alignSelf: 'center',
+              textAlign: 'center'
+            }}
+            id={"first_name"}
+            placeholder={'First Name'}
+            autoCorrect={false}
+            value={this.state.first_name}
+            onChangeText={(value) => this.handleChange(value, 'first_name')}
+            />
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "white",
+            width: 300,
+            height: 50,
+            marginBottom: 20
+          }}>
+          <TextInput
+            style={{
+              width: 300,
+              height: 50,
+              alignSelf: 'center',
+              textAlign: 'center'
+            }}
+            id={"last_name"}
+            placeholder={'Last Name'}
+            autoCorrect={false}
+            value={this.state.last_name}
+            onChangeText={(value) => this.handleChange(value, 'last_name')}
+            />
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "white",
+            width: 300,
+            height: 50,
+            marginBottom: 20
+          }}>
+          <TextInput
+            style={{
+              width: 300,
+              height: 50,
+              alignSelf: 'center',
+              textAlign: 'center'
+            }}
+            autoCapitalize="none"
+            autoCorrect={false}
+            id={"email"}
+            placeholder={'Email'}
+            value={this.state.email}
+            onChangeText={(value) => this.handleChange(value, 'email')}
+            />
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "white",
+            width: 300,
+            height: 50,
+            marginBottom: 20
+          }}>
+          <TextInput
+            style={{
+              width: 300,
+              height: 50,
+              alignSelf: 'center',
+              textAlign: 'center'
+            }}
+            id={"username"}
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder={'Username'}
+            value={this.state.username}
+            onChangeText={(value) => this.handleChange(value, 'username')}
+            />
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "white",
+            width: 300,
+            height: 50,
+            marginBottom: 20
+          }}>
+          <TextInput
+            style={{
+              width: 300,
+              height: 50,
+              alignSelf: 'center',
+              textAlign: 'center'
+            }}
+            placeholder={'Password'}
+            value={this.state.password}
+            onChangeText={(value) => this.handleChange(value, 'password')}
+            secureTextEntry
+            />
+        </View>
+
+        <View
+          style={{ backgroundColor: 'white', width: 150, marginBottom: 20 }}>
           <Button
-            color='white'
+            color='#8abcdf'
             title="Register"
             onPress={() => this.onButtonSubmit()}
           >

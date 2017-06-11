@@ -3,6 +3,9 @@ import { View, TextInput, Text, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { AsyncStorage } from 'react-native';
 
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
+
 export default class LoginForm extends Component {
 
   constructor(props) {
@@ -52,7 +55,7 @@ export default class LoginForm extends Component {
           style={{
             textAlign: 'center',
             fontSize: 20,
-            color: '#cc3333'
+            color: 'white'
           }}
         >{error}</Text>
       );
@@ -96,21 +99,25 @@ export default class LoginForm extends Component {
     return (
       <View style={{
         flexDirection: 'column',
-        height: 100,
-        padding: 20,
-        marginTop: 200,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: "#8abcdf",
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height
       }}
         linkAction={Actions.loginForm}
       >
+      <View
+        style={{
+          backgroundColor: "white",
+          width: 300,
+          height: 50,
+          marginBottom: 20
+        }}>
         <TextInput
           style={{
-            borderColor: '#000000',
-            borderWidth: 3,
             width: 300,
             height: 50,
-            marginBottom: 20,
             alignSelf: 'center',
             textAlign: 'center'
           }}
@@ -120,27 +127,34 @@ export default class LoginForm extends Component {
           placeholder={'Username'}
           value={this.state.username}
           onChangeText={(value) => this.handleChange(value, 'username')}
-        />
+          />
+      </View>
 
+      <View
+        style={{
+          backgroundColor: "white",
+          width: 300,
+          height: 50,
+          marginBottom: 30
+        }}>
         <TextInput
           style={{
-            borderColor: '#000000',
-            borderWidth: 3,
             width: 300,
             height: 50,
             alignSelf: 'center',
-            marginBottom: 30,
             textAlign: 'center'
           }}
           placeholder={'Password'}
           value={this.state.password}
           onChangeText={(value) => this.handleChange(value, 'password')}
           secureTextEntry
-        />
+          />
+      </View>
+
         <View
-          style={{ backgroundColor: 'green', width: 150, marginBottom: 30 }}>
+          style={{ backgroundColor: 'white', width: 150, marginBottom: 30 }}>
           <Button
-            color='white'
+            color='#8abcdf'
             title="Login"
             onPress={() => this.onButtonSubmit()}
           >

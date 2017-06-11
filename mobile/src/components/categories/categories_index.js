@@ -34,56 +34,44 @@ export default class CategoriesIndex extends Component {
     this.props.logout();
   }
 
-      return(
-          <View
-              linkAction={ Actions.categoriesIndex }
-              style={{
-                flex: 1,
-                }}>
-              <Text
-                style={{
-                  backgroundColor: '#8abcdf',
-                  color: 'white',
-                  fontSize: 24,
-                  textAlign: 'center',
-                  padding: 20,
-                  }}>
-                Categories</Text>
+  render() {
+    const categories = this.ds.cloneWithRows(this.props.categories);
 
-              <ListView
-                style={{flex: 7}}
-                dataSource={categories}
-                enableEmptySections={true}
-                renderRow={(rowData) =>
-                    <Button
-                        style={{flex: 1}}
-                        categories={rowData}
-                        title={rowData.title}
-                        id={rowData.id}
-                        onPress={ val => this.handlePress(val, rowData.id) }/>}
-              />
+    return (
+      <View
+        linkAction={Actions.categoriesIndex}
+        style={{
+          flex: 1,
+        }}>
+        <Text
+          style={{
+            backgroundColor: '#8abcdf',
+            color: 'white',
+            fontSize: 24,
+            textAlign: 'center',
+            padding: 20,
+          }}
+        >Categories</Text>
 
         <ListView
+          style={{ flex: 7 }}
           dataSource={categories}
           enableEmptySections={true}
           renderRow={(rowData) =>
             <Button
-              style={{
-                padding: 20,
-                backgroundColor: 'blue',
-                flex: 1}}
-              onPress={this.onButtonSubmit.bind(this)}
-              title="Log Out">
-            </Button>
-          </View>
-      );
-    }
-}
+              style={{ flex: 1 }}
+              categories={rowData}
+              title={rowData.title}
+              id={rowData.id}
+              onPress={val => this.handlePress(val, rowData.id)}
+            />}
+        />
 
         <Button
           style={{
             padding: 20,
-            backgroundColor: 'blue'
+            backgroundColor: 'blue',
+            flex: 1
           }}
           onPress={this.onButtonSubmit.bind(this)}
           title="Log Out">

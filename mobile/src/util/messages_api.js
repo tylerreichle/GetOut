@@ -1,5 +1,5 @@
-export const fetchMessages = () => (
-    fetch(`http://localhost:3000/api/messages`, {
+export const fetchMessages = id => (
+    fetch(`http://localhost:3000/api/messages?chatID=${id}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

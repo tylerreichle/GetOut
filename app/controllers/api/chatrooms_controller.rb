@@ -54,8 +54,8 @@ class Api::ChatroomsController < ApplicationController
 
   private
 
-end
   def chatroom_params
-    params.require(:chatroom).permit(:message_id, :user_two_id)
+    params.require(:chatroom).permit(:user_two_id)
   end
+end
 

@@ -26,14 +26,14 @@ export default class ChatroomShow extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchMessages();
+    this.props.fetchMessages(this.props.data);
   }
 
   componentDidMount() {
     const self = this;
     const channel = this.pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
-      self.props.fetchMessages();
+      self.props.fetchMessages(self.props.data);
     });
   }
 

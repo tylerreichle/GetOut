@@ -17,7 +17,7 @@ export const receiveNullUser = () => ({
 });
 
 export const fetchCurrentUser = id => dispatch => {
-    return fetchUser(id).then(
+  return fetchUser(id).then(
     (resp) => {
       if (resp.ok) {
         resp.json()
@@ -30,7 +30,7 @@ export const fetchCurrentUser = id => dispatch => {
           .then((err) => {
             dispatch(receiveErrors(err));
           }
-        );
+          );
       }
     }
   );
@@ -75,10 +75,7 @@ export const signupUser = (user) => dispatch => {
           });
       } else {
         resp.json()
-          .then((err) => {
-            dispatch(receiveErrors(err));
-          }
-          );
+          .then((err) => { dispatch(receiveErrors(err)); });
       }
     }
   );

@@ -1,3 +1,3 @@
 json.chatroom do
-  json.parial! 'chatroom', chatroom: @chatroom
+  json.parial! 'api/chatrooms/chatroom', chatroom: @chatroom
 end

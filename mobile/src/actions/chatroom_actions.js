@@ -1,4 +1,5 @@
 import * as ChatroomUtil from '../util/chatrooms_api';
+import { receiveErrors, clearErrors } from './error_actions';
 
 export const RECEIVE_CHATROOMS = 'RECEIVE_CHATROOMS';
 export const RECEIVE_SINGLE_CHATROOM = 'RECEIVE_SINGLE_CHATROOM';
@@ -31,14 +32,27 @@ export const fetchSingleChatroom = id => dispatch => (
         .then(chatroom => dispatch(receiveSingleChatroom(chatroom)))
 );
 
-export const createChatroom = chatroom => dispatch => (
-    ChatroomUtil.createChatroom(chatroom)
-        .then(resp => resp.json())
-        .then(newChatroom => dispatch(receiveSingleChatroom(newChatroom)))
-);
+export const createChatroom = chatroom => dispatch => {
+  return ChatroomUtil.createChatroom(chatroom).then(
+    (resp) => {
+      if (resp.ok) {
+        resp.json()
+          .then((newChatroom) => {
+            dispatch(receiveSingleChatroom(newChatroom));
+            dispatch(clearErrors());
+          });
+      } else {
+        resp.json()
+          .then((err) => { console.log(err); });
+      }
+    }
+  );
+};
 
 export const deleteChatroom = chatroomID => dispatch => (
     ChatroomUtil.deleteChatroom(chatroomID)
         .then(resp => resp.json())
         .then(deletedChatroom => dispatch(removeChatroom(deletedChatroom)))
 );
+
+// dispatch(receiveErrors(err));

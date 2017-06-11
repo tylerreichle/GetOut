@@ -107,7 +107,8 @@ export default class SignUpForm extends Component {
       let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
-        Actions.categoriesIndex();
+        currentUserID = await AsyncStorage.getItem('id');
+        Actions.categoriesIndex(currentUserID);
       } else {
         //Handle error
         const error = res;

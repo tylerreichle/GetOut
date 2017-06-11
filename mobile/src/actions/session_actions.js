@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
+import { fetchUser } from '../util/user_API';
 import { AsyncStorage } from 'react-native';
 import { receiveErrors, clearErrors } from './error_actions';
 import { Actions } from 'react-native-router-flux';
@@ -8,12 +9,33 @@ export const RECEIVE_NULL_USER = 'RECEIVE_NULL_USER';
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser: currentUser
+  currentUser
 });
 
-export const receiveNullUser =  () => ({
+export const receiveNullUser = () => ({
   type: RECEIVE_NULL_USER
 });
+
+
+export const fetchCurrentUser = id => dispatch => {
+    return fetchUser(id).then(
+    (resp) => {
+      if (resp.ok) {
+        resp.json()
+          .then((obj) => {
+            dispatch(receiveCurrentUser(obj));
+            dispatch(clearErrors());
+          });
+      } else {
+        resp.json()
+          .then((err) => {
+            dispatch(receiveErrors(err));
+          }
+        );
+      }
+    }
+  );
+};
 
 export const loginUser = (user) => dispatch => {
   return APIUtil.login(user).then(
@@ -23,14 +45,17 @@ export const loginUser = (user) => dispatch => {
           .then((obj) => {
             dispatch(receiveCurrentUser(obj));
             dispatch(clearErrors());
-            AsyncStorage.setItem('sessionToken', obj.sessionToken);
+            AsyncStorage.multiSet([
+              ['sessionToken', obj.sessionToken],
+              ['id', obj.id.toString()]
+            ]);
           });
       } else {
         resp.json()
           .then((err) => {
-           dispatch(receiveErrors(err));
+            dispatch(receiveErrors(err));
           }
-        );
+          );
       }
     }
   );
@@ -44,14 +69,17 @@ export const signupUser = (user) => dispatch => {
           .then((obj) => {
             dispatch(receiveCurrentUser(obj));
             dispatch(clearErrors());
-            AsyncStorage.setItem('sessionToken', obj.sessionToken);
+            AsyncStorage.multiSet([
+              ['sessionToken', obj.sessionToken],
+              ['id', obj.id.toString()]
+            ]);
           });
       } else {
         resp.json()
           .then((err) => {
-           dispatch(receiveErrors(err));
+            dispatch(receiveErrors(err));
           }
-        );
+          );
       }
     }
   );
@@ -60,8 +88,8 @@ export const signupUser = (user) => dispatch => {
 export const logoutUser = () => dispatch => {
   return APIUtil.logout().then(
     () => {
-      AsyncStorage.removeItem('sessionToken');
+      AsyncStorage.multiRemove(['sessionToken', 'id']);
       dispatch(receiveNullUser());
       Actions.splash();
-  });
+    });
 };

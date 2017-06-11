@@ -1,4 +1,4 @@
-export const fetchUser = (id) => (
+export const fetchUser = id => (
   fetch(`http://localhost:3000/api/users/${id}`, {
         method: 'GET',
         headers: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, Dimensions } from 'react-native';
 import Pusher from 'pusher-js/react-native';
 
 import MessageIndex from './MessageIndexContainer';
@@ -47,16 +47,21 @@ export default class ChatroomShow extends React.Component {
     const chatroomID = this.props.data;
 
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          padding: 10,
-        }}
-      >
+      <View style={styles.chatContainer}>
         <MessageIndex messages={messages} />
         <ChatInput chatroomID={chatroomID} />
       </View>
     );
   }
 }
+
+const { width, height } = Dimensions.get('window');
+
+const styles = StyleSheet.create({
+  chatContainer: {
+    flex: 1,
+    width,
+    height,
+    marginTop: 60,
+  },
+});

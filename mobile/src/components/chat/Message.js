@@ -8,12 +8,12 @@ export default class Message extends React.Component {
     if (currentUserID === userID) {
       // render sent bubble
       return (
-        <Text style={styles.sentMessage}>sent: {body}</Text>
+        <Text style={styles.sentMessage}>{body}</Text>
       );
     } else {
       // render from bubble
       return (
-        <Text style={styles.receivedMessage}>received: {body}</Text>
+        <Text style={styles.receivedMessage}>{body}</Text>
       );
     }
   }
@@ -29,8 +29,10 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingRight: 10,
     borderColor: '#000000',
-    borderRadius: 5,
+    borderRadius: 10,
     borderWidth: 1,
+    alignSelf: 'flex-end',
+    maxWidth: 200
   },
   receivedMessage: {
     color: '#000000',
@@ -40,7 +42,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     margin: 5,
     borderColor: '#000000',
-    borderRadius: 5,
+    borderRadius: 10,
     borderWidth: 1,
+    alignSelf: 'flex-start',
+    maxWidth: 200
   },
 });

@@ -19,6 +19,7 @@ export default class ChatInput extends React.Component {
       body: this.state.body,
       chatroom_id: chatroomID
     };
+    this.setState({ body: '' });
     createMessage(message);
   }
 
@@ -44,10 +45,10 @@ ChatInput.propTypes = {
 
 const styles = StyleSheet.create({
   textInput: {
+    flex: .5,
     color: '#000000',
-    height: 25,
-    margin: 10,
-    borderWidth: 5,
-    borderColor: '#000000'
+    maxHeight: 50,
+    margin: 5,
+    padding: 5
   },
 });

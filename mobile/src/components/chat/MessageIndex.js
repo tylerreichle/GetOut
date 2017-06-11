@@ -16,6 +16,7 @@ export default class MessageIndex extends React.Component {
   componentWillReceiveProps(newProps) {
     if (this.state.messages !== newProps.messages) {
       this.setState({ messages: newProps.messages });
+      this.listView.scrollToEnd({animated: false});
     }
   }
 
@@ -24,11 +25,15 @@ export default class MessageIndex extends React.Component {
     const currentUserID = this.props.currentUser.id;
 
     return (
-      <View style={styles.messageIndex}>
+      <View style={styles.messagesContainer}>
         <ListView
+          style={styles.messageList}
           dataSource={messages}
           enableEmptySections
-          scrollToEnd
+          ref={listView => {this.listView = listView;}}
+          onContentSizeChange={(contentWidth, contentHeight) => {
+            this.listView.scrollToEnd({animated: false});
+          }}
           renderRow={message =>
             <Message
               currentUserID={currentUserID}
@@ -43,8 +48,12 @@ export default class MessageIndex extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  messageIndex: {
-    borderWidth: 3,
-    borderColor: '#FFFFFF'
+  messagesContainer: {
+    flex: 1,
+    borderBottomWidth: 3,
+    borderColor: '#000000'
+  },
+  messageList: {
+    flex: 1
   }
 });

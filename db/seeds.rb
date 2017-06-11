@@ -13,7 +13,9 @@ eric = User.create(
     last_name: 'Adams',
     email: 'eadams@email.com',
     password: 'password',
-    img_url: 'https://avatars1.githubusercontent.com/u/25959584?v=3&s=400'
+    img_url: 'https://avatars1.githubusercontent.com/u/25959584?v=3&s=400',
+    latitude: 37.759773,
+    longitude: -122.427063
 )
 
 tyler = User.create(
@@ -22,7 +24,9 @@ tyler = User.create(
     last_name: 'Reichle',
     email: 'treichle@email.com',
     password: 'password',
-    img_url: 'https://avatars2.githubusercontent.com/u/8896924?v=3&s=400'
+    img_url: 'https://avatars2.githubusercontent.com/u/8896924?v=3&s=400',
+    latitude: 37.774446,
+    longitude: -122.443914
 )
 
 jill = User.create(
@@ -31,7 +35,9 @@ jill = User.create(
     last_name: 'de los Angeles',
     email: 'jilldela@email.com',
     password: 'password',
-    img_url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'
+    img_url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg',
+    latitude: 37.785834,
+    longitude: -122.406417
 )
 
 Category.destroy_all

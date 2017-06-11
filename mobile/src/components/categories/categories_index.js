@@ -39,17 +39,20 @@ class CategoriesIndex extends Component {
           <View
               linkAction={ Actions.categoriesIndex }
               style={{
-                flex: 1
+                flex: 1,
                 }}>
               <Text
                 style={{
+                  backgroundColor: '#8abcdf',
+                  color: 'white',
                   fontSize: 24, 
                   textAlign: 'center',
-                  padding: 20
+                  padding: 20,
                   }}>
                 Categories</Text>
 
               <ListView
+                style={{flex: 7}}
                 dataSource={categories}
                 enableEmptySections={true}
                 renderRow={(rowData) =>
@@ -64,7 +67,8 @@ class CategoriesIndex extends Component {
             <Button
               style={{
                 padding: 20, 
-                backgroundColor: 'blue'}}
+                backgroundColor: 'blue',
+                flex: 1}}
               onPress={this.onButtonSubmit.bind(this)}
               title="Log Out">
             </Button>

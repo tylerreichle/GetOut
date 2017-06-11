@@ -33,7 +33,6 @@ export default class ChatroomShow extends React.Component {
     const self = this;
     const channel = this.pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
-      // alert(`${data.name}: ${data.message}`);
       self.props.fetchMessages();
     });
   }

@@ -17,9 +17,7 @@ export default class LoginForm extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.errors);
     Actions.refresh(this.props.errors);
-    console.log(this.props.errors);
   }
 
   onButtonSubmit() {

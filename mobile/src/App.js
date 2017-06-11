@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Routes from './Routes';
-import ChatroomIndex from './components/chat/ChatroomIndexContainer';
 
 export default class App extends Component {
   constructor(props) {
@@ -37,7 +36,9 @@ export default class App extends Component {
       const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
-        Actions.ChatroomIndex();
+        currentUserID = await this.props.storage.getItem('id');
+        Actions.categoriesIndex(currentUserID);
+        // Actions.ChatroomIndex(storage.getItem('id'));
       } else {
         const error = res;
         throw error;

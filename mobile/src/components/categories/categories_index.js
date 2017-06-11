@@ -14,7 +14,9 @@ class CategoriesIndex extends Component {
     }
 
     componentWillMount() {
-        this.props.requestCategories();
+      const currentUserID = parseInt(this.props.data);
+      this.props.fetchCurrentUser(currentUserID);
+      this.props.requestCategories();
     }
 
     componentWillReceiveProps(newProps) {
@@ -22,7 +24,7 @@ class CategoriesIndex extends Component {
         Actions.splash();
       }
     }
-    
+
 
     handlePress(val, id) {
         val.preventDefault();

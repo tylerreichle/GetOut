@@ -37,8 +37,8 @@ export default class App extends Component {
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         currentUserID = await this.props.storage.getItem('id');
-        Actions.categoriesIndex(currentUserID);
-        // Actions.ChatroomIndex(storage.getItem('id'));
+        // Actions.categoriesIndex(currentUserID);
+        Actions.ChatroomIndex(currentUserID);
       } else {
         const error = res;
         throw error;

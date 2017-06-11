@@ -13,6 +13,8 @@ export default class ChatroomIndex extends React.Component {
 
 
   componentWillMount() {
+    const currentUserID = parseInt(this.props.data);
+    this.props.fetchCurrentUser(currentUserID);
     this.props.fetchChatrooms();
   }
 

@@ -21,8 +21,8 @@ export default class MessageIndex extends React.Component {
 
   render() {
     const messages = this.ds.cloneWithRows(this.state.messages);
-    // const currentUserID = this.props.currentUser.id;
-    const currentUserID = 1;
+    debugger;
+    const currentUserID = this.props.currentUser.id;
 
     return (
       <View style={styles.messageIndex}>

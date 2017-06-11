@@ -5,7 +5,7 @@ import { chatMessages } from '../../reducers/selectors';
 // chatMessages(store, ownProps.chatroomID)
 // own props to select w/ chatID
 const mapStateToProps = (store, ownProps) => ({
-  currentUser: store.currentUser,
+  currentUser: store.session,
   messages: store.messages
 });
 

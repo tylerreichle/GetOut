@@ -41,7 +41,7 @@ const Routes = () => (
     <Scene
       key='CategoriesIndexItem'
       component={ CategoriesIndexItem }
-      title='Categories Index Item'
+      title='Similar interests...'
       hideNavBar={false}
     />
 

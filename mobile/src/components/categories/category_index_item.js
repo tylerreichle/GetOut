@@ -32,11 +32,10 @@ class CategoriesIndexItem extends Component {
           style={{
             marginTop: 63,
             flex: 1,
-            backgroundColor: 'blue'
           }}>
           <Text style={{
-            fontSize: 20,
-            flex: 2
+            fontSize: 24,
+            textAlign: 'center'
           }}>{this.props.category.title}</Text>
 
           <ListView
@@ -50,6 +49,8 @@ class CategoriesIndexItem extends Component {
                 <View
                   style={{
                     flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    padding: 10,
                     flex: 1
                   }}>
                   <Image

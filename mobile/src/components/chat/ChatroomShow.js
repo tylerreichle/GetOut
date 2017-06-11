@@ -49,15 +49,11 @@ export default class ChatroomShow extends React.Component {
     return (
       <View
         style={{
-          padding: 25,
+          flex: 1,
+          flexDirection: 'column',
+          padding: 10,
         }}
       >
-        <Text
-          style={{
-            fontSize: 24,
-          }}
-        >Chat</Text>
-
         <MessageIndex messages={messages} />
         <ChatInput chatroomID={chatroomID} />
       </View>

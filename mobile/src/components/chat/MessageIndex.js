@@ -28,6 +28,7 @@ export default class MessageIndex extends React.Component {
         <ListView
           dataSource={messages}
           enableEmptySections
+          scrollToEnd
           renderRow={message =>
             <Message
               currentUserID={currentUserID}
@@ -43,13 +44,7 @@ export default class MessageIndex extends React.Component {
 
 const styles = StyleSheet.create({
   messageIndex: {
-    margin: 25,
-    borderStyle: 'solid',
-    borderWidth: 1,
+    borderWidth: 3,
     borderColor: '#FFFFFF'
-  },
-  chatroomIndexHeader: {
-    fontSize: 20,
-    margin: 10,
-  },
+  }
 });

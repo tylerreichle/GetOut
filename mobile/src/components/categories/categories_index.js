@@ -5,7 +5,7 @@ import { toArray } from '../../reducers/selectors';
 import { AsyncStorage } from 'react-native';
 import CategoriesIndexItem from './categories_index_item_container';
 
-class CategoriesIndex extends Component {
+export default class CategoriesIndex extends Component {
     constructor(props) {
         super(props);
 
@@ -25,7 +25,6 @@ class CategoriesIndex extends Component {
       }
     }
 
-
     handlePress(val, id) {
         val.preventDefault();
         Actions.CategoriesIndexItem(id);
@@ -37,7 +36,6 @@ class CategoriesIndex extends Component {
 
     render() {
       const categories = this.ds.cloneWithRows(this.props.categories);
-
 
       return(
           <View
@@ -66,5 +64,3 @@ class CategoriesIndex extends Component {
       );
     }
 }
-
-export default CategoriesIndex;

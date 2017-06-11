@@ -45,6 +45,9 @@ ChatInput.propTypes = {
 const styles = StyleSheet.create({
   textInput: {
     color: '#000000',
-    margin: 25,
+    height: 25,
+    margin: 10,
+    borderWidth: 5,
+    borderColor: '#000000'
   },
 });

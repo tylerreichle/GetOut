@@ -11,7 +11,6 @@ export default class ChatroomIndex extends React.Component {
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   }
 
-
   componentWillMount() {
     const currentUserID = parseInt(this.props.data);
     this.props.fetchCurrentUser(currentUserID);
@@ -25,8 +24,6 @@ export default class ChatroomIndex extends React.Component {
 
   render() {
     const chatrooms = this.ds.cloneWithRows(this.props.chatrooms);
-    // const currentUserID = this.props.currentUser.id;
-    const currentUserID = 1;
 
     return (
       <View style={styles.chatroomIndex}>

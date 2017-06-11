@@ -5,6 +5,7 @@ import { fetchCurrentUser } from '../../actions/session_actions';
 import { selectChatrooms } from '../../reducers/selectors';
 
 const mapStateToProps = store => ({
+  currentUser: store.currentUser,
   chatrooms: selectChatrooms(store)
 });
 

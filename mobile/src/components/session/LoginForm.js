@@ -87,12 +87,11 @@ export default class LoginForm extends Component {
         currentUserID = await AsyncStorage.getItem('id');
         Actions.categoriesIndex(currentUserID);
       } else {
-        //Handle error
         const error = res;
         throw error;
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error: " + error);
     }
   }
 

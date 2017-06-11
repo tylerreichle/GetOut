@@ -110,12 +110,11 @@ export default class SignUpForm extends Component {
         currentUserID = await AsyncStorage.getItem('id');
         Actions.categoriesIndex(currentUserID);
       } else {
-        //Handle error
         const error = res;
         throw error;
       }
     } catch (error) {
-      console.log("Error fetching session token");
+      console.log("Error: " + error);
     }
   }
 

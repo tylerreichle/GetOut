@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet } from 'react-native';
+import { TouchableHighlight, Text, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 export default class ChatroomIndexItem extends React.Component {
@@ -9,8 +9,7 @@ export default class ChatroomIndexItem extends React.Component {
     this.handlePress = this.handlePress.bind(this);
   }
 
-
-    handlePress(target, chatroomID) {
+  handlePress(target, chatroomID) {
     target.preventDefault();
     Actions.ChatroomShow(chatroomID);
   }
@@ -19,27 +18,27 @@ export default class ChatroomIndexItem extends React.Component {
     const { chatroom } = this.props;
 
     return (
-      <Button
-        style={styles.chatroomButton}
-        title={chatroom.id.toString()}
+      <TouchableHighlight
         onPress={target => this.handlePress(target, chatroom.id)}
-      />
+      >
+        <Text
+          style={styles.chatroomButton}
+        >{chatroom.id}</Text>
+
+      </TouchableHighlight>
     );
   }
 }
 
 const styles = StyleSheet.create({
   chatroomButton: {
-    color: '#ffffff',
-    textAlign: 'left',
-    fontSize: 16,
+    flex: 1,
+    alignSelf: 'stretch',
+    fontSize: 24,
+    height: 50,
     margin: 5,
-    padding: 5,
-    paddingRight: 10,
+    padding: 10,
     borderColor: '#000000',
-    borderRadius: 10,
-    borderWidth: 1,
-    alignSelf: 'flex-end',
-    maxWidth: 200
+    borderWidth: 3,
   }
 });

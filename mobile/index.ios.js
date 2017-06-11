@@ -5,7 +5,7 @@ import Root from './src/Root';
 export default class mobile extends Component {
   render() {
     return (
-      < Root />
+      <Root />
     );
   }
 }

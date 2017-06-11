@@ -37,16 +37,14 @@ export default class App extends Component {
       let res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         //Verified token means user is logged in so we redirect them home.
-        console.log('user still logged in');
-
-        Actions.categoriesIndex();
+        currentUserID = await this.props.storage.getItem('id');
+        Actions.categoriesIndex(currentUserID);
       } else {
-        //Handle error
         const error = res;
         throw error;
       }
     } catch (error) {
-      console.log("error response: " + error);
+      console.log("Error: " + error);
     }
   }
 

@@ -8,11 +8,11 @@ class CategoriesIndexItem extends Component {
     super(props);
 
     this.props.requestSingleCategory(this.props.category_id);
-    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
     this.state = {
       users: []
-    }
+    };
 
     this.getDistance = this.getDistance.bind(this);
   }
@@ -24,16 +24,16 @@ class CategoriesIndexItem extends Component {
 
   getDistance(rowData) {
     const initialPoint = {
-        latitude: this.props.currentUser.latitude, 
+        latitude: this.props.currentUser.latitude,
         longitude: this.props.currentUser.longitude
-      }
+      };
 
     const distance = geolib.getDistance(initialPoint, {
                       latitude: rowData.latitude,
                       longitude: rowData.longitude
-                    }, 10)
+                    }, 10);
 
-    const miles = geolib.convertUnit('mi', distance, 2)
+    const miles = geolib.convertUnit('mi', distance, 2);
 
     return miles;
   }
@@ -44,7 +44,7 @@ class CategoriesIndexItem extends Component {
 
       return (
         <View
-          linkAction={ Actions.CategoriesIndexItem }
+          linkAction={Actions.CategoriesIndexItem}
           style={{
             marginTop: 63,
             flex: 1,
@@ -77,22 +77,23 @@ class CategoriesIndexItem extends Component {
                     flex: 1
                   }}>
                   <Image
-                    style={{width: 50, height: 50}}
-                    source={{uri: `${rowData.img_url}`}}
+                    style={{ width: 50, height: 50 }}
+                    source={{ uri: `${rowData.img_url}` }}
                   />
                   <Text>{this.getDistance(rowData)} miles away</Text>
                   <Text>{rowData.username}</Text>
                 </View>
               </TouchableHighlight>}
-            />
+          />
 
         </View>
-    )} else {
+      );
+    } else {
       return (
         <View>
           <Text>Hi</Text>
         </View>
-      )
+      );
     }
   }
 }

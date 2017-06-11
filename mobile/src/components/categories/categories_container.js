@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CategoriesIndex from './categories_index';
 import { requestCategories } from '../../actions/category_actions';
-import { logoutUser } from '../../actions/session_actions';
+import { fetchCurrentUser, logoutUser } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => ({
     categories: state.categories,
@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
     requestCategories: () => dispatch(requestCategories()),
+    fetchCurrentUser: id => dispatch(fetchCurrentUser(id)),
     logout: () => dispatch(logoutUser())
 });
 

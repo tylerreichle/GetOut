@@ -48,10 +48,13 @@ export default class Profile extends React.Component {
             {user.description}
           </Text>
 
-          <Button
-            title="Create Chat"
-            onPress={this.createChat}
-          />
+          <View style={styles.chatButton}>
+            <Button
+              color='#ffffff'
+              title="Chat Now"
+              onPress={this.createChat}
+            />
+          </View>
 
         </View>
       </View>
@@ -80,6 +83,11 @@ const styles = {
   aboutMe: {
     fontSize: 18,
     margin: 10
+  },
+  chatButton: {
+    margin: 10,
+    backgroundColor: '#8abcdf',
+    borderRadius: 10,
   },
   background: {
     flex: 1,

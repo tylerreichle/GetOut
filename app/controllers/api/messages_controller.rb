@@ -10,7 +10,7 @@ class Api::MessagesController < ApplicationController
     if @message.save
       render 'api/messages/show'
       # broadcast message after save to DB
-      Pusher.trigger('my-channel', 'my-event', {
+      Pusher.trigger('chats', 'new-message', {
         message: @message.body
       })
     else

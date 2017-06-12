@@ -3,6 +3,7 @@ import { View, Text, Button, ListView, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import ChatroomShow from './ChatroomShow';
 import ChatroomIndexItem from './ChatroomIndexItem';
+import NavBar from '../../nav_bar';
 
 export default class ChatroomIndex extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ export default class ChatroomIndex extends React.Component {
           enableEmptySections
           renderRow={chatroom => <ChatroomIndexItem chatroom={chatroom} />}
         />
+        <NavBar />
       </View>
     );
   }
@@ -36,8 +38,6 @@ const styles = StyleSheet.create({
   chatroomIndex: {
     flex: 1,
     marginTop: 60,
-    borderWidth: 3,
-    borderColor: '#000000'
   },
   chatroomButton: {
     height: 75,

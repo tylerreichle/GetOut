@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, ListView, Button, StyleSheet, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import NavBar from '../../nav_bar';
 import geolib from 'geolib';
 
 class CategoriesIndexItem extends Component {
@@ -80,12 +81,12 @@ class CategoriesIndexItem extends Component {
                     style={{ width: 50, height: 50 }}
                     source={{ uri: `${rowData.img_url}` }}
                   />
-                  <Text>{this.getDistance(rowData)} miles away</Text>
+                  <Text>{this.getDistance(rowData)} mi away</Text>
                   <Text>{rowData.username}</Text>
                 </View>
               </TouchableHighlight>}
           />
-
+          <NavBar />
         </View>
       );
     } else {

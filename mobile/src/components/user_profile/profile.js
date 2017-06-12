@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import geolib from 'geolib';
+import NavBar from '../../nav_bar';
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class Profile extends React.Component {
 
           <Text style={styles.aboutMe}>
             About Me
-            {user.description}
+            <Text>{user.description}</Text>
           </Text>
 
           <Button
@@ -54,6 +55,7 @@ export default class Profile extends React.Component {
           />
 
         </View>
+        <NavBar />
       </View>
     );
   }
@@ -70,7 +72,9 @@ const styles = {
     alignItems: 'center'
   },
   username: {
-    fontSize: 22,
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#26628c',
     margin: 10
   },
   location: {

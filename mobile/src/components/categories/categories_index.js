@@ -9,6 +9,9 @@ import NavBar from '../../nav_bar';
 const Dimensions = require('Dimensions');
 const window = Dimensions.get('window');
 
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
+
 export default class CategoriesIndex extends Component {
     constructor(props) {
         super(props);
@@ -49,6 +52,7 @@ export default class CategoriesIndex extends Component {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'space-between'
+          alignItems: 'center'
         }}>
         <View
           style={{
@@ -83,6 +87,45 @@ export default class CategoriesIndex extends Component {
 
           < NavBar />
         </View>
+            backgroundColor: "#8abcdf",
+            width: Dimensions.get('window').width,
+            padding: 10,
+            flexDirection: 'column',
+            color: 'white',
+            fontSize: 24,
+            fontFamily: 'Baskerville',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            marginTop: 20,
+            marginBottom: 20
+          }}
+          >Categories</Text>
+
+        <ListView
+          dataSource={categories}
+          enableEmptySections={true}
+          renderRow={(rowData) =>
+            <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
+              <Image
+                style={{ width: 300, height: 50, marginBottom: 20 }}
+                source={{ uri: `${rowData.img_url}` }}
+              />
+          </TouchableHighlight>}
+        />
+
+      <View
+        style={{
+          backgroundColor: '#8abcdf',
+          width: 150,
+          marginBottom: 30
+        }}>
+        <Button
+          color= 'white'
+          onPress={this.onButtonSubmit.bind(this)}
+          title="Log Out">
+        </Button>
+      </View>
+
       </View>
     );
   }

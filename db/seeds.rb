@@ -41,13 +41,13 @@ jill = User.create(
 )
 
 Category.destroy_all
-tech = Category.create(title: 'Technology')
-movies = Category.create(title: 'Movies & Television')
-music = Category.create(title: 'Music')
-sports = Category.create(title: 'Sports')
-food = Category.create(title: 'Food')
-travel = Category.create(title: 'Travel')
-art = Category.create(title: 'Art')
+tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497223490/tech_grpthk.png')
+movies = Category.create(title: 'Movies & TV', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/movies_tv_vddkul.png')
+music = Category.create(title: 'Music', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/music_ryngux.png')
+sports = Category.create(title: 'Sports', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/sports_z51wqc.png')
+food = Category.create(title: 'Food', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/food_etzz7k.png')
+travel = Category.create(title: 'Travel', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/travel_am4tsn.png')
+art = Category.create(title: 'Art', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/art_xzcjyz.png')
 
 UserCategory.destroy_all
 

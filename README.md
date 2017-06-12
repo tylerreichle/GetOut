@@ -1,8 +1,8 @@
 # AfternoonDelight
 
- Finding new people around you to discuss similar interests can be difficult. LunchWithStrangers allows users to discover new places and new people with similar interests in their area. Users will be able to find people based on location, search by category, and schedule a meet up with chat functionality.
+ Finding new people around you to discuss similar interests can be difficult. AfternoonDelight allows users to discover new places and new people with similar interests in their area. Users will be able to find people based on location, search by category, and schedule a meet up with chat functionality.
 
-AfternoonDelight is a collaborative project by [Eric Adams](https://github.com/eadams17), [Jill de los Angeles](https://github.com/jilldela), and [Tyler Reichle](https://github.com/tylerreichle)
+[AfternoonDelight](https://jetflex.github.io/AfternoonDelight/) is a collaborative project by [Eric Adams](https://github.com/eadams17), [Jill de los Angeles](https://github.com/jilldela), and [Tyler Reichle](https://github.com/tylerreichle)
 
 ## Features
 

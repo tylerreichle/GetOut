@@ -7,7 +7,7 @@ export const receiveUser = (user) => ({
   user
 });
 
-export const requestUser = (id) => dispatch => (
+export const requestUser = id => dispatch => (
   fetchUser(id)
     .then(resp => resp.json())
     .then(json => dispatch(receiveUser(json)))

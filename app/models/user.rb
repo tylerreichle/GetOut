@@ -1,12 +1,31 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  first_name      :string           not null
+#  last_name       :string           not null
+#  email           :string           not null
+#  description     :text
+#  img_url         :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
+  attr_reader :password
+
   validates :username, :email, :first_name, :last_name, :password_digest, :session_token, presence: true
   validates :username, :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 8, allow_nil: true }
 
   before_validation :ensure_session_token
 
-  attr_reader :password
-
+  has_many :messages
+  has_many :chatrooms, through: :messages
   has_many :user_categories
 
   has_many :categories,

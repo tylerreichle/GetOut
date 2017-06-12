@@ -1,21 +1,32 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import geolib from 'geolib';
 import NavBar from '../../nav_bar';
 
-class Profile extends React.Component {
+export default class Profile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.createChat = this.createChat.bind(this);
+  }
+
+  componentWillMount() {
     this.props.requestUser(this.props.userId);
+  }
+
+  createChat() {
+    const chatroom = {
+      user_two_id: this.props.userId
+    };
+    this.props.createChatroom(chatroom);
   }
 
   render() {
     const { user, profilePic, aboutMe, location } = this.props;
 
     return (
-      <View 
+      <View
         linkAction={ Actions.Profile }
         style={styles.viewStyle}>
         <View style={styles.containerStyle}>
@@ -24,12 +35,12 @@ class Profile extends React.Component {
             style={{width: 200, height: 200}}
             source={{uri: `${user.img_url}`}}
           />
-          
+
           <Text style={styles.username}>
             {user.firstName} {user.lastName}
           </Text>
 
-          <Text style={styles.location}> 
+          <Text style={styles.location}>
             {this.props.distance} miles away
           </Text>
 
@@ -37,6 +48,11 @@ class Profile extends React.Component {
             About Me
             {user.description}
           </Text>
+
+          <Button
+            title="Create Chat"
+            onPress={this.createChat}
+          />
 
         </View>
         <NavBar />
@@ -73,5 +89,3 @@ const styles = {
     width: null
   }
 };
-
-export default Profile;

@@ -7,18 +7,18 @@ import CategoriesIndexItem from './categories_index_item_container';
 import NavBar from '../../nav_bar';
 
 export default class CategoriesIndex extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.handlePress = this.handlePress.bind(this);
   }
 
-  componentWillMount() {
-    const currentUserID = parseInt(this.props.data);
-    this.props.fetchCurrentUser(currentUserID);
-    this.props.requestCategories();
-  }
+    componentWillMount() {
+      const currentUserID = parseInt(this.props.data);
+      this.props.fetchCurrentUser(currentUserID);
+      this.props.requestCategories();
+    }
 
   componentWillReceiveProps(newProps) {
     if (!AsyncStorage.getItem('username')) {

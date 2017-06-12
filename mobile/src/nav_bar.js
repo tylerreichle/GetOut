@@ -41,7 +41,9 @@ class NavBar extends Component {
               style={{color:'white'}}>Home</Text>
             <Text 
               name="Messages"
-              style={{color: 'white'}}>Messages</Text>
+              onPress={() => Actions.ChatroomIndex()}
+              style={{color: 'white'}}
+              >Messages</Text>
             <Text 
               name="Profile"
               onPress={() => Actions.Dashboard()}

@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(version: 20170611065607) do
     t.index ["title"], name: "index_categories_on_title", unique: true, using: :btree
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_two_id", null: false
+    t.index ["user_id", "user_two_id"], name: "index_chatrooms_on_user_id_and_user_two_id", unique: true, using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body",        null: false
+    t.integer  "user_id",     null: false
+    t.integer  "chatroom_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
   create_table "user_categories", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "category_id"

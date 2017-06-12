@@ -157,8 +157,7 @@ export default class LoginForm extends Component {
             color='#8abcdf'
             title="Login"
             onPress={() => this.onButtonSubmit()}
-          >
-          </Button>
+          />
         </View>
         { this.renderError() }
       </View>

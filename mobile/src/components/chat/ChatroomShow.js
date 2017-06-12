@@ -4,15 +4,6 @@ import Pusher from 'pusher-js/react-native';
 
 import MessageIndex from './MessageIndexContainer';
 import ChatInput from './ChatInputContainer';
-// Enable pusher logging - don't include this in production
-Pusher.logToConsole = true;
-
-// Gameplan: Chat returned from backend w/ messages
-// selector to extract message info
-// pass array into messages index
-// new channel event will trigger fetchChat to get new message
-
-// one channel per user? with different listeners per chat
 
 export default class ChatroomShow extends React.Component {
   constructor(props) {
@@ -22,7 +13,8 @@ export default class ChatroomShow extends React.Component {
       cluster: 'us2',
       encrypted: true,
     });
-    // this.chatRoom = this.pusher.subscribe('messages');
+
+    this.chatroom = this.pusher.subscribe('my-channel');
   }
 
   componentWillMount() {
@@ -31,16 +23,15 @@ export default class ChatroomShow extends React.Component {
 
   componentDidMount() {
     const self = this;
-    const channel = this.pusher.subscribe('my-channel');
-    channel.bind('my-event', function (data) {
+    this.chatroom.bind('my-event', function (data) {
       self.props.fetchMessages(self.props.data);
     });
   }
 
-  // componentWIllUnmount() {
-  //   // this.chatRoom.unbind();
-  //   // this.pusher.unsubscribe(this.chatRoom);
-  // }
+  componentWIllUnmount() {
+    this.chatroom.unbind();
+    this.pusher.unsubscribe(this.chatRoom);
+  }
 
   render() {
     const { messages } = this.props;

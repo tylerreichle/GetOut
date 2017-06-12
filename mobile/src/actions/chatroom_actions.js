@@ -63,7 +63,7 @@ export const createChatroom = chatroom => dispatch => {
                 resp.json()
                     .then((newChatroom) => {
                         dispatch(receiveSingleChatroom(newChatroom));
-                        Actions.ChatroomShow(newChatroom.id);
+                        Actions.ChatroomShow(newChatroom.chatroom.id);
                     });
             } else {
                 Actions.ChatroomIndex();
@@ -77,5 +77,3 @@ export const deleteChatroom = chatroomID => dispatch => (
         .then(resp => resp.json())
         .then(deletedChatroom => dispatch(removeChatroom(deletedChatroom)))
 );
-
-// dispatch(receiveErrors(err));

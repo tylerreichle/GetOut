@@ -9,6 +9,9 @@ import NavBar from '../../nav_bar';
 const Dimensions = require('Dimensions');
 const window = Dimensions.get('window');
 
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
+
 export default class CategoriesIndex extends Component {
     constructor(props) {
         super(props);
@@ -89,6 +92,8 @@ export default class CategoriesIndex extends Component {
           title="Log Out">
         </Button>
         <NavBar logOut={this.props.logout}/>
+      </View>
+
       </View>
 
       </View>

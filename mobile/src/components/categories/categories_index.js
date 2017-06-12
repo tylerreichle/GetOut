@@ -12,15 +12,16 @@ const window = Dimensions.get('window');
 export default class CategoriesIndex extends Component {
     constructor(props) {
         super(props);
+        
+      const currentUserID = parseInt(this.props.data);
+      this.props.fetchCurrentUser(currentUserID);
+      this.props.requestCategories();
 
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.handlePress = this.handlePress.bind(this);
   }
 
     componentWillMount() {
-      const currentUserID = parseInt(this.props.data);
-      this.props.fetchCurrentUser(currentUserID);
-      this.props.requestCategories();
     }
 
   componentWillReceiveProps(newProps) {

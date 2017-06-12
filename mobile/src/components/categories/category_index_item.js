@@ -39,8 +39,14 @@ class CategoriesIndexItem extends Component {
     return miles;
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.currentUser.currentUser === null) {
+      Actions.splash();
+    }
+  }
+
   render() {
-    if (this.props.category.users) {
+    if (this.props.category.users && this.props.currentUser.id) {
       const users = this.ds.cloneWithRows(this.props.category.users);
 
       return (

@@ -41,7 +41,6 @@ class CategoriesIndexItem extends Component {
 
   render() {
     if (this.props.category.users) {
-      console.log(this.props.category.users);
       const users = this.ds.cloneWithRows(this.props.category.users);
 
       return (

@@ -35,10 +35,21 @@ class NavBar extends Component {
                 console.log(el);
                 this.setState({page:el.props.name});
                 }}>
-            <Text name="CategoriesIndex" onPress={() => Actions.categoriesIndex()}>Home</Text>
-            <Text name="Messages">Messages</Text>
-            <Text name="Profile">Profile</Text>
-            <Text name="LogOut" onPress={() => this.props.logOut()}>Log Out</Text>
+            <Text 
+              name="CategoriesIndex" 
+              onPress={() => Actions.categoriesIndex()}
+              style={{color:'white'}}>Home</Text>
+            <Text 
+              name="Messages"
+              style={{color: 'white'}}>Messages</Text>
+            <Text 
+              name="Profile"
+              onPress={() => Actions.Dashboard()}
+              style={{color: 'white'}}>Profile</Text>
+            <Text 
+              name="LogOut" 
+              onPress={() => this.props.logout()}
+              style={{color: 'white'}}>Log Out</Text>
         </Tabs>
       </View>
     );

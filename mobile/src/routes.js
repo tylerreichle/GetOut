@@ -5,6 +5,7 @@ import SignUpForm from './components/session/SignUpFormContainer';
 import CategoriesIndex from './components/categories/categories_container';
 import CategoriesIndexItem from './components/categories/categories_index_item_container';
 import Splash from './components/splash/splash';
+import Dashboard from './components/dashboard/dashboard';
 import Profile from './components/user_profile/profile_container';
 
 const Routes = () => (
@@ -50,6 +51,13 @@ const Routes = () => (
       component={ Profile }
       title='Profile'
       hideNavBar={false}
+    />
+
+    <Scene
+      key='Dashboard'
+      component={ Dashboard }
+      title='Dashboard'
+      hideNavBar={true}
     />
   </Router>
 );

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import geolib from 'geolib';
+import NavBar from '../../nav_bar';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class Profile extends React.Component {
           </Text>
 
         </View>
+        <NavBar />
       </View>
     );
   }

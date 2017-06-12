@@ -7,6 +7,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
+    console.disableYellowBox = true;
+
     this.getToken = this.getToken.bind(this);
     this.verifyToken = this.verifyToken.bind(this);
   }

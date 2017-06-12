@@ -37,12 +37,11 @@ export default class Splash extends Component {
                 marginTop: 30,
                 marginBottom: 360,
                 fontSize: 32,
-                fontFamily: 'Baskerville',
                 fontWeight: 'bold',
                 color: 'black',
                 opacity: .6
               }}>
-              LunchWithStrangers
+              AfternoonDelight
             </Text>
             <View
               style={{

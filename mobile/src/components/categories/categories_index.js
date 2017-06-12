@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, ListView, Button } from 'react-native';
+import { Text, View, ListView, Button, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { toArray } from '../../reducers/selectors';
 import { AsyncStorage } from 'react-native';
 import CategoriesIndexItem from './categories_index_item_container';
+
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
 
 export default class CategoriesIndex extends Component {
   constructor(props) {
@@ -42,40 +45,50 @@ export default class CategoriesIndex extends Component {
         linkAction={Actions.categoriesIndex}
         style={{
           flex: 1,
+          flexDirection: 'column',
+          alignItems: 'center'
         }}>
         <Text
           style={{
-            backgroundColor: '#8abcdf',
+            backgroundColor: "#8abcdf",
+            width: Dimensions.get('window').width,
+            padding: 10,
+            flexDirection: 'column',
             color: 'white',
             fontSize: 24,
+            fontFamily: 'Baskerville',
+            fontWeight: 'bold',
             textAlign: 'center',
-            padding: 20,
+            marginTop: 20,
+            marginBottom: 20
           }}
-        >Categories</Text>
+          >Categories</Text>
 
         <ListView
-          style={{ flex: 7 }}
           dataSource={categories}
           enableEmptySections={true}
           renderRow={(rowData) =>
-            <Button
-              style={{ flex: 1 }}
-              categories={rowData}
-              title={rowData.title}
-              id={rowData.id}
-              onPress={val => this.handlePress(val, rowData.id)}
-            />}
+            <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
+              <Image
+                style={{ width: 300, height: 50, marginBottom: 20 }}
+                source={{ uri: `${rowData.img_url}` }}
+              />
+          </TouchableHighlight>}
         />
 
+      <View
+        style={{
+          backgroundColor: '#8abcdf',
+          width: 150,
+          marginBottom: 30
+        }}>
         <Button
-          style={{
-            padding: 20,
-            backgroundColor: 'blue',
-            flex: 1
-          }}
+          color= 'white'
           onPress={this.onButtonSubmit.bind(this)}
           title="Log Out">
         </Button>
+      </View>
+
       </View>
     );
   }

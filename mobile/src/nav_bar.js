@@ -51,7 +51,7 @@ class NavBar extends Component {
               >Messages</Text>
             <Text 
               name="LogOut" 
-              onPress={() => this.props.logout()}
+              onPress={this.props.logout}
               style={{
                 color: 'white',
                 fontSize: 16

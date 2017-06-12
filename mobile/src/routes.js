@@ -65,14 +65,14 @@ const Routes = () => (
     <Scene
       key='ChatroomIndex'
       component={ ChatroomIndex }
-      title='Chats'
+      title='Messages'
       hideNavBar={false}
     />
 
     <Scene
       key='ChatroomShow'
       component={ ChatroomShow }
-      title='Chatroom Show'
+      title='Chat'
       hideNavBar={false}
     />
   </Router>

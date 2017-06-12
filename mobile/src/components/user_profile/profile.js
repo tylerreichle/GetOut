@@ -46,7 +46,7 @@ export default class Profile extends React.Component {
 
           <Text style={styles.aboutMe}>
             About Me
-            {user.description}
+            <Text>{user.description}</Text>
           </Text>
 
           <Button
@@ -72,7 +72,9 @@ const styles = {
     alignItems: 'center'
   },
   username: {
-    fontSize: 22,
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#26628c',
     margin: 10
   },
   location: {

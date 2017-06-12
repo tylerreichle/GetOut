@@ -38,8 +38,6 @@ const styles = StyleSheet.create({
   chatroomIndex: {
     flex: 1,
     marginTop: 60,
-    borderWidth: 3,
-    borderColor: '#000000'
   },
   chatroomButton: {
     height: 75,

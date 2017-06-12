@@ -32,26 +32,30 @@ class NavBar extends Component {
               selectedStyle={{color:'#26628c'}} 
               selectedIconStyle={{borderTopWidth:2,borderTopColor:'#26628c'}}
               onSelect={el=>{
-                console.log(el);
                 this.setState({page:el.props.name});
                 }}>
             <Text 
-              name="CategoriesIndex" 
+              name="categoriesIndex" 
               onPress={() => Actions.categoriesIndex()}
-              style={{color:'white'}}>Home</Text>
+              style={{
+                color:'white',
+                fontSize: 16
+                }}>Home</Text>
             <Text 
-              name="Messages"
+              name="ChatroomIndex"
               onPress={() => Actions.ChatroomIndex()}
-              style={{color: 'white'}}
+              style={{
+                color: 'white',
+                fontSize: 16
+                }}
               >Messages</Text>
-            <Text 
-              name="Profile"
-              onPress={() => Actions.Dashboard()}
-              style={{color: 'white'}}>Profile</Text>
             <Text 
               name="LogOut" 
               onPress={() => this.props.logout()}
-              style={{color: 'white'}}>Log Out</Text>
+              style={{
+                color: 'white',
+                fontSize: 16
+                }}>Log Out</Text>
         </Tabs>
       </View>
     );

@@ -10,19 +10,16 @@ const Dimensions = require('Dimensions');
 const window = Dimensions.get('window');
 
 export default class CategoriesIndex extends Component {
-    constructor(props) {
-        super(props);
-        
-      const currentUserID = parseInt(this.props.data);
-      this.props.fetchCurrentUser(currentUserID);
-      this.props.requestCategories();
+  constructor(props) {
+    super(props);
+
+    const currentUserID = parseInt(this.props.data);
+    this.props.fetchCurrentUser(currentUserID);
+    this.props.requestCategories();
 
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.handlePress = this.handlePress.bind(this);
   }
-
-    componentWillMount() {
-    }
 
   componentWillReceiveProps(newProps) {
     if (!AsyncStorage.getItem('username')) {
@@ -50,12 +47,11 @@ export default class CategoriesIndex extends Component {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'space-between',
-          alignItems: 'center'
         }}>
         <View
           style={{
             flex: 1,
-            }}>
+          }}>
           <Text
             style={{
               backgroundColor: "#8abcdf",
@@ -69,24 +65,24 @@ export default class CategoriesIndex extends Component {
               marginTop: 20,
               marginBottom: 20
             }}
-            >Categories</Text>
+          >Categories</Text>
 
           <ListView
             dataSource={categories}
-            enableEmptySections={true}
+            enableEmptySections
             renderRow={(rowData) =>
               <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
                 <Image
                   style={{ width: 300, height: 50, marginBottom: 20, alignSelf: 'center' }}
                   source={{ uri: `${rowData.img_url}` }}
                 />
-            </TouchableHighlight>}
+              </TouchableHighlight>}
           />
 
           < NavBar />
 
+        </View>
       </View>
-    </View>
     );
   }
 }

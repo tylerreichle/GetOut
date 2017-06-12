@@ -48,7 +48,8 @@ export default class CategoriesIndex extends Component {
           flex: 1,
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          alignItems: 'center'
         }}>
         <View
           style={{
@@ -82,8 +83,8 @@ export default class CategoriesIndex extends Component {
           />
 
           < NavBar />
-        </View>
       </View>
+    </View>
     );
   }
 }

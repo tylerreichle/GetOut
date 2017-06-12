@@ -38,7 +38,6 @@ jill = User.create(
     img_url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg',
     latitude: 37.785834,
     longitude: -122.406417,
-    description: 'I am a boss.'
 )
 
 Category.destroy_all

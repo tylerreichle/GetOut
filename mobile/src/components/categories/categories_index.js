@@ -83,6 +83,7 @@ export default class CategoriesIndex extends Component {
           />
 
           < NavBar />
+
       </View>
     </View>
     );

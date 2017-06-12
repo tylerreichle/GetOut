@@ -51,7 +51,7 @@ export default class Profile extends React.Component {
           <View style={styles.chatButton}>
             <Button
               color='#ffffff'
-              title="Chat Now"
+              title="Message"
               onPress={this.createChat}
             />
           </View>

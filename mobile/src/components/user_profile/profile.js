@@ -44,10 +44,10 @@ export default class Profile extends React.Component {
             {this.props.distance} miles away
           </Text>
 
-          <Text style={styles.aboutMe}>
-            About Me
-            <Text>{user.description}</Text>
-          </Text>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.aboutMe}>About Me</Text>
+            <Text style={styles.description}>{user.description}</Text>
+          </View>
 
           <View style={styles.chatButton}>
             <Button
@@ -84,8 +84,17 @@ const styles = {
     fontSize: 16,
     margin: 10
   },
+  descriptionContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   aboutMe: {
     fontSize: 18,
+    margin: 10,
+  },
+  description: {
+    fontSize: 16,
     margin: 10
   },
   chatButton: {

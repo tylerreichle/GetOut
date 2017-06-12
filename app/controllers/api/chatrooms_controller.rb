@@ -10,12 +10,15 @@ class Api::ChatroomsController < ApplicationController
 
     @chatrooms.each do |chatroom|
       if chatroom.user_id == current_user.id
-        otherUsername = User.find_by_id(chatroom.user_two_id).username
+        otherUser = User.find_by_id(chatroom.user_two_id)
       else
-        otherUsername = User.find_by_id(chatroom.user_id).username
+        otherUser = User.find_by_id(chatroom.user_id)
       end
 
-      @otherUsers[chatroom.id] = otherUsername
+      otherProfile = otherUser.img_url
+      otherUsername = otherUser.username
+
+      @otherUsers[chatroom.id] = [otherUsername, otherProfile]
     end
   end
 

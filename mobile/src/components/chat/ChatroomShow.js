@@ -14,7 +14,7 @@ export default class ChatroomShow extends React.Component {
       encrypted: true,
     });
 
-    this.chatroom = this.pusher.subscribe('my-channel');
+    this.chatroom = this.pusher.subscribe('chats');
   }
 
   componentWillMount() {
@@ -23,14 +23,14 @@ export default class ChatroomShow extends React.Component {
 
   componentDidMount() {
     const self = this;
-    this.chatroom.bind('my-event', function (data) {
+    this.chatroom.bind('new-message', function (data) {
       self.props.fetchMessages(self.props.data);
     });
   }
 
   componentWIllUnmount() {
     this.chatroom.unbind();
-    this.pusher.unsubscribe(this.chatRoom);
+    this.pusher.unsubscribe(this.chatroom);
   }
 
   render() {

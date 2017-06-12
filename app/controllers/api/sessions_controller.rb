@@ -21,7 +21,7 @@ class Api::SessionsController < ApplicationController
   def verify_session_token
     @user = User.find_by(session_token: params[:session][:session_token])
     if @user
-      render json: 'Valid access token', status: 200
+      render json: 'Valid session token', status: 200
     else
       render json: 'Verification failed :(', status: 422
     end

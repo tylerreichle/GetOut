@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Routes from './routes';
 import { Actions } from 'react-native-router-flux';
+import Routes from './Routes';
 
 export default class App extends Component {
   constructor(props) {
@@ -33,12 +33,12 @@ export default class App extends Component {
     const sessionToken = token;
 
     try {
-      let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
-      let res = await response.text();
+      const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
+      const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
-        //Verified token means user is logged in so we redirect them home.
         currentUserID = await this.props.storage.getItem('id');
         Actions.categoriesIndex(currentUserID);
+        // Actions.ChatroomIndex(currentUserID);
       } else {
         const error = res;
         throw error;
@@ -60,6 +60,6 @@ export default class App extends Component {
 const styles = {
   viewStyle: {
     flex: 1,
-    backgroundColor: '#008080'
+    backgroundColor: '#FFFFFF'
   }
 };

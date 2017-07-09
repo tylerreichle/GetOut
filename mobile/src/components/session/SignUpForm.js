@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Button, ListView, AsyncStorage } from 'react-native';
-import { loginUser } from '../../actions/session_actions';
 import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
 
 const Dimensions = require('Dimensions');
-const window = Dimensions.get('window');
 
 export default class SignUpForm extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -17,10 +15,10 @@ export default class SignUpForm extends Component {
       username: '',
       password: '',
       latitude: null,
-      longitude: null
+      longitude: null,
     };
 
-    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
     this.renderRow = this.renderRow.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -33,9 +31,9 @@ export default class SignUpForm extends Component {
       (position) => {
         this.setState({
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          longitude: position.coords.longitude,
         });
-      }
+      },
     );
   }
 
@@ -43,30 +41,69 @@ export default class SignUpForm extends Component {
     const { first_name, last_name, email, username,
       password, latitude, longitude } = this.state;
 
-    this.props.signup({ first_name, last_name, email,
-      username, password, latitude, longitude });
+    this.props.signup({
+      first_name,
+      last_name,
+      email,
+      username,
+      password,
+      latitude,
+      longitude,
+    });
 
     setTimeout(() => {
       this.getToken();
     }, 300);
   }
 
+  async getToken() {
+    try {
+      const sessionToken = await AsyncStorage.getItem('sessionToken');
+
+      if (!sessionToken) {
+        console.log('Session token not set');
+      } else {
+        this.verifyToken(sessionToken);
+      }
+    } catch (error) {
+      console.log('Error getting session token');
+    }
+  }
+
+  async verifyToken(token) {
+    const sessionToken = token;
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/verify?session%5Bsession_token%5D=${sessionToken}`);
+      const res = await response.text();
+      if (response.status >= 200 && response.status < 300) {
+        const currentUserID = await AsyncStorage.getItem('id');
+        Actions.categoriesIndex(currentUserID);
+      } else {
+        const error = res;
+        throw error;
+      }
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+  }
+
   handleChange(value, name) {
-    let newState = {};
+    const newState = {};
     newState[name] = value;
     this.setState(newState);
   }
 
   renderRow(rowData) {
-    return(
+    return (
       <Text
         style={{
           textAlign: 'center',
           fontSize: 12,
           color: '#cc3333',
         }}
-        >{rowData}</Text>
-    )
+      >{rowData}</Text>
+    );
   }
 
   renderErrors() {
@@ -76,182 +113,163 @@ export default class SignUpForm extends Component {
         <View>
           <ListView
             dataSource={errors}
-            enableEmptySections={true}
-            renderRow={(rowData) => this.renderRow(rowData)}
-            />
+            enableEmptySections
+            renderRow={rowData => this.renderRow(rowData)}
+          />
         </View>
       );
     }
     return null;
   }
 
-  async getToken() {
-    try {
-
-      let sessionToken = await AsyncStorage.getItem('sessionToken');
-
-      if (!sessionToken) {
-        console.log("Session token not set");
-      } else {
-        this.verifyToken(sessionToken)
-      }
-    } catch (error) {
-      console.log("Error getting session token");
-    }
-  }
-
-  async verifyToken(token) {
-    const sessionToken = token;
-
-    try {
-      let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
-      let res = await response.text();
-      if (response.status >= 200 && response.status < 300) {
-        currentUserID = await AsyncStorage.getItem('id');
-        Actions.categoriesIndex(currentUserID);
-      } else {
-        const error = res;
-        throw error;
-      }
-    } catch (error) {
-      console.log("Error: " + error);
-    }
-  }
-
   render() {
     return (
-      <View style={{
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: "#8abcdf",
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height
-      }}
+      <View
         linkAction={Actions.signupForm}
+        style={{
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#8abcdf',
+          width: Dimensions.get('window').width,
+          height: Dimensions.get('window').height,
+        }}
       >
         <View
           style={{
-            backgroundColor: "white",
+            backgroundColor: 'white',
             width: 300,
             height: 50,
-            marginBottom: 20
-          }}>
+            marginBottom: 20,
+          }}
+        >
           <TextInput
             style={{
               width: 300,
               height: 50,
               alignSelf: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
-            id={"first_name"}
+            id={'first_name'}
             placeholder={'First Name'}
             autoCorrect={false}
             value={this.state.first_name}
-            onChangeText={(value) => this.handleChange(value, 'first_name')}
-            />
+            onChangeText={value => this.handleChange(value, 'first_name')}
+          />
         </View>
 
         <View
           style={{
-            backgroundColor: "white",
+            backgroundColor: 'white',
             width: 300,
             height: 50,
-            marginBottom: 20
-          }}>
+            marginBottom: 20,
+          }}
+        >
           <TextInput
             style={{
               width: 300,
               height: 50,
               alignSelf: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
-            id={"last_name"}
+            id={'last_name'}
             placeholder={'Last Name'}
             autoCorrect={false}
             value={this.state.last_name}
-            onChangeText={(value) => this.handleChange(value, 'last_name')}
-            />
+            onChangeText={value => this.handleChange(value, 'last_name')}
+          />
         </View>
 
         <View
           style={{
-            backgroundColor: "white",
+            backgroundColor: 'white',
             width: 300,
             height: 50,
-            marginBottom: 20
-          }}>
+            marginBottom: 20,
+          }}
+        >
           <TextInput
             style={{
               width: 300,
               height: 50,
               alignSelf: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
             autoCapitalize="none"
             autoCorrect={false}
-            id={"email"}
+            id={'email'}
             placeholder={'Email'}
             value={this.state.email}
-            onChangeText={(value) => this.handleChange(value, 'email')}
-            />
+            onChangeText={value => this.handleChange(value, 'email')}
+          />
         </View>
 
         <View
           style={{
-            backgroundColor: "white",
+            backgroundColor: 'white',
             width: 300,
             height: 50,
-            marginBottom: 20
-          }}>
+            marginBottom: 20,
+          }}
+        >
           <TextInput
             style={{
               width: 300,
               height: 50,
               alignSelf: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
-            id={"username"}
+            id={'username'}
             autoCapitalize="none"
             autoCorrect={false}
             placeholder={'Username'}
             value={this.state.username}
-            onChangeText={(value) => this.handleChange(value, 'username')}
-            />
+            onChangeText={value => this.handleChange(value, 'username')}
+          />
         </View>
 
         <View
           style={{
-            backgroundColor: "white",
+            backgroundColor: 'white',
             width: 300,
             height: 50,
-            marginBottom: 20
-          }}>
+            marginBottom: 20,
+          }}
+        >
           <TextInput
             style={{
               width: 300,
               height: 50,
               alignSelf: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
             placeholder={'Password'}
             value={this.state.password}
-            onChangeText={(value) => this.handleChange(value, 'password')}
+            onChangeText={value => this.handleChange(value, 'password')}
             secureTextEntry
-            />
+          />
         </View>
 
         <View
-          style={{ backgroundColor: 'white', width: 150, marginBottom: 20 }}>
-          <Button
-            color='#8abcdf'
-            title="Register"
-            onPress={() => this.onButtonSubmit()}
-          >
-          </Button>
-        </View>
+          style={{ backgroundColor: 'white', width: 150, marginBottom: 20 }}
+        />
+        <Button
+          color="#8abcdf"
+          title="Register"
+          onPress={() => this.onButtonSubmit()}
+        />
         {this.renderErrors()}
       </View>
     );
   }
 }
+
+SignUpForm.propTypes = {
+  signup: PropTypes.func.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.string),
+};
+
+SignUpForm.defaultProps = {
+  errors: [],
+};

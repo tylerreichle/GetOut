@@ -1,11 +1,12 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
+
 import LoginForm from './components/session/LoginFormContainer';
 import SignUpForm from './components/session/SignUpFormContainer';
 import CategoriesIndex from './components/categories/CategoriesContainer';
 import CategoriesIndexItem from './components/categories/CategoriesIndexItemContainer';
 import Splash from './components/splash/splash';
-import Dashboard from './components/dashboard/dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 import ChatroomShow from './components/chat/ChatroomShowContainer';
 import ChatroomIndex from './components/chat/ChatroomIndexContainer';
 import Profile from './components/user_profile/profile_container';

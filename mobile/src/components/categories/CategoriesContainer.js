@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import CategoriesIndex from './categories_index';
+import CategoriesIndex from './CategoriesIndex';
 import { requestCategories } from '../../actions/category_actions';
 import { fetchCurrentUser, logoutUser } from '../../actions/session_actions';
 

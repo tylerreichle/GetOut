@@ -5,11 +5,11 @@ import LoginForm from './components/session/LoginFormContainer';
 import SignUpForm from './components/session/SignUpFormContainer';
 import CategoriesIndex from './components/categories/CategoriesContainer';
 import CategoriesIndexItem from './components/categories/CategoriesIndexItemContainer';
-import Splash from './components/splash/splash';
+import Splash from './components/splash/Splash';
 import Dashboard from './components/dashboard/Dashboard';
 import ChatroomShow from './components/chat/ChatroomShowContainer';
 import ChatroomIndex from './components/chat/ChatroomIndexContainer';
-import Profile from './components/user_profile/profile_container';
+import Profile from './components/user_profile/ProfileContainer';
 
 const Routes = () => (
   <Router sceneStyle={{ backgroundColor: 'white' }}>

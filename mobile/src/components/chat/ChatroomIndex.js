@@ -12,8 +12,6 @@ export default class ChatroomIndex extends React.Component {
   }
 
   componentWillMount() {
-    const currentUserID = parseInt(this.props.data, 10);
-    this.props.fetchCurrentUser(currentUserID);
     this.props.fetchChatrooms();
   }
 
@@ -35,8 +33,6 @@ export default class ChatroomIndex extends React.Component {
 
 ChatroomIndex.propTypes = {
   fetchChatrooms: PropTypes.func.isRequired,
-  fetchCurrentUser: PropTypes.func.isRequired,
-  data: PropTypes.number.isRequired,
   chatrooms: PropTypes.arrayOf(Object),
 };
 

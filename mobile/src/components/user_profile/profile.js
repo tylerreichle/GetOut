@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import geolib from 'geolib';
+import PropTypes from 'prop-types';
 import NavBar from '../../NavBar';
 
 export default class Profile extends React.Component {
@@ -17,23 +17,24 @@ export default class Profile extends React.Component {
 
   createChat() {
     const chatroom = {
-      user_two_id: this.props.userId
+      user_two_id: this.props.userId,
     };
     this.props.createChatroom(chatroom);
   }
 
   render() {
-    const { user, profilePic, aboutMe, location } = this.props;
+    const { user } = this.props;
 
     return (
       <View
-        linkAction={ Actions.Profile }
-        style={styles.viewStyle}>
+        linkAction={Actions.Profile}
+        style={styles.viewStyle}
+      >
         <View style={styles.containerStyle}>
 
           <Image
-            style={{width: 200, height: 200}}
-            source={{uri: `${user.img_url}`}}
+            style={{ width: 200, height: 200 }}
+            source={{ uri: `${user.img_url}` }}
           />
 
           <Text style={styles.username}>
@@ -51,12 +52,11 @@ export default class Profile extends React.Component {
 
           <View style={styles.chatButton}>
             <Button
-              color='#ffffff'
+              color="#ffffff"
               title="Message"
               onPress={this.createChat}
             />
           </View>
-
         </View>
         <NavBar />
       </View>
@@ -64,30 +64,42 @@ export default class Profile extends React.Component {
   }
 }
 
+Profile.propTypes = {
+  requestUser: PropTypes.func.isRequired,
+  createChatroom: PropTypes.func.isRequired,
+  user: PropTypes.objectOf(Object).isRequired,
+  userId: PropTypes.number.isRequired,
+  distance: PropTypes.number,
+};
+
+Profile.defaultProps = {
+  distance: null,
+};
+
 const styles = {
   viewStyle: {
     justifyContent: 'space-between',
-    flex: 1
+    flex: 1,
   },
   containerStyle: {
     marginTop: 50,
     padding: 20,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   username: {
     fontSize: 26,
     fontWeight: 'bold',
     color: '#26628c',
-    margin: 10
+    margin: 10,
   },
   location: {
     fontSize: 16,
-    margin: 10
+    margin: 10,
   },
   descriptionContainer: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   aboutMe: {
     fontSize: 18,
@@ -95,7 +107,7 @@ const styles = {
   },
   description: {
     fontSize: 16,
-    margin: 10
+    margin: 10,
   },
   chatButton: {
     margin: 10,
@@ -105,6 +117,6 @@ const styles = {
   background: {
     flex: 1,
     alignSelf: 'stretch',
-    width: null
-  }
+    width: null,
+  },
 };

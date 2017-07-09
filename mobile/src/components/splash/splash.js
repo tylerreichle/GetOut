@@ -16,7 +16,7 @@ const Splash = () => (
     linkAction={Actions.splash}
   >
     <Image
-      source={'../../images/splash_background.png'}
+      source={require('../../images/splash_background.png')}
       style={{
         flex: 2,
         width: Dimensions.get('window').width,

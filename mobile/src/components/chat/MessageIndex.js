@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Button, Text, ListView, StyleSheet } from 'react-native';
+import { View, ListView, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import Message from './Message';
 
 export default class MessageIndex extends React.Component {
@@ -7,7 +8,7 @@ export default class MessageIndex extends React.Component {
     super(props);
 
     this.state = {
-      messages: []
+      messages: [],
     };
 
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -16,7 +17,7 @@ export default class MessageIndex extends React.Component {
   componentWillReceiveProps(newProps) {
     if (this.state.messages !== newProps.messages) {
       this.setState({ messages: newProps.messages });
-      this.listView.scrollToEnd({animated: false});
+      this.listView.scrollToEnd({ animated: false });
     }
   }
 
@@ -30,30 +31,32 @@ export default class MessageIndex extends React.Component {
           style={styles.messageList}
           dataSource={messages}
           enableEmptySections
-          ref={listView => {this.listView = listView;}}
-          onContentSizeChange={(contentWidth, contentHeight) => {
-            this.listView.scrollToEnd({animated: false});
-          }}
-          renderRow={message =>
+          ref={(listView) => { this.listView = listView; }}
+          onContentSizeChange={() => { this.listView.scrollToEnd({ animated: false }); }}
+          renderRow={message => (
             <Message
               currentUserID={currentUserID}
               userID={message.user_id}
               body={message.body}
             />
-          }
+          )}
         />
       </View>
     );
   }
 }
 
+MessageIndex.propTypes = {
+  currentUser: PropTypes.objectOf(Object).isRequired,
+};
+
 const styles = StyleSheet.create({
   messagesContainer: {
     flex: 1,
     borderBottomWidth: 3,
-    borderColor: '#000000'
+    borderColor: '#000000',
   },
   messageList: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

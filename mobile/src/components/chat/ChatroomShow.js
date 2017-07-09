@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import Pusher from 'pusher-js/react-native';
+import PropTypes from 'prop-types';
 
 import MessageIndex from './MessageIndexContainer';
 import ChatInput from './ChatInputContainer';
@@ -23,7 +24,7 @@ export default class ChatroomShow extends React.Component {
 
   componentDidMount() {
     const self = this;
-    this.chatroom.bind('new-message', function (data) {
+    this.chatroom.bind('new-message', () => {
       self.props.fetchMessages(self.props.data);
     });
   }
@@ -45,6 +46,12 @@ export default class ChatroomShow extends React.Component {
     );
   }
 }
+
+ChatroomShow.propTypes = {
+  fetchMessages: PropTypes.func.isRequired,
+  messages: PropTypes.objectOf(Object).isRequired,
+  data: PropTypes.number.isRequired,
+};
 
 const { width, height } = Dimensions.get('window');
 

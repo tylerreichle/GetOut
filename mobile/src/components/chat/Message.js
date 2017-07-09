@@ -1,23 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
-export default class Message extends React.Component {
-  render() {
-    const { currentUserID, userID, body } = this.props;
+const Message = (props) => {
+  const { currentUserID, userID, body } = props;
 
-    if (currentUserID === userID) {
-      // render sent bubble
-      return (
-        <Text style={styles.sentMessage}>{body}</Text>
-      );
-    } else {
-      // render from bubble
-      return (
-        <Text style={styles.receivedMessage}>{body}</Text>
-      );
-    }
+  if (currentUserID === userID) {
+    // render sent bubble
+    return (
+      <Text style={styles.sentMessage}>{body}</Text>
+    );
+  } else {
+    // render from bubble
+    return (
+      <Text style={styles.receivedMessage}>{body}</Text>
+    );
   }
-}
+};
+
+Message.propTypes = {
+  currentUserID: PropTypes.number.isRequired,
+  userID: PropTypes.number.isRequired,
+  body: PropTypes.string.isRequired,
+};
 
 const styles = StyleSheet.create({
   sentMessage: {
@@ -33,7 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     alignSelf: 'flex-end',
-    maxWidth: 200
+    maxWidth: 200,
   },
   receivedMessage: {
     color: '#000000',
@@ -47,6 +52,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     alignSelf: 'flex-start',
-    maxWidth: 200
+    maxWidth: 200,
   },
 });
+
+export default Message;

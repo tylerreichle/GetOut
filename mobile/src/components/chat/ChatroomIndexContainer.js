@@ -6,16 +6,16 @@ import { selectChatrooms } from '../../reducers/selectors';
 
 const mapStateToProps = store => ({
   currentUser: store.currentUser,
-  chatrooms: selectChatrooms(store)
+  chatrooms: selectChatrooms(store),
 });
 
 // fetch all messages on mount
 const mapDispatchToProps = dispatch => ({
   fetchCurrentUser: id => dispatch(fetchCurrentUser(id)),
-  fetchChatrooms: () => dispatch(fetchChatrooms())
+  fetchChatrooms: () => dispatch(fetchChatrooms()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ChatroomIndex);

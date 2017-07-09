@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableHighlight, View, Text, Image, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
 
 export default class ChatroomIndexItem extends React.Component {
   constructor() {
@@ -18,8 +19,7 @@ export default class ChatroomIndexItem extends React.Component {
     const { chatroom } = this.props;
 
     return (
-      <TouchableHighlight
-        onPress={target => this.handlePress(target, chatroom.id)}>
+      <TouchableHighlight onPress={target => this.handlePress(target, chatroom.id)}>
 
         <View style={styles.chatButton}>
           <Image
@@ -33,6 +33,10 @@ export default class ChatroomIndexItem extends React.Component {
     );
   }
 }
+
+ChatroomIndexItem.propTypes = {
+  chatroom: PropTypes.objectOf(Object).isRequired,
+};
 
 const styles = StyleSheet.create({
   chatButton: {
@@ -48,10 +52,10 @@ const styles = StyleSheet.create({
   },
   chatUsername: {
     margin: 5,
-    fontSize: 20
+    fontSize: 20,
   },
   profilePic: {
     width: 50,
-    height: 50
-  }
+    height: 50,
+  },
 });

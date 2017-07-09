@@ -10,7 +10,7 @@ export default class Root extends React.Component {
     super();
 
     this.state = {
-      store: configureStore()
+      store: configureStore(),
     };
   }
 

@@ -5,20 +5,13 @@ import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View } from 'react-native';
 import { fetchCurrentUser, logoutUser } from './actions/session_actions';
 
-const mapStateToProps = state => ({
-  currentUser: state.session,
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchCurrentUser: id => dispatch(fetchCurrentUser(id)),
-  logout: () => dispatch(logoutUser()),
-});
-
 class NavBar extends Component {
   constructor(props) {
     super(props);
+
     this.state = { page: 'CategoriesIndex' };
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -81,6 +74,15 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+});
+
+const mapStateToProps = state => ({
+  currentUser: state.session,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchCurrentUser: id => dispatch(fetchCurrentUser(id)),
+  logout: () => dispatch(logoutUser()),
 });
 
 export default connect(

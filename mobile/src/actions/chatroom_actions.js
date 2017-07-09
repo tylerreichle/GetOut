@@ -1,5 +1,5 @@
-import * as ChatroomUtil from '../util/chatrooms_api';
 import { Actions } from 'react-native-router-flux';
+import * as ChatroomUtil from '../util/chatrooms_api';
 
 export const RECEIVE_CHATROOMS = 'RECEIVE_CHATROOMS';
 export const RECEIVE_SINGLE_CHATROOM = 'RECEIVE_SINGLE_CHATROOM';
@@ -7,21 +7,21 @@ export const REMOVE_CHATROOM = 'REMOVE_CHATROOM';
 
 export const receiveChatrooms = chatrooms => ({
   type: RECEIVE_CHATROOMS,
-  chatrooms
+  chatrooms,
 });
 
 export const receiveSingleChatroom = chatroom => ({
   type: RECEIVE_SINGLE_CHATROOM,
-  chatroom
+  chatroom,
 });
 
 export const removeChatroom = chatroom => ({
   type: REMOVE_CHATROOM,
-  chatroom
+  chatroom,
 });
 
-export const fetchChatrooms = () => dispatch => {
-  return ChatroomUtil.fetchChatrooms().then(
+export const fetchChatrooms = () => dispatch => (
+  ChatroomUtil.fetchChatrooms().then(
     (resp) => {
       if (resp.ok) {
         resp.json()
@@ -34,12 +34,12 @@ export const fetchChatrooms = () => dispatch => {
             console.log(err);
           });
       }
-    }
-  );
-};
+    },
+  )
+);
 
-export const fetchSingleChatroom = id => dispatch => {
-  return ChatroomUtil.fetchSingleChatroom(id).then(
+export const fetchSingleChatroom = id => dispatch => (
+  ChatroomUtil.fetchSingleChatroom(id).then(
     (resp) => {
       if (resp.ok) {
         resp.json()
@@ -52,12 +52,12 @@ export const fetchSingleChatroom = id => dispatch => {
             console.log(err);
           });
       }
-    }
-  );
-};
+    },
+  )
+);
 
-export const createChatroom = chatroom => dispatch => {
-  return ChatroomUtil.createChatroom(chatroom).then(
+export const createChatroom = chatroom => dispatch => (
+  ChatroomUtil.createChatroom(chatroom).then(
     (resp) => {
       if (resp.ok) {
         resp.json()
@@ -68,9 +68,9 @@ export const createChatroom = chatroom => dispatch => {
       } else {
         Actions.ChatroomIndex();
       }
-    }
-  );
-};
+    },
+  )
+);
 
 export const deleteChatroom = chatroomID => dispatch => (
   ChatroomUtil.deleteChatroom(chatroomID)

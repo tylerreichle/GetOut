@@ -1,8 +1,5 @@
 import merge from 'lodash/merge';
-import {
-  RECEIVE_MESSAGES,
-  RECEIVE_SINGLE_MESSAGE,
- } from '../actions/message_actions';
+import { RECEIVE_MESSAGES, RECEIVE_SINGLE_MESSAGE } from '../actions/message_actions';
 
 const messagesReducer = (state = {}, action) => {
   Object.freeze(state);

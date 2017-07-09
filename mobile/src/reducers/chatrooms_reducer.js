@@ -1,9 +1,5 @@
 import merge from 'lodash/merge';
-import {
-  RECEIVE_CHATROOMS,
-  RECEIVE_SINGLE_CHATROOM,
-  REMOVE_CHATROOM
- } from '../actions/chatroom_actions';
+import { RECEIVE_CHATROOMS, RECEIVE_SINGLE_CHATROOM, REMOVE_CHATROOM } from '../actions/chatroom_actions';
 
 const chatroomsReducer = (state = {}, action) => {
   Object.freeze(state);

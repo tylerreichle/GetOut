@@ -2,9 +2,9 @@ import { RECEIVE_USER } from '../actions/user_actions';
 
 const nullUser = {
   username: '',
-  first_name: '',
-  last_name: '',
-  email: ''
+  firstName: '',
+  lastName: '',
+  email: '',
 };
 
 const userReducer = (state = nullUser, action) => {

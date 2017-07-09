@@ -1,7 +1,7 @@
 import { Actions } from 'react-native-router-flux';
 import { AsyncStorage } from 'react-native';
-import * as APIUtil from '../util/session_api_util';
-import { fetchUser, updateUser } from '../util/user_API';
+import * as APIUtil from '../util/session_api';
+import { fetchUser, updateUser } from '../util/users_api';
 import { receiveErrors, clearErrors } from './error_actions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';

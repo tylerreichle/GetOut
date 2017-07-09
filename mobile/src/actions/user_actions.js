@@ -1,4 +1,4 @@
-import { fetchUser } from '../util/user_API';
+import { fetchUser } from '../util/users_api';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 

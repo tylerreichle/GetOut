@@ -3,7 +3,7 @@ import { View, Text, Button, ListView, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import ChatroomShow from './ChatroomShow';
 import ChatroomIndexItem from './ChatroomIndexItem';
-import NavBar from '../../nav_bar';
+import NavBar from '../../NavBar';
 
 export default class ChatroomIndex extends React.Component {
   constructor(props) {

@@ -5,7 +5,6 @@ import Root from './src/Root';
 console.disableYellowBox = true;
 
 export default class mobile extends Component {
-
   render() {
     return (
       <Root />

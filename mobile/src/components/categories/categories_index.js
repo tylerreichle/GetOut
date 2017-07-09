@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, ListView, Button, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { toArray } from '../../reducers/selectors';
-import { AsyncStorage } from 'react-native';
-import CategoriesIndexItem from './categories_index_item_container';
-import NavBar from '../../nav_bar';
+import { AsyncStorage, Text, View, ListView, TouchableHighlight, Image } from 'react-native';
+import NavBar from '../../NavBar';
 
 const Dimensions = require('Dimensions');
-const window = Dimensions.get('window');
 
 export default class CategoriesIndex extends Component {
   constructor(props) {
@@ -21,19 +17,19 @@ export default class CategoriesIndex extends Component {
     this.handlePress = this.handlePress.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps() {
     if (!AsyncStorage.getItem('username')) {
       Actions.splash();
     }
   }
 
+  onButtonSubmit() {
+    this.props.logout();
+  }
+
   handlePress(val, id) {
     val.preventDefault();
     Actions.CategoriesIndexItem(id);
-  }
-
-  onButtonSubmit() {
-    this.props.logout();
   }
 
   render() {

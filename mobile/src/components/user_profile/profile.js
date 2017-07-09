@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import geolib from 'geolib';
-import NavBar from '../../nav_bar';
+import NavBar from '../../NavBar';
 
 export default class Profile extends React.Component {
   constructor(props) {

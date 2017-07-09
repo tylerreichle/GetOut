@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import NavBar from '../../nav_bar';
+import NavBar from '../../NavBar';
 
 const mapStateToProps = (state) => ({
   currentUser: state.session
@@ -23,7 +23,7 @@ class Dashboard extends Component {
     const { currentUser } = this.props;
 
     return (
-      <View 
+      <View
         linkAction={ Actions.Dashboard }
         style={{
           flex: 1,

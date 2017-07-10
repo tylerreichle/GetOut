@@ -42,20 +42,22 @@ const styles = StyleSheet.create({
   chatButton: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     alignSelf: 'stretch',
     height: 75,
     padding: 10,
-    borderColor: '#8abcdf',
-    borderBottomWidth: 1,
+    // backgroundColor: '#8abcdf',
+    borderColor: '#000000',
+    borderBottomWidth: 2,
   },
   chatUsername: {
-    margin: 5,
-    fontSize: 20,
+    margin: 15,
+    fontSize: 22,
   },
   profilePic: {
     width: 50,
     height: 50,
+    borderRadius: 15,
   },
 });

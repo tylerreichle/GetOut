@@ -53,7 +53,7 @@ MessageIndex.propTypes = {
 const styles = StyleSheet.create({
   messagesContainer: {
     flex: 1,
-    borderBottomWidth: 3,
+    borderBottomWidth: 2,
     borderColor: '#000000',
   },
   messageList: {

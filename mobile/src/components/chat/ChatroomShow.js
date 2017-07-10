@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Pusher from 'pusher-js/react-native';
 import PropTypes from 'prop-types';
 
@@ -47,19 +47,15 @@ export default class ChatroomShow extends React.Component {
   }
 }
 
+const styles = StyleSheet.create({
+  chatContainer: {
+    flex: 1,
+    marginTop: 60,
+  },
+});
+
 ChatroomShow.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
   messages: PropTypes.objectOf(Object).isRequired,
   data: PropTypes.number.isRequired,
 };
-
-const { width, height } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  chatContainer: {
-    flex: 1,
-    width,
-    height,
-    marginTop: 60,
-  },
-});

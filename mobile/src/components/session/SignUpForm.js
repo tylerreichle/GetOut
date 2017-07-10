@@ -39,8 +39,8 @@ export default class SignUpForm extends Component {
     const { firstName, lastName, email, username, password, latitude, longitude } = this.state;
 
     this.props.signup({
-      firstName,
-      lastName,
+      first_name: firstName,
+      last_name: lastName,
       email,
       username,
       password,
@@ -126,7 +126,11 @@ export default class SignUpForm extends Component {
           style={styles.signupInput}
           id={'firstName'}
           placeholder={'First Name'}
+          placeholderTextColor={'black'}
+          autoFocus
           autoCorrect={false}
+          autoCapitalize={'words'}
+          returnKeyType={'next'}
           value={this.state.firstName}
           onChangeText={value => this.handleChange(value, 'firstName')}
         />
@@ -135,7 +139,10 @@ export default class SignUpForm extends Component {
           style={styles.signupInput}
           id={'lastName'}
           placeholder={'Last Name'}
+          placeholderTextColor={'black'}
           autoCorrect={false}
+          autoCapitalize={'words'}
+          returnKeyType={'next'}
           value={this.state.lastName}
           onChangeText={value => this.handleChange(value, 'lastName')}
         />
@@ -146,31 +153,38 @@ export default class SignUpForm extends Component {
           autoCorrect={false}
           id={'email'}
           placeholder={'Email'}
+          placeholderTextColor={'black'}
+          keyboardType={'email-address'}
+          returnKeyType={'next'}
           value={this.state.email}
           onChangeText={value => this.handleChange(value, 'email')}
         />
 
-          <TextInput
-            style={styles.signupInput}
-            id={'username'}
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder={'Username'}
-            value={this.state.username}
-            onChangeText={value => this.handleChange(value, 'username')}
-          />
+        <TextInput
+          style={styles.signupInput}
+          id={'username'}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder={'Username'}
+          placeholderTextColor={'black'}
+          value={this.state.username}
+          returnKeyType={'next'}
+          onChangeText={value => this.handleChange(value, 'username')}
+        />
 
         <TextInput
           style={styles.signupInput}
           placeholder={'Password'}
+          placeholderTextColor={'black'}
           value={this.state.password}
+          returnKeyType={'done'}
           onChangeText={value => this.handleChange(value, 'password')}
           secureTextEntry
         />
 
         <View style={styles.signupButton}>
           <Button
-            color="#8abcdf"
+            color="black"
             title="Sign Up"
             onPress={() => this.onSubmit()}
           />
@@ -183,25 +197,31 @@ export default class SignUpForm extends Component {
 
 const styles = StyleSheet.create({
   signupContainer: {
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#8abcdf',
+    backgroundColor: 'gray',
     width: '100%',
     height: '100%',
   },
   signupInput: {
     width: 300,
     height: 50,
+    color: 'black',
+    padding: 10,
     alignSelf: 'center',
-    textAlign: 'center',
     backgroundColor: 'white',
-    marginBottom: 20,
+    marginBottom: 15,
+    borderColor: 'black',
+    borderWidth: 2,
   },
   signupButton: {
-    backgroundColor: 'white',
     width: 150,
     marginBottom: 20,
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 2,
+    alignSelf: 'center',
   },
 });
 

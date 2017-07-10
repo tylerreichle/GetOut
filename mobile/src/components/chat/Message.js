@@ -31,12 +31,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     textAlign: 'right',
     fontSize: 16,
-    margin: 1,
+    margin: 2,
     marginRight: 5,
     padding: 7,
     borderRadius: 15,
     alignSelf: 'flex-end',
-    maxWidth: 200,
+    maxWidth: 250,
   },
   receivedMessage: {
     color: '#000000',
@@ -44,11 +44,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     fontSize: 16,
     padding: 7,
-    margin: 1,
+    margin: 2,
     marginLeft: 5,
     borderRadius: 15,
     alignSelf: 'flex-start',
-    maxWidth: 200,
+    maxWidth: 250,
   },
 });
 

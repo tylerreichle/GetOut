@@ -22,10 +22,6 @@ export default class CategoriesIndex extends Component {
     }
   }
 
-  onButtonSubmit() {
-    this.props.logout();
-  }
-
   handlePress(val, id) {
     val.preventDefault();
     Actions.CategoriesIndexItem(id);
@@ -89,7 +85,6 @@ const styles = StyleSheet.create({
 
 CategoriesIndex.propTypes = {
   data: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
   fetchCurrentUser: PropTypes.func.isRequired,
   requestCategories: PropTypes.func.isRequired,
   categories: PropTypes.objectOf(PropTypes.object).isRequired,

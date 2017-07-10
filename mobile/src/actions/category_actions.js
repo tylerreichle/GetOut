@@ -1,4 +1,4 @@
-import { fetchCategories, fetchSingleCategory } from '../util/categories_API';
+import { fetchCategories, fetchSingleCategory } from '../util/categories_api';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const RECEIVE_SINGLE_CATEGORY = 'RECEIVE_SINGLE_CATEGORY';
@@ -13,13 +13,13 @@ export const receiveSingleCategory = category => ({
   category,
 });
 
-export const requestCategories = () => (dispatch) => (
+export const requestCategories = () => dispatch => (
     fetchCategories()
       .then(resp => resp.json())
       .then(json => dispatch(receiveCategories(json)))
 );
 
-export const requestSingleCategory = (id) => (dispatch) => (
+export const requestSingleCategory = id => dispatch => (
     fetchSingleCategory(id)
       .then(resp => resp.json())
       .then(json => dispatch(receiveSingleCategory(json)))

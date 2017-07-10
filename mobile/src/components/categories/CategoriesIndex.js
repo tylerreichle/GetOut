@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
-import { AsyncStorage, Text, View, ListView, TouchableHighlight, Image } from 'react-native';
+import PropTypes from 'prop-types';
+import { AsyncStorage, Text, View, ListView, TouchableHighlight, Image, StyleSheet } from 'react-native';
 import NavBar from '../../NavBar';
 
 const Dimensions = require('Dimensions');
@@ -9,7 +10,7 @@ export default class CategoriesIndex extends Component {
   constructor(props) {
     super(props);
 
-    const currentUserID = parseInt(this.props.data);
+    const currentUserID = parseInt(this.props.data, 10);
     this.props.fetchCurrentUser(currentUserID);
     this.props.requestCategories();
 
@@ -38,47 +39,60 @@ export default class CategoriesIndex extends Component {
     return (
       <View
         linkAction={Actions.categoriesIndex}
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-        <View
-          style={{
-            flex: 1,
-          }}>
-          <Text
-            style={{
-              backgroundColor: "#8abcdf",
-              width: Dimensions.get('window').width,
-              padding: 10,
-              flexDirection: 'column',
-              color: 'white',
-              fontSize: 36,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              marginTop: 20,
-              marginBottom: 20
-            }}
-          >Categories</Text>
+        style={styles.categoriesIndex}
+      >
+        <Text style={styles.categoriesHeader}>Categories</Text>
 
-          <ListView
-            dataSource={categories}
-            enableEmptySections
-            renderRow={(rowData) =>
-              <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
-                <Image
-                  style={{ width: 300, height: 50, marginBottom: 20, alignSelf: 'center' }}
-                  source={{ uri: `${rowData.img_url}` }}
-                />
-              </TouchableHighlight>}
-          />
+        <ListView
+          dataSource={categories}
+          enableEmptySections
+          renderRow={rowData => (
+            <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
+              <Image
+                style={styles.categoriesItem}
+                source={{ uri: `${rowData.img_url}` }}
+              />
+            </TouchableHighlight>
+          )}
+        />
 
-          < NavBar />
-
-        </View>
+        <NavBar />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  categoriesIndex: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  categoriesHeader: {
+    backgroundColor: '#8abcdf',
+    width: Dimensions.get('window').width,
+    padding: 10,
+    flexDirection: 'column',
+    color: 'white',
+    fontSize: 36,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  categoriesItem: {
+    width: 300,
+    height: 50,
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+});
+
+CategoriesIndex.propTypes = {
+  data: PropTypes.number.isRequired,
+  logout: PropTypes.func.isRequired,
+  fetchCurrentUser: PropTypes.func.isRequired,
+  requestCategories: PropTypes.func.isRequired,
+  categories: PropTypes.objectOf(PropTypes.object).isRequired,
+};

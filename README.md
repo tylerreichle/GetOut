@@ -11,85 +11,81 @@
 - Filter users by interests and conversational topics
 - Chat with other users to schedule meetups
 
-<img src="docs/images/splash.png" alt="splash page" width="300" height="500"/>
-<img src="docs/images/categories.png" alt="categories list" width="300" height="500"/>
-<img src="docs/images/category-show.png" alt="category detail" width="300" height="500"/>
-<img src="docs/images/user-show.png" alt="user profile" width="300" height="500"/>
-<img src="docs/images/chat.png" alt="chat" width="300" height="500"/>
+<img src="docs/images/splash.png" alt="splash page" width="290" height="500"/> <img src="docs/images/categories.png" alt="categories list" width="290" height="500"/> <img src="docs/images/category-show.png" alt="category detail" width="290" height="500"/>
+<img src="docs/images/user-show.png" alt="user profile" width="290" height="500"/> <img src="docs/images/chat.png" alt="chat" width="290" height="500"/>
 
 ## Implementation
 
-  User's session tokens are stored in AsyncStorage allowing them to persist after app close. When returning to AfternoonDelight the session token is authenticated using a custom route then redirected to the home page. This takes advantage af ES7's new async and await functions.
+User's session tokens are stored in AsyncStorage allowing them to persist after app close. When returning to AfternoonDelight the session token is authenticated using a custom route then redirected to the home page. This takes advantage af ES7's new async and await functions.
 
-  ```javascript
-   async verifyToken(token) {
-    const sessionToken = token;
+```javascript
+async verifyToken(token) {
+  const sessionToken = token;
 
-    try {
-      const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
-      const res = await response.text();
-      if (response.status >= 200 && response.status < 300) {
-        currentUserID = await this.props.storage.getItem('id');
-        Actions.categoriesIndex(currentUserID);
-      } else {
-        const error = res;
-        throw error;
-      }
-    } catch (error) {
-      console.log("Error: " + error);
+  try {
+    const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
+    const res = await response.text();
+    if (response.status >= 200 && response.status < 300) {
+      currentUserID = await this.props.storage.getItem('id');
+      Actions.categoriesIndex(currentUserID);
+    } else {
+      const error = res;
+      throw error;
     }
+  } catch (error) {
+    console.log("Error: " + error);
   }
-  ```
-
-  Cateogories are rendered using React Native's included classes TouchableHighlight and ListView, allowing the app to respond to user touch.
-
-  ```javascript
-        <ListView
-            dataSource={categories}
-            enableEmptySections
-            renderRow={(rowData) =>
-              <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
-                <Image
-                  style={{ width: 300, height: 50, marginBottom: 20, alignSelf: 'center' }}
-                  source={{ uri: `${rowData.img_url}` }}
-                />
-              </TouchableHighlight>}
-          />
+}
 ```
 
+Cateogories are rendered using React Native's included classes TouchableHighlight and ListView, allowing the app to respond to user touch.
 
-  While viewing all users interested in a selected category the currently sign in user is not shown among the results using filtering in the jBuilder response from Rails.
+```javascript
+<ListView
+    dataSource={categories}
+    enableEmptySections
+    renderRow={(rowData) =>
+      <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
+        <Image
+          style={{ width: 300, height: 50, marginBottom: 20, alignSelf: 'center' }}
+          source={{ uri: `${rowData.img_url}` }}
+        />
+      </TouchableHighlight>
+    }
+/>
+```
 
-  ```ruby
-  json.users @category.users do |user|
+While viewing all users interested in a selected category the currently sign in user is not shown among the results using filtering in the jBuilder response from Rails.
+
+```ruby
+json.users @category.users do |user|
   if current_user != user
     json.partial! 'api/users/user', user: user
   end
 end
 ```
 
-Real time updates while chatting accomplished with the Pusher gem and pusher-js pacakge. When a chatroom component is mounted it begins listenening for a new message event through a dedicated websocket port.
+Real time updates while chatting accomplished with the Pusher gem and pusher-js package. When a chat component mounts it begins listenening for a new message event through a dedicated websocket port.
 
-When a message is sent and saved into the database Rails will use Pusher to trigger a new message event allowing the chatroom component to request new messages from the backend.
+When a message is sent and saved into the database Rails will use Pusher to trigger a new message event notifying the chat component to request new messages from the backend.
 
 ```ruby
-
 def create
-    @message = Message.new(message_params)
-    @message.user_id = current_user.id
+  @message = Message.new(message_params)
+  @message.user_id = current_user.id
 
-    if @message.save
-      render 'api/messages/show'
-      # broadcast message after save to DB
-      Pusher.trigger('chats', 'new-message', {
-        message: @message.body
-      })
-    end
+  if @message.save
+    render 'api/messages/show'
+    # broadcast message after save to DB
+    Pusher.trigger('chats', 'new-message', {
+      message: @message.body
+    })
   end
+end
 ```
 
 ```javascript
-  export default class ChatroomShow extends React.Component {
+export default class ChatroomShow extends React.Component {
   constructor(props) {
     super(props);
 
@@ -101,7 +97,7 @@ def create
     this.chatroom = this.pusher.subscribe('chats');
   }
 
-    componentDidMount() {
+  componentDidMount() {
     const self = this;
     this.chatroom.bind('new-message', function (data) {
       self.props.fetchMessages(self.props.data);

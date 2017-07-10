@@ -121,7 +121,7 @@ export default class SignUpForm extends Component {
 
   render() {
     return (
-      <View style={styles.signupContainer}>
+      <View style={styles.signupForm}>
         <TextInput
           style={styles.signupInput}
           id={'firstName'}
@@ -132,6 +132,7 @@ export default class SignUpForm extends Component {
           autoCapitalize={'words'}
           returnKeyType={'next'}
           value={this.state.firstName}
+          clearButtonMode={'while-editing'}
           onChangeText={value => this.handleChange(value, 'firstName')}
         />
 
@@ -144,6 +145,7 @@ export default class SignUpForm extends Component {
           autoCapitalize={'words'}
           returnKeyType={'next'}
           value={this.state.lastName}
+          clearButtonMode={'while-editing'}
           onChangeText={value => this.handleChange(value, 'lastName')}
         />
 
@@ -157,6 +159,7 @@ export default class SignUpForm extends Component {
           keyboardType={'email-address'}
           returnKeyType={'next'}
           value={this.state.email}
+          clearButtonMode={'while-editing'}
           onChangeText={value => this.handleChange(value, 'email')}
         />
 
@@ -169,17 +172,19 @@ export default class SignUpForm extends Component {
           placeholderTextColor={'black'}
           value={this.state.username}
           returnKeyType={'next'}
+          clearButtonMode={'while-editing'}
           onChangeText={value => this.handleChange(value, 'username')}
         />
 
         <TextInput
+          secureTextEntry
           style={styles.signupInput}
           placeholder={'Password'}
           placeholderTextColor={'black'}
           value={this.state.password}
           returnKeyType={'done'}
+          clearButtonMode={'while-editing'}
           onChangeText={value => this.handleChange(value, 'password')}
-          secureTextEntry
         />
 
         <View style={styles.signupButton}>
@@ -196,7 +201,7 @@ export default class SignUpForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  signupContainer: {
+  signupForm: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, TextInput, Text, Button, Dimensions } from 'react-native';
+import { AsyncStorage, View, TextInput, Text, Button, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
@@ -95,68 +95,33 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <View
-        style={{
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: '#8abcdf',
-          width: Dimensions.get('window').width,
-          height: Dimensions.get('window').height,
-        }}
-        linkAction={Actions.loginForm}
-      >
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-          }}
-        >
-          <TextInput
-            style={{
-              width: 300,
-              height: 50,
-              alignSelf: 'center',
-              textAlign: 'center',
-            }}
-            id={'username'}
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder={'Username'}
-            value={this.state.username}
-            onChangeText={value => this.handleChange(value, 'username')}
-          />
-        </View>
+      <View style={styles.loginForm}>
+        <TextInput
+          autoFocus
+          style={styles.loginInput}
+          id={'username'}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder={'Username'}
+          placeholderTextColor={'black'}
+          clearButtonMode={'while-editing'}
+          value={this.state.username}
+          onChangeText={value => this.handleChange(value, 'username')}
+        />
 
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 50,
-            marginBottom: 30,
-          }}
-        >
-          <TextInput
-            style={{
-              width: 300,
-              height: 50,
-              alignSelf: 'center',
-              textAlign: 'center',
-            }}
-            placeholder={'Password'}
-            value={this.state.password}
-            onChangeText={value => this.handleChange(value, 'password')}
-            secureTextEntry
-          />
-        </View>
+        <TextInput
+          secureTextEntry
+          style={styles.loginInput}
+          placeholder={'Password'}
+          placeholderTextColor={'black'}
+          clearButtonMode={'while-editing'}
+          value={this.state.password}
+          onChangeText={value => this.handleChange(value, 'password')}
+        />
 
-        <View
-          style={{ backgroundColor: 'white', width: 150, marginBottom: 30 }}
-        >
+        <View style={styles.loginButton}>
           <Button
-            color="#8abcdf"
+            color="black"
             title="Login"
             onPress={() => this.onButtonSubmit()}
           />
@@ -166,6 +131,36 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  loginForm: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+    width: '100%',
+    height: '100%',
+  },
+  loginInput: {
+    width: 300,
+    height: 50,
+    color: 'black',
+    padding: 10,
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    marginBottom: 15,
+    borderColor: 'black',
+    borderWidth: 2,
+  },
+  loginButton: {
+    width: 150,
+    marginBottom: 20,
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 2,
+    alignSelf: 'center',
+  },
+});
 
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,

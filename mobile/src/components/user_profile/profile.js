@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image, Button } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-import NavBar from '../../NavBar';
+import NavBar from '../nav_bar/NavBar';
 
 export default class Profile extends React.Component {
   constructor(props) {

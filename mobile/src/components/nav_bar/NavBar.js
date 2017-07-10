@@ -3,7 +3,7 @@ import Tabs from 'react-native-tabs';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View } from 'react-native';
-import { fetchCurrentUser, logoutUser } from './actions/session_actions';
+import { fetchCurrentUser, logoutUser } from '../../actions/session_actions';
 
 class NavBar extends Component {
   constructor(props) {

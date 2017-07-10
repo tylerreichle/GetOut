@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ListView, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import ChatroomIndexItem from './ChatroomIndexItem';
-import NavBar from '../../NavBar';
+import NavBar from '../nav_bar/NavBar';
 
 export default class ChatroomIndex extends React.Component {
   constructor(props) {

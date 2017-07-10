@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import { AsyncStorage, Text, View, ListView, TouchableHighlight, Image, StyleSheet, Dimensions } from 'react-native';
-import NavBar from '../../NavBar';
+import NavBar from '../nav_bar/NavBar';
 
 export default class CategoriesIndex extends Component {
   constructor(props) {

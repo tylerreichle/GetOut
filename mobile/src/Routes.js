@@ -14,11 +14,11 @@ import Profile from './components/user_profile/ProfileContainer';
 const Routes = () => (
   <Router sceneStyle={{ backgroundColor: 'white' }}>
     <Scene
+      initial
+      hideNavBar
       key="splash"
       component={Splash}
       title="Welcome"
-      hideNavBar
-      initial
     />
 
     <Scene
@@ -57,10 +57,10 @@ const Routes = () => (
     />
 
     <Scene
+      hideNavBar
       key="Dashboard"
       component={Dashboard}
       title="Dashboard"
-      hideNavBar
     />
 
     <Scene

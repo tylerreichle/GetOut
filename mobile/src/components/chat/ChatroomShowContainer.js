@@ -7,7 +7,6 @@ const mapStateToProps = store => ({
   messages: store.messages,
 });
 
-// fetch all messages on mount
 const mapDispatchToProps = dispatch => ({
   fetchMessages: id => dispatch(fetchMessages(id)),
 });

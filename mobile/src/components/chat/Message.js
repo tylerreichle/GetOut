@@ -11,7 +11,7 @@ const Message = (props) => {
       <Text style={styles.sentMessage}>{body}</Text>
     );
   } else {
-    // render from bubble
+    // render received bubble
     return (
       <Text style={styles.receivedMessage}>{body}</Text>
     );

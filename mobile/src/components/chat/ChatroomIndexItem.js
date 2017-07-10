@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     height: 75,
     padding: 10,
-    // backgroundColor: '#8abcdf',
     borderColor: '#000000',
     borderBottomWidth: 2,
   },

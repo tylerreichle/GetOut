@@ -9,7 +9,6 @@ const mapStateToProps = store => ({
   chatrooms: selectChatrooms(store),
 });
 
-// fetch all messages on mount
 const mapDispatchToProps = dispatch => ({
   fetchCurrentUser: id => dispatch(fetchCurrentUser(id)),
   fetchChatrooms: () => dispatch(fetchChatrooms()),

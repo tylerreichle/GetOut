@@ -8,7 +8,7 @@ const Splash = () => (
     style={styles.backgroundImage}
   >
 
-    <Text style={styles.title}> AdventureTime</Text>
+    <Text style={styles.title}>GetOut</Text>
 
     <View>
       <View style={styles.splashButton}>

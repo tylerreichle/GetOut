@@ -31,7 +31,7 @@ const Routes = () => (
     <Scene
       key="signupForm"
       component={SignUpForm}
-      title="Sign Up"
+      title="Register"
       hideNavBar={false}
     />
 

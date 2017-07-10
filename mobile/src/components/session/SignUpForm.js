@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button, ListView, AsyncStorage } from 'react-native';
+import { View, TextInput, Text, Button, ListView, AsyncStorage, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-
-const Dimensions = require('Dimensions');
 
 export default class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      first_name: '',
-      last_name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       username: '',
       password: '',
@@ -23,7 +21,7 @@ export default class SignUpForm extends Component {
     this.renderRow = this.renderRow.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.onButtonSubmit = this.onButtonSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -37,13 +35,12 @@ export default class SignUpForm extends Component {
     );
   }
 
-  onButtonSubmit() {
-    const { first_name, last_name, email, username,
-      password, latitude, longitude } = this.state;
+  onSubmit() {
+    const { firstName, lastName, email, username, password, latitude, longitude } = this.state;
 
     this.props.signup({
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       email,
       username,
       password,
@@ -124,102 +121,37 @@ export default class SignUpForm extends Component {
 
   render() {
     return (
-      <View
-        linkAction={Actions.signupForm}
-        style={{
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: '#8abcdf',
-          width: Dimensions.get('window').width,
-          height: Dimensions.get('window').height,
-        }}
-      >
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-          }}
-        >
-          <TextInput
-            style={{
-              width: 300,
-              height: 50,
-              alignSelf: 'center',
-              textAlign: 'center',
-            }}
-            id={'first_name'}
-            placeholder={'First Name'}
-            autoCorrect={false}
-            value={this.state.first_name}
-            onChangeText={value => this.handleChange(value, 'first_name')}
-          />
-        </View>
+      <View style={styles.signupContainer}>
+        <TextInput
+          style={styles.signupInput}
+          id={'firstName'}
+          placeholder={'First Name'}
+          autoCorrect={false}
+          value={this.state.firstName}
+          onChangeText={value => this.handleChange(value, 'firstName')}
+        />
 
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-          }}
-        >
-          <TextInput
-            style={{
-              width: 300,
-              height: 50,
-              alignSelf: 'center',
-              textAlign: 'center',
-            }}
-            id={'last_name'}
-            placeholder={'Last Name'}
-            autoCorrect={false}
-            value={this.state.last_name}
-            onChangeText={value => this.handleChange(value, 'last_name')}
-          />
-        </View>
+        <TextInput
+          style={styles.signupInput}
+          id={'lastName'}
+          placeholder={'Last Name'}
+          autoCorrect={false}
+          value={this.state.lastName}
+          onChangeText={value => this.handleChange(value, 'lastName')}
+        />
 
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-          }}
-        >
-          <TextInput
-            style={{
-              width: 300,
-              height: 50,
-              alignSelf: 'center',
-              textAlign: 'center',
-            }}
-            autoCapitalize="none"
-            autoCorrect={false}
-            id={'email'}
-            placeholder={'Email'}
-            value={this.state.email}
-            onChangeText={value => this.handleChange(value, 'email')}
-          />
-        </View>
+        <TextInput
+          style={styles.signupInput}
+          autoCapitalize="none"
+          autoCorrect={false}
+          id={'email'}
+          placeholder={'Email'}
+          value={this.state.email}
+          onChangeText={value => this.handleChange(value, 'email')}
+        />
 
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-          }}
-        >
           <TextInput
-            style={{
-              width: 300,
-              height: 50,
-              alignSelf: 'center',
-              textAlign: 'center',
-            }}
+            style={styles.signupInput}
             id={'username'}
             autoCapitalize="none"
             autoCorrect={false}
@@ -227,43 +159,51 @@ export default class SignUpForm extends Component {
             value={this.state.username}
             onChangeText={value => this.handleChange(value, 'username')}
           />
-        </View>
 
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 300,
-            height: 50,
-            marginBottom: 20,
-          }}
-        >
-          <TextInput
-            style={{
-              width: 300,
-              height: 50,
-              alignSelf: 'center',
-              textAlign: 'center',
-            }}
-            placeholder={'Password'}
-            value={this.state.password}
-            onChangeText={value => this.handleChange(value, 'password')}
-            secureTextEntry
+        <TextInput
+          style={styles.signupInput}
+          placeholder={'Password'}
+          value={this.state.password}
+          onChangeText={value => this.handleChange(value, 'password')}
+          secureTextEntry
+        />
+
+        <View style={styles.signupButton}>
+          <Button
+            color="#8abcdf"
+            title="Sign Up"
+            onPress={() => this.onSubmit()}
           />
+          {this.renderErrors()}
         </View>
-
-        <View
-          style={{ backgroundColor: 'white', width: 150, marginBottom: 20 }}
-        />
-        <Button
-          color="#8abcdf"
-          title="Register"
-          onPress={() => this.onButtonSubmit()}
-        />
-        {this.renderErrors()}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  signupContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#8abcdf',
+    width: '100%',
+    height: '100%',
+  },
+  signupInput: {
+    width: 300,
+    height: 50,
+    alignSelf: 'center',
+    textAlign: 'center',
+    backgroundColor: 'white',
+    marginBottom: 20,
+  },
+  signupButton: {
+    backgroundColor: 'white',
+    width: 150,
+    marginBottom: 20,
+  },
+});
 
 SignUpForm.propTypes = {
   signup: PropTypes.func.isRequired,

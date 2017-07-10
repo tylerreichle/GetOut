@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, TextInput, Text, Button } from 'react-native';
+import { AsyncStorage, View, TextInput, Text, Button, Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
-const Dimensions = require('Dimensions');
-
 export default class LoginForm extends Component {
-
   constructor(props) {
     super(props);
 

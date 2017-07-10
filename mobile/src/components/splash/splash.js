@@ -1,75 +1,68 @@
 import React from 'react';
-import { View, Text, Button, Image } from 'react-native';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const Dimensions = require('Dimensions');
-
 const Splash = () => (
-  <View
-    style={{
-      flex: 1,
-      flexDirection: 'column',
-      paddingTop: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}
-    linkAction={Actions.splash}
+  <Image
+    source={require('../../images/splash.jpg')}
+    style={styles.backgroundImage}
   >
-    <Image
-      source={require('../../images/splash_background.png')}
-      style={{
-        flex: 2,
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-      }}
-    >
-      <View
-        style={{
-          flex: 3,
-          flexDirection: 'column',
-          alignItems: 'center',
-          backgroundColor: 'transparent',
-        }}
-      >
-        <Text
-          style={{
-            marginTop: 30,
-            marginBottom: 360,
-            fontSize: 32,
-            fontWeight: 'bold',
-            color: 'black',
-            opacity: 0.6,
-          }}
-        >AfternoonDelight</Text>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 150,
-            marginTop: 80,
-          }}
-        >
-          <Button
-            onPress={() => Actions.signupForm()}
-            title="Sign Up"
-            color="#8abcdf"
-          />
-        </View>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: 150,
-            marginTop: 30,
-          }}
-        >
-          <Button
-            onPress={() => Actions.loginForm()}
-            title="Login"
-            color="#8abcdf"
-          />
-        </View>
+
+    <Text style={styles.title}> AdventureTime</Text>
+
+    <View>
+      <View style={styles.splashButton}>
+        <Button
+          onPress={() => Actions.signupForm()}
+          title="Sign Up"
+          color="white"
+        />
       </View>
-    </Image>
-  </View>
+
+      <View style={styles.splashButton}>
+        <Button
+          onPress={() => Actions.loginForm()}
+          title="Login"
+          color="white"
+        />
+      </View>
+    </View>
+
+    <Text style={styles.subtitle}>Discover your next adventure now</Text>
+  </Image>
 );
+
+const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: 'auto',
+    height: 'auto',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  title: {
+    marginTop: 50,
+    padding: 5,
+    fontSize: 32,
+    color: 'black',
+    backgroundColor: 'transparent',
+  },
+  subtitle: {
+    marginBottom: 20,
+    padding: 5,
+    fontSize: 24,
+    color: 'black',
+    backgroundColor: 'transparent',
+  },
+  splashButton: {
+    minWidth: 200,
+    margin: 5,
+    backgroundColor: 'black',
+    borderColor: '#ffffff',
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+});
 
 export default Splash;

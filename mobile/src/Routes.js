@@ -22,21 +22,21 @@ const Routes = () => (
     />
 
     <Scene
-      key="loginForm"
+      key="LoginForm"
       component={LoginForm}
       title="Login"
       hideNavBar={false}
     />
 
     <Scene
-      key="signupForm"
+      key="SignupForm"
       component={SignUpForm}
       title="Register"
       hideNavBar={false}
     />
 
     <Scene
-      key="categoriesIndex"
+      key="CategoriesIndex"
       component={CategoriesIndex}
       title="Categories Index"
       hideNavBar

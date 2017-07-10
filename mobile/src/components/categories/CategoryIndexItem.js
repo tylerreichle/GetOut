@@ -3,7 +3,7 @@ import { Text, View, ListView, TouchableHighlight, Image, StyleSheet } from 'rea
 import geolib from 'geolib';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
-import NavBar from '../nav_bar/NavBar';
+import NavBar from '../nav_bar/NavBarContainer';
 
 class CategoriesIndexItem extends Component {
   constructor(props) {

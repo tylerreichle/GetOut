@@ -13,7 +13,7 @@ const Splash = () => (
     <View>
       <View style={styles.splashButton}>
         <Button
-          onPress={() => Actions.signupForm()}
+          onPress={() => Actions.SignupForm()}
           title="Sign Up"
           color="white"
         />
@@ -21,7 +21,7 @@ const Splash = () => (
 
       <View style={styles.splashButton}>
         <Button
-          onPress={() => Actions.loginForm()}
+          onPress={() => Actions.LoginForm()}
           title="Login"
           color="white"
         />

@@ -15,7 +15,7 @@ export default class LoginForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.onButtonSubmit = this.onButtonSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -27,15 +27,6 @@ export default class LoginForm extends Component {
         });
       },
     );
-  }
-
-  onButtonSubmit() {
-    const { username, password, latitude, longitude } = this.state;
-    this.props.login({ username, password, latitude, longitude });
-
-    setTimeout(() => {
-      this.getToken();
-    }, 300);
   }
 
   async getToken() {
@@ -60,7 +51,7 @@ export default class LoginForm extends Component {
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         const currentUserID = await AsyncStorage.getItem('id');
-        Actions.categoriesIndex(currentUserID);
+        Actions.CategoriesIndex(currentUserID);
       } else {
         const error = res;
         throw error;
@@ -70,6 +61,15 @@ export default class LoginForm extends Component {
     }
   }
 
+  handleSubmit() {
+    const { username, password, latitude, longitude } = this.state;
+
+    this.props.login({ username, password, latitude, longitude });
+
+    setTimeout(() => {
+      this.getToken();
+    }, 300);
+  }
 
   handleChange(value, name) {
     const newState = {};
@@ -123,7 +123,7 @@ export default class LoginForm extends Component {
           <Button
             color="black"
             title="Login"
-            onPress={() => this.onButtonSubmit()}
+            onPress={() => this.handleSubmit()}
           />
         </View>
         {this.renderError()}

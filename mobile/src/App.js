@@ -37,7 +37,7 @@ export default class App extends Component {
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         const currentUserID = await this.props.storage.getItem('id');
-        Actions.categoriesIndex(currentUserID);
+        Actions.CategoriesIndex(currentUserID);
       } else {
         const error = res;
         throw error;

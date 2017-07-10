@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Text, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-import NavBar from '../nav_bar/NavBar';
+import NavBar from '../nav_bar/NavBarContainer';
 
 const mapStateToProps = state => ({
   currentUser: state.session,

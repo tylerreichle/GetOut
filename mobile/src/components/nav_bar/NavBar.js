@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Tabs from 'react-native-tabs';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Text, View } from 'react-native';
-import { fetchCurrentUser, logoutUser } from '../../actions/session_actions';
 
-class NavBar extends Component {
+export default class NavBar extends Component {
   constructor(props) {
     super(props);
 
@@ -17,39 +16,28 @@ class NavBar extends Component {
       <View style={styles.container}>
         <Tabs
           selected={this.state.page}
-          style={{ backgroundColor: '#8abcdf' }}
-          selectedStyle={{ color: '#26628c' }}
+          style={{ backgroundColor: 'grey' }}
+          selectedStyle={{ color: 'black' }}
           selectedIconStyle={{ borderTopWidth: 2, borderTopColor: '#26628c' }}
-          onSelect={(el) => {
-            this.setState({ page: el.props.name });
-          }}
+          onSelect={(el) => { this.setState({ page: el.props.name }); }}
         >
 
           <Text
-            name="categoriesIndex"
-            onPress={() => Actions.categoriesIndex()}
-            style={{
-              color: 'white',
-              fontSize: 16,
-            }}
+            name="CategoriesIndex"
+            onPress={() => Actions.CategoriesIndex()}
+            style={styles.button}
           >Home</Text>
 
           <Text
             name="ChatroomIndex"
             onPress={() => Actions.ChatroomIndex()}
-            style={{
-              color: 'white',
-              fontSize: 16,
-            }}
+            style={styles.button}
           >Messages</Text>
 
           <Text
-            name="LogOut"
+            name="Logout"
             onPress={this.props.logout}
-            style={{
-              color: 'white',
-              fontSize: 16,
-            }}
+            style={styles.button}
           >Log Out</Text>
 
         </Tabs>
@@ -62,30 +50,15 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+  button: {
     margin: 10,
-  },
-  instructions: {
+    color: 'white',
+    fontSize: 16,
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
 
-const mapStateToProps = state => ({
-  currentUser: state.session,
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchCurrentUser: id => dispatch(fetchCurrentUser(id)),
-  logout: () => dispatch(logoutUser()),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(NavBar);
+NavBar.propTypes = {
+  logout: PropTypes.func.isRequired,
+};

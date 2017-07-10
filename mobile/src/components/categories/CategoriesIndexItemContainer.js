@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => ({
   categories: state.categories,
   category: state.category,
   currentUser: state.session,
-  category_id: ownProps.data,
+  categoryId: ownProps.data,
 });
 
 const mapDispatchToProps = dispatch => ({

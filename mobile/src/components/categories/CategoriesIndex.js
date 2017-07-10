@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
 });
 
 CategoriesIndex.propTypes = {
-  data: PropTypes.number.isRequired,
+  data: PropTypes.string.isRequired,
   logout: PropTypes.func.isRequired,
   fetchCurrentUser: PropTypes.func.isRequired,
   requestCategories: PropTypes.func.isRequired,

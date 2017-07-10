@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-import { AsyncStorage, Text, View, ListView, TouchableHighlight, Image, StyleSheet, Dimensions } from 'react-native';
+import { AsyncStorage, View, ListView, TouchableHighlight, Image, StyleSheet } from 'react-native';
 import NavBar from '../nav_bar/NavBar';
 
 export default class CategoriesIndex extends Component {
@@ -31,12 +31,7 @@ export default class CategoriesIndex extends Component {
     const categories = this.ds.cloneWithRows(this.props.categories);
 
     return (
-      <View
-        linkAction={Actions.categoriesIndex}
-        style={styles.categoriesIndex}
-      >
-        <Text style={styles.categoriesHeader}>Categories</Text>
-
+      <View style={styles.categoriesIndex}>
         <ListView
           dataSource={categories}
           enableEmptySections
@@ -60,26 +55,22 @@ const styles = StyleSheet.create({
   categoriesIndex: {
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
   categoriesHeader: {
-    backgroundColor: '#8abcdf',
-    width: Dimensions.get('window').width,
-    padding: 10,
     flexDirection: 'column',
-    color: 'white',
-    fontSize: 36,
-    fontWeight: 'bold',
-    textAlign: 'center',
     marginTop: 20,
-    marginBottom: 20,
+    padding: 10,
+    width: '100%',
+    color: 'black',
+    backgroundColor: 'grey',
+    fontSize: 36,
   },
   categoriesItem: {
-    width: 300,
-    height: 50,
-    marginBottom: 20,
+    width: '100%',
+    height: 125,
     alignSelf: 'center',
+    borderColor: 'black',
+    borderWidth: 1,
   },
 });
 

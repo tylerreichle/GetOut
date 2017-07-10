@@ -56,8 +56,7 @@ class CategoriesIndexItem extends Component {
           linkAction={Actions.CategoriesIndexItem}
           style={styles.categoryIndex}
         >
-          <Text style={styles.categoryTitle}
-          >{this.props.category.title}</Text>
+          <Text style={styles.categoryTitle}>{this.props.category.title}</Text>
 
           <ListView
             dataSource={users}
@@ -132,6 +131,7 @@ CategoriesIndexItem.propTypes = {
   category: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
+    users: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
 };
 

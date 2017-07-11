@@ -84,13 +84,12 @@ class CategoriesIndexItem extends Component {
           <NavBar />
         </View>
       );
-    } else {
-      return (
-        <View>
-          <Text>Hi</Text>
-        </View>
-      );
     }
+    return (
+      <View>
+        <Text>Hi</Text>
+      </View>
+    );
   }
 }
 

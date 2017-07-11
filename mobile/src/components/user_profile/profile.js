@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, Image, Button } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import NavBar from '../nav_bar/NavBarContainer';
 
@@ -26,14 +25,11 @@ export default class Profile extends React.Component {
     const { user } = this.props;
 
     return (
-      <View
-        linkAction={Actions.Profile}
-        style={styles.viewStyle}
-      >
+      <View style={styles.viewStyle}>
         <View style={styles.containerStyle}>
 
           <Image
-            style={{ width: 200, height: 200 }}
+            style={styles.profilePic}
             source={{ uri: `${user.img_url}` }}
           />
 
@@ -78,41 +74,48 @@ Profile.defaultProps = {
 
 const styles = {
   viewStyle: {
-    justifyContent: 'space-between',
     flex: 1,
+    justifyContent: 'space-between',
   },
   containerStyle: {
+    flex: 1,
+    justifyContent: 'flex-start',
     marginTop: 50,
     padding: 20,
     alignItems: 'center',
   },
+  profilePic: {
+    borderRadius: 75,
+    width: 150,
+    height: 150,
+    marginTop: 10,
+    marginBottom: 10,
+  },
   username: {
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#26628c',
-    margin: 10,
   },
   location: {
     fontSize: 16,
-    margin: 10,
   },
   descriptionContainer: {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 30,
   },
   aboutMe: {
     fontSize: 18,
-    margin: 10,
+    fontWeight: 'bold',
+    margin: 5,
   },
   description: {
     fontSize: 16,
-    margin: 10,
+    margin: 5,
   },
   chatButton: {
     margin: 10,
-    backgroundColor: '#8abcdf',
-    borderRadius: 10,
+    backgroundColor: 'black',
   },
   background: {
     flex: 1,

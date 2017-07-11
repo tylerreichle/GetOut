@@ -42,7 +42,7 @@ class CategoriesIndexItem extends Component {
         longitude: rowData.longitude,
       }, 10);
 
-    const miles = geolib.convertUnit('mi', distance, 2);
+    const miles = geolib.convertUnit('mi', distance, 1);
 
     return miles;
   }
@@ -69,14 +69,15 @@ class CategoriesIndexItem extends Component {
                 onPress={val => this.onPressButton(val, rowData.id, this.getDistance(rowData))}
               >
                 <View style={styles.userDetail}>
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={{ uri: `${rowData.img_url}` }}
-                  />
+                  <View style={styles.leftSide}>
+                    <Image
+                      style={styles.profilePic}
+                      source={{ uri: `${rowData.img_url}` }}
+                    />
 
-                  <Text>{this.getDistance(rowData)} mi. away</Text>
-                  <Text>{rowData.username}</Text>
-
+                    <Text style={styles.username}>{rowData.username}</Text>
+                  </View>
+                  <Text style={styles.distance}>{this.getDistance(rowData)} mi. away</Text>
                 </View>
               </TouchableHighlight>
             )}
@@ -85,35 +86,51 @@ class CategoriesIndexItem extends Component {
         </View>
       );
     }
-    return (
-      <View>
-        <Text>Hi</Text>
-      </View>
-    );
+    return (<View />); // loading
   }
 }
 
 const styles = StyleSheet.create({
   categoryIndex: {
-    marginTop: 63,
     flex: 1,
+    marginTop: 60,
   },
   categoryTitle: {
     fontSize: 24,
+    fontWeight: 'bold',
     color: 'white',
-    backgroundColor: '#8abcdf',
+    backgroundColor: 'grey',
     padding: 15,
     textAlign: 'center',
   },
   user: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#8abcdf',
+    borderBottomWidth: 2,
+    borderBottomColor: 'black',
+  },
+  leftSide: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   userDetail: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  profilePic: {
+    width: 50,
+    height: 50,
+    margin: 15,
+    borderRadius: 25,
+  },
+  username: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  distance: {
+    marginRight: 10,
+    textAlign: 'right',
   },
 });
 

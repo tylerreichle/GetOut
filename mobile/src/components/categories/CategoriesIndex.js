@@ -9,7 +9,10 @@ export default class CategoriesIndex extends Component {
     super(props);
 
     const currentUserID = parseInt(this.props.data, 10);
-    this.props.fetchCurrentUser(currentUserID);
+
+    if (currentUserID) {
+      this.props.fetchCurrentUser(currentUserID);
+    }
     this.props.requestCategories();
 
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -75,8 +78,12 @@ const styles = StyleSheet.create({
 });
 
 CategoriesIndex.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.string,
   fetchCurrentUser: PropTypes.func.isRequired,
   requestCategories: PropTypes.func.isRequired,
   categories: PropTypes.objectOf(PropTypes.object).isRequired,
+};
+
+CategoriesIndex.defaultProps = {
+  data: '',
 };

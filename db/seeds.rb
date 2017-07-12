@@ -237,13 +237,13 @@ yong = User.create(
 
 Category.destroy_all
 
-tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499830826/tech.jpg')
-movies = Category.create(title: 'Movies & TV', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/movies_tv_vddkul.png')
-music = Category.create(title: 'Music', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/music_ryngux.png')
-sports = Category.create(title: 'Sports', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/sports_z51wqc.png')
-food = Category.create(title: 'Food', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/food_etzz7k.png')
-travel = Category.create(title: 'Travel', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/travel_am4tsn.png')
-art = Category.create(title: 'Art', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/art_xzcjyz.png')
+tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499840647/tech_qllksg.jpg')
+movies = Category.create(title: 'Movies & TV', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499842570/movies.jpg')
+music = Category.create(title: 'Music', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499843574/music2.jpg')
+sports = Category.create(title: 'Sports', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499844443/sports.jpg')
+food = Category.create(title: 'Food', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499845157/food.jpg')
+travel = Category.create(title: 'Travel', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499846054/travel.jpg')
+art = Category.create(title: 'Art', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499848439/art.jpg')
 
 UserCategory.destroy_all
 

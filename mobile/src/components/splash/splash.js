@@ -8,14 +8,14 @@ const Splash = () => (
     style={styles.backgroundImage}
   >
 
-    <Text style={styles.title}>GetOut</Text>
+    <Text style={styles.title}>AppName</Text>
 
     <View>
       <View style={styles.splashButton}>
         <Button
           onPress={() => Actions.SignupForm()}
           title="Sign Up"
-          color="white"
+          color="#F9F2E7"
         />
       </View>
 
@@ -23,12 +23,12 @@ const Splash = () => (
         <Button
           onPress={() => Actions.LoginForm()}
           title="Login"
-          color="white"
+          color="#F9F2E7"
         />
       </View>
     </View>
 
-    <Text style={styles.subtitle}>Discover your next adventure now</Text>
+    <Text style={styles.subtitle} />
   </Image>
 );
 
@@ -44,23 +44,24 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 50,
     padding: 5,
-    fontSize: 32,
-    color: 'black',
+    fontSize: 52,
+    fontWeight: 'bold',
+    color: '#FF4242',
     backgroundColor: 'transparent',
   },
   subtitle: {
     marginBottom: 20,
     padding: 5,
     fontSize: 24,
-    color: 'black',
+    color: '#00A8C6',
     backgroundColor: 'transparent',
   },
   splashButton: {
     minWidth: 200,
     margin: 5,
-    backgroundColor: 'black',
-    borderColor: '#ffffff',
-    borderWidth: 2,
+    backgroundColor: '#FF4242',
+    borderColor: '#FF4242',
+    borderWidth: 3,
     borderRadius: 5,
   },
 });

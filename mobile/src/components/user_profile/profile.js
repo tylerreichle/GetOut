@@ -76,6 +76,7 @@ const styles = {
   viewStyle: {
     flex: 1,
     justifyContent: 'space-between',
+    backgroundColor: '#F0F2EB',
   },
   containerStyle: {
     flex: 1,
@@ -92,6 +93,7 @@ const styles = {
     marginBottom: 10,
   },
   username: {
+    color: '#FF4242',
     fontSize: 26,
     fontWeight: 'bold',
   },
@@ -115,7 +117,10 @@ const styles = {
   },
   chatButton: {
     margin: 10,
-    backgroundColor: 'black',
+    backgroundColor: '#FF4242',
+    borderColor: '#FF4242',
+    borderWidth: 3,
+    borderRadius: 5,
   },
   background: {
     flex: 1,

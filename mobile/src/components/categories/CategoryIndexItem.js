@@ -52,11 +52,10 @@ class CategoriesIndexItem extends Component {
       const users = this.ds.cloneWithRows(this.props.category.users);
 
       return (
-        <View
-          linkAction={Actions.CategoriesIndexItem}
-          style={styles.categoryIndex}
-        >
-          <Text style={styles.categoryTitle}>{this.props.category.title}</Text>
+        <View style={styles.categoryIndex}>
+          <View style={styles.header}>
+            <Text style={styles.categoryTitle}>{this.props.category.title}</Text>
+          </View>
 
           <ListView
             style={styles.userList}
@@ -96,11 +95,16 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 60,
   },
+  header: {
+    borderBottomWidth: 2,
+    borderBottomColor: '#000000',
+  },
   categoryTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white',
-    backgroundColor: 'grey',
+    color: '#F0F2EB',
+    backgroundColor: '#FF4242',
+    opacity: 0.8,
     padding: 15,
     textAlign: 'center',
   },
@@ -108,8 +112,9 @@ const styles = StyleSheet.create({
     marginBottom: 45,
   },
   user: {
+    backgroundColor: '#F0F2EB',
     borderBottomWidth: 2,
-    borderBottomColor: 'black',
+    borderBottomColor: '#000000',
   },
   leftSide: {
     flex: 1,

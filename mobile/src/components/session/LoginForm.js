@@ -121,7 +121,7 @@ export default class LoginForm extends Component {
 
         <View style={styles.loginButton}>
           <Button
-            color="black"
+            color="#ffffff"
             title="Login"
             onPress={() => this.handleSubmit()}
           />
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: '#F0F2EB',
     width: '100%',
     height: '100%',
   },
@@ -147,18 +147,20 @@ const styles = StyleSheet.create({
     color: 'black',
     padding: 10,
     alignSelf: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#F0F2EB',
     marginBottom: 15,
-    borderColor: 'black',
+    borderColor: '#FF4242',
     borderWidth: 2,
+    borderRadius: 5,
   },
   loginButton: {
     width: 150,
     marginBottom: 20,
-    backgroundColor: 'white',
-    borderColor: 'black',
-    borderWidth: 2,
     alignSelf: 'center',
+    backgroundColor: '#FF4242',
+    borderColor: '#FF4242',
+    borderWidth: 3,
+    borderRadius: 5,
   },
 });
 

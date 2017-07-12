@@ -60,15 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  categoriesHeader: {
-    flexDirection: 'column',
-    marginTop: 20,
-    padding: 10,
-    width: '100%',
-    color: 'black',
-    backgroundColor: 'grey',
-    fontSize: 36,
-  },
   categoriesList: {
     marginBottom: 50,
   },
@@ -76,7 +67,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 125,
     alignSelf: 'center',
-    borderColor: 'black',
+    borderColor: '#000000',
     borderWidth: 1,
   },
 });

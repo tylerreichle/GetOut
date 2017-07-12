@@ -38,21 +38,18 @@ const Routes = () => (
     <Scene
       key="CategoriesIndex"
       component={CategoriesIndex}
-      title="Categories Index"
       hideNavBar
     />
 
     <Scene
       key="CategoriesIndexItem"
       component={CategoriesIndexItem}
-      title="Similar interests..."
       hideNavBar={false}
     />
 
     <Scene
       key="Profile"
       component={Profile}
-      title="Profile"
       hideNavBar={false}
     />
 
@@ -60,20 +57,17 @@ const Routes = () => (
       hideNavBar
       key="Dashboard"
       component={Dashboard}
-      title="Dashboard"
     />
 
     <Scene
       key="ChatroomIndex"
       component={ChatroomIndex}
-      title="Messages"
       hideNavBar={false}
     />
 
     <Scene
       key="ChatroomShow"
       component={ChatroomShow}
-      title="Chat"
       hideNavBar={false}
     />
   </Router>

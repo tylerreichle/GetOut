@@ -6,10 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const NavBar = props => (
   <View style={styles.container}>
-    <Tabs
-      selected={''}
-      style={{ backgroundColor: 'grey' }}
-    >
+    <Tabs style={styles.navBar}>
 
       <Text
         name="CategoriesIndex"
@@ -37,10 +34,15 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    borderTopColor: '#000000',
+    borderTopWidth: 2,
+  },
+  navBar: {
+    backgroundColor: '#FF4242',
   },
   button: {
     margin: 10,
-    color: 'white',
+    color: '#F0F2EB',
     fontSize: 20,
     textAlign: 'center',
   },

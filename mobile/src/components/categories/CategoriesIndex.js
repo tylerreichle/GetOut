@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
-import { AsyncStorage, View, ListView, TouchableHighlight, Image, StyleSheet } from 'react-native';
+import { AsyncStorage, View, ListView, TouchableHighlight, Text, Image, StyleSheet } from 'react-native';
 import NavBar from '../nav_bar/NavBarContainer';
 
 export default class CategoriesIndex extends Component {
@@ -36,15 +36,16 @@ export default class CategoriesIndex extends Component {
     return (
       <View style={styles.categoriesIndex}>
         <ListView
+          enableEmptySections
           style={styles.categoriesList}
           dataSource={categories}
-          enableEmptySections
-          renderRow={rowData => (
-            <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
-              <Image
-                style={styles.categoriesItem}
-                source={{ uri: `${rowData.img_url}` }}
-              />
+          renderRow={category => (
+            <TouchableHighlight onPress={val => this.handlePress(val, category.id)}>
+              <View style={styles.categoriesItem}>
+                <Image source={{ uri: `${category.img_url}` }} style={styles.categoryPic}>
+                  <Text style={styles.categoryTitle}>{category.title}</Text>
+                </Image>
+              </View>
             </TouchableHighlight>
           )}
         />
@@ -62,6 +63,21 @@ const styles = StyleSheet.create({
   },
   categoriesList: {
     marginBottom: 50,
+  },
+  categoryPic: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    width: null,
+    height: null,
+    opacity: 0.9,
+  },
+  categoryTitle: {
+    fontSize: 42,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    // alignSelf: 'center',
+    marginLeft: 10,
+    marginBottom: 5,
   },
   categoriesItem: {
     width: '100%',

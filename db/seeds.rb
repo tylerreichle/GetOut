@@ -79,18 +79,6 @@ brandon = User.create(
     description: "I'm currently pursuing a career as a software engineer. I'm an easy-going person and patient communicator who loves learning and building things."
 )
 
-brandon = User.create(
-    username: 'btat',
-    first_name: 'Brandon',
-    last_name: 'Tat',
-    email: 'btat@email.com',
-    password: 'password',
-    img_url: 'https://avatars1.githubusercontent.com/u/26292622?v=3&s=400',
-    latitude: 37.745200,
-    longitude: -122.490091,
-    description: "I'm currently pursuing a career as a software engineer. I'm an easy-going person and patient communicator who loves learning and building things."
-)
-
 dave = User.create(
     username: 'ddobrynin',
     first_name: 'Dave',
@@ -249,7 +237,7 @@ yong = User.create(
 
 Category.destroy_all
 
-tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497223490/tech_grpthk.png')
+tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499830826/tech.jpg')
 movies = Category.create(title: 'Movies & TV', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/movies_tv_vddkul.png')
 music = Category.create(title: 'Music', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/music_ryngux.png')
 sports = Category.create(title: 'Sports', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/sports_z51wqc.png')

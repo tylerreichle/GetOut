@@ -36,6 +36,7 @@ export default class CategoriesIndex extends Component {
     return (
       <View style={styles.categoriesIndex}>
         <ListView
+          style={styles.categoriesList}
           dataSource={categories}
           enableEmptySections
           renderRow={rowData => (
@@ -67,6 +68,9 @@ const styles = StyleSheet.create({
     color: 'black',
     backgroundColor: 'grey',
     fontSize: 36,
+  },
+  categoriesList: {
+    marginBottom: 50,
   },
   categoriesItem: {
     width: '100%',

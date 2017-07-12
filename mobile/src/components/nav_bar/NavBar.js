@@ -9,8 +9,6 @@ const NavBar = props => (
     <Tabs
       selected={''}
       style={{ backgroundColor: 'grey' }}
-      selectedStyle={{}}
-      selectedIconStyle={{}}
     >
 
       <Text

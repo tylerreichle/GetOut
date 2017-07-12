@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: 'bold',
     color: 'white',
-    marginLeft: 10,
+    marginLeft: 15,
     marginBottom: 5,
     textShadowColor: 'black',
     textShadowOffset: { width: 3, height: 3 },

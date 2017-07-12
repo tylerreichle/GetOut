@@ -96,6 +96,8 @@ export default class LoginForm extends Component {
   render() {
     return (
       <View style={styles.loginForm}>
+        <Text style={styles.header}>Login to Your Account</Text>
+
         <TextInput
           autoFocus
           style={styles.loginInput}
@@ -137,9 +139,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#F0F2EB',
     width: '100%',
     height: '100%',
+  },
+  header: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 50,
   },
   loginInput: {
     width: 300,

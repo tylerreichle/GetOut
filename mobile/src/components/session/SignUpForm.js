@@ -122,6 +122,8 @@ export default class SignUpForm extends Component {
   render() {
     return (
       <View style={styles.signupForm}>
+        <Text style={styles.header}>Create a New Account</Text>
+
         <TextInput
           style={styles.signupInput}
           id={'firstName'}
@@ -205,9 +207,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#F0F2EB',
     width: '100%',
     height: '100%',
+  },
+  header: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 50,
   },
   signupInput: {
     width: 300,

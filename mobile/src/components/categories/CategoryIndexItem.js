@@ -59,6 +59,7 @@ class CategoriesIndexItem extends Component {
           <Text style={styles.categoryTitle}>{this.props.category.title}</Text>
 
           <ListView
+            style={styles.userList}
             dataSource={users}
             enableEmptySections
             renderRow={rowData => (
@@ -102,6 +103,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
     padding: 15,
     textAlign: 'center',
+  },
+  userList: {
+    marginBottom: 45,
   },
   user: {
     borderBottomWidth: 2,

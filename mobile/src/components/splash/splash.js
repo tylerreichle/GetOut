@@ -3,10 +3,7 @@ import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 const Splash = () => (
-  <Image
-    source={require('../../images/splash.jpg')}
-    style={styles.backgroundImage}
-  >
+  <Image source={require('../../images/splash.jpg')} style={styles.backgroundImage}>
 
     <Text style={styles.title}>AppName</Text>
 
@@ -35,8 +32,8 @@ const Splash = () => (
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    width: 'auto',
-    height: 'auto',
+    width: '100%',
+    height: '100%',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -48,6 +45,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FF4242',
     backgroundColor: 'transparent',
+    textShadowColor: 'black',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
   },
   subtitle: {
     marginBottom: 20,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     minWidth: 200,
     margin: 5,
     backgroundColor: '#FF4242',
-    borderColor: '#FF4242',
+    borderColor: '#000000',
     borderWidth: 3,
     borderRadius: 5,
   },

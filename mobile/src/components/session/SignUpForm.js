@@ -107,7 +107,7 @@ export default class SignUpForm extends Component {
     if (this.props.errors.length > 0) {
       const errors = this.ds.cloneWithRows(this.props.errors);
       return (
-        <View>
+        <View style={styles.errors}>
           <ListView
             dataSource={errors}
             enableEmptySections

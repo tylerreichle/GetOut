@@ -21,8 +21,8 @@ export default class ChatroomIndex extends React.Component {
     return (
       <View style={styles.chatroomIndex}>
         <ListView
-          dataSource={chatrooms}
           enableEmptySections
+          dataSource={chatrooms}
           renderRow={chatroom => <ChatroomIndexItem chatroom={chatroom} />}
         />
         <NavBar />

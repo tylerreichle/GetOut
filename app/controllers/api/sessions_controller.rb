@@ -9,13 +9,13 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render "api/users/show"
     else
-      render json: ["Invalid username and/or password"], status: 422 #unprocessable identity
+      render json: ["Invalid username and/or password"], status: 422
     end
   end
 
   def destroy
     logout
-    render "api/users/show"
+    render json: {}
   end
 
   def verify_session_token

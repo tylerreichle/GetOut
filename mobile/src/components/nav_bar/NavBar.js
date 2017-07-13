@@ -9,19 +9,16 @@ const NavBar = props => (
     <Tabs style={styles.navBar}>
 
       <Text
-        name="CategoriesIndex"
         onPress={() => { Actions.CategoriesIndex(); }}
         style={styles.button}
       >Interests</Text>
 
       <Text
-        name="ChatroomIndex"
         onPress={() => { Actions.ChatroomIndex(); }}
         style={styles.button}
       >Messages</Text>
 
       <Text
-        name="Logout"
         onPress={props.logout}
         style={styles.button}
       >Log Out</Text>
@@ -42,9 +39,13 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 10,
-    color: '#F0F2EB',
+    color: '#FFFFFF',
     fontSize: 20,
+    fontWeight: 'bold',
     textAlign: 'center',
+    textShadowColor: 'black',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1,
   },
 });
 

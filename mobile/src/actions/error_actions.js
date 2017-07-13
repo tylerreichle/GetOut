@@ -3,9 +3,9 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
-  errors
+  errors,
 });
 
 export const clearErrors = () => ({
-  type: CLEAR_ERRORS
+  type: CLEAR_ERRORS,
 });

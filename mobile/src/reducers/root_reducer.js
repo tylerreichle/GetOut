@@ -16,7 +16,7 @@ const RootReducer = combineReducers({
   category: categoryReducer,
   chatrooms: chatroomsRecuder,
   chatroom: chatroomDetailReducer,
-  messages: messagesReducer
+  messages: messagesReducer,
 });
 
 export default RootReducer;

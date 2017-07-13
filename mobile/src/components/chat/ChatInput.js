@@ -7,7 +7,7 @@ export default class ChatInput extends React.Component {
     super(props);
 
     this.state = {
-      body: ''
+      body: '',
     };
 
     this.sendMessage = this.sendMessage.bind(this);
@@ -17,7 +17,7 @@ export default class ChatInput extends React.Component {
     const { chatroomID, createMessage } = this.props;
     const message = {
       body: this.state.body,
-      chatroom_id: chatroomID
+      chatroom_id: chatroomID,
     };
     this.setState({ body: '' });
     createMessage(message);
@@ -38,17 +38,18 @@ export default class ChatInput extends React.Component {
     );
   }
 }
+
 ChatInput.propTypes = {
   chatroomID: PropTypes.number.isRequired,
-  createMessage: PropTypes.func.isRequired
+  createMessage: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
   textInput: {
-    flex: .5,
+    flex: 0.5,
     color: '#000000',
     maxHeight: 50,
     margin: 5,
-    padding: 5
+    padding: 5,
   },
 });

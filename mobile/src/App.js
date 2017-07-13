@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Routes from './Routes';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-
-    console.disableYellowBox = true;
 
     this.getToken = this.getToken.bind(this);
     this.verifyToken = this.verifyToken.bind(this);
@@ -19,15 +17,15 @@ export default class App extends Component {
 
   async getToken() {
     try {
-      let sessionToken = await this.props.storage.getItem('sessionToken');
+      const sessionToken = await this.props.storage.getItem('sessionToken');
 
       if (!sessionToken) {
-        console.log("Token not set");
+        console.log('Token not set');
       } else {
-        this.verifyToken(sessionToken)
+        this.verifyToken(sessionToken);
       }
     } catch (error) {
-      console.log("Error finding token");
+      console.log('Error finding token');
     }
   }
 
@@ -35,24 +33,24 @@ export default class App extends Component {
     const sessionToken = token;
 
     try {
-      const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
+      const response = await fetch(`http://localhost:3000/api/verify?session%5Bsession_token%5D=${sessionToken}`);
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
-        currentUserID = await this.props.storage.getItem('id');
-        Actions.categoriesIndex(currentUserID);
+        const currentUserID = await this.props.storage.getItem('id');
+        Actions.CategoriesIndex(currentUserID);
       } else {
         const error = res;
         throw error;
       }
     } catch (error) {
-      console.log("Error: " + error);
+      console.log(`Error: ${error}`);
     }
   }
 
   render() {
     return (
       <View style={styles.viewStyle}>
-        < Routes />
+        <Routes />
       </View>
     );
   }
@@ -61,6 +59,6 @@ export default class App extends Component {
 const styles = {
   viewStyle: {
     flex: 1,
-    backgroundColor: '#FFFFFF'
-  }
+    backgroundColor: '#FFFFFF',
+  },
 };

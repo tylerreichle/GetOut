@@ -1,15 +1,14 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_NULL_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, RECEIVE_NULL_USER } from '../actions/session_actions';
 
 const nullUser = {
   currentUser: null,
-  errors: []
+  errors: [],
 };
 
 const sessionReducer = (state = nullUser, action) => {
   Object.freeze(state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return action.currentUser;
 

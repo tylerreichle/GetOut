@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button } from 'react-native';
+import { AsyncStorage, View, TextInput, Text, Button, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { AsyncStorage } from 'react-native';
-
-const Dimensions = require('Dimensions');
-const window = Dimensions.get('window');
+import PropTypes from 'prop-types';
 
 export default class LoginForm extends Component {
-
   constructor(props) {
     super(props);
+
     this.state = {
       username: '',
       password: '',
       latitude: null,
-      longitude: null
+      longitude: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.onButtonSubmit = this.onButtonSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -26,14 +23,47 @@ export default class LoginForm extends Component {
       (position) => {
         this.setState({
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          longitude: position.coords.longitude,
         });
-      }
+      },
     );
   }
 
-  onButtonSubmit() {
+  async getToken() {
+    try {
+      const sessionToken = await AsyncStorage.getItem('sessionToken');
+
+      if (!sessionToken) {
+        console.log('Session token not set');
+      } else {
+        this.verifyToken(sessionToken);
+      }
+    } catch (error) {
+      console.log('Error getting session token');
+    }
+  }
+
+  async verifyToken(token) {
+    const sessionToken = token;
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/verify?session%5Bsession_token%5D=${sessionToken}`);
+      const res = await response.text();
+      if (response.status >= 200 && response.status < 300) {
+        const currentUserID = await AsyncStorage.getItem('id');
+        Actions.CategoriesIndex(currentUserID);
+      } else {
+        const error = res;
+        throw error;
+      }
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+  }
+
+  handleSubmit() {
     const { username, password, latitude, longitude } = this.state;
+
     this.props.login({ username, password, latitude, longitude });
 
     setTimeout(() => {
@@ -42,7 +72,7 @@ export default class LoginForm extends Component {
   }
 
   handleChange(value, name) {
-    let newState = {};
+    const newState = {};
     newState[name] = value;
     this.setState(newState);
   }
@@ -50,117 +80,100 @@ export default class LoginForm extends Component {
   renderError() {
     if (this.props.errors.length > 0) {
       const error = this.props.errors[0];
-      return (
-        <Text
-          style={{
-            textAlign: 'center',
-            fontSize: 20,
-            color: 'white'
-          }}
-        >{error}</Text>
-      );
+      return (<Text style={styles.error}>{error}</Text>);
     }
     return null;
   }
 
-  async getToken() {
-    try {
-      let sessionToken = await AsyncStorage.getItem('sessionToken');
-
-      if (!sessionToken) {
-        console.log("Session token not set");
-      } else {
-        this.verifyToken(sessionToken)
-      }
-    } catch (error) {
-      console.log("Error getting session token");
-    }
-  }
-
-  async verifyToken(token) {
-    const sessionToken = token;
-
-    try {
-      let response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
-      let res = await response.text();
-      if (response.status >= 200 && response.status < 300) {
-        currentUserID = await AsyncStorage.getItem('id');
-        Actions.categoriesIndex(currentUserID);
-      } else {
-        const error = res;
-        throw error;
-      }
-    } catch (error) {
-      console.log("Error: " + error);
-    }
-  }
-
   render() {
     return (
-      <View style={{
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: "#8abcdf",
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height
-      }}
-        linkAction={Actions.loginForm}
-      >
-      <View
-        style={{
-          backgroundColor: "white",
-          width: 300,
-          height: 50,
-          marginBottom: 20
-        }}>
+      <View style={styles.loginForm}>
+        <Text style={styles.header}>Login to Your Account</Text>
+
         <TextInput
-          style={{
-            width: 300,
-            height: 50,
-            alignSelf: 'center',
-            textAlign: 'center'
-          }}
-          id={"username"}
+          autoFocus
+          style={styles.loginInput}
+          id={'username'}
           autoCapitalize="none"
           autoCorrect={false}
           placeholder={'Username'}
+          placeholderTextColor={'black'}
+          clearButtonMode={'while-editing'}
           value={this.state.username}
-          onChangeText={(value) => this.handleChange(value, 'username')}
-          />
-      </View>
+          onChangeText={value => this.handleChange(value, 'username')}
+        />
 
-      <View
-        style={{
-          backgroundColor: "white",
-          width: 300,
-          height: 50,
-          marginBottom: 30
-        }}>
         <TextInput
-          style={{
-            width: 300,
-            height: 50,
-            alignSelf: 'center',
-            textAlign: 'center'
-          }}
-          placeholder={'Password'}
-          value={this.state.password}
-          onChangeText={(value) => this.handleChange(value, 'password')}
           secureTextEntry
-          />
-      </View>
+          style={styles.loginInput}
+          placeholder={'Password'}
+          placeholderTextColor={'black'}
+          clearButtonMode={'while-editing'}
+          value={this.state.password}
+          onChangeText={value => this.handleChange(value, 'password')}
+        />
 
-        <View
-          style={{ backgroundColor: 'white', width: 150, marginBottom: 30 }}>
+        <View style={styles.loginButton}>
           <Button
-            color='#8abcdf'
+            color="#ffffff"
             title="Login"
-            onPress={() => this.onButtonSubmit()}
+            onPress={() => this.handleSubmit()}
           />
         </View>
-        { this.renderError() }
+        {this.renderError()}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  loginForm: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F0F2EB',
+    width: '100%',
+    height: '100%',
+  },
+  header: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 25,
+  },
+  loginInput: {
+    width: 300,
+    height: 50,
+    color: 'black',
+    padding: 10,
+    alignSelf: 'center',
+    backgroundColor: '#F0F2EB',
+    marginBottom: 15,
+    borderColor: '#FF4242',
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+  loginButton: {
+    width: 150,
+    marginBottom: 20,
+    alignSelf: 'center',
+    backgroundColor: '#FF4242',
+    borderColor: '#FF4242',
+    borderWidth: 3,
+    borderRadius: 5,
+  },
+  error: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: 'white',
+  },
+});
+
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.string),
+};
+
+LoginForm.defaultProps = {
+  errors: [],
+};

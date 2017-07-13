@@ -6,12 +6,12 @@ export const RECEIVE_SINGLE_MESSAGE = 'RECEIVE_SINGLE_MESSAGE';
 
 export const receiveMessages = messages => ({
   type: RECEIVE_MESSAGES,
-  messages
+  messages,
 });
 
 export const receiveSingleMessage = message => ({
   type: RECEIVE_SINGLE_MESSAGE,
-  message
+  message,
 });
 
 export const createMessage = message => dispatch => (
@@ -20,8 +20,8 @@ export const createMessage = message => dispatch => (
     .then(newMessage => dispatch(receiveSingleMessage(newMessage)))
 );
 
-export const fetchMessages = id => dispatch => {
-  return MessageUtil.fetchMessages(id).then(
+export const fetchMessages = id => dispatch => (
+  MessageUtil.fetchMessages(id).then(
     (resp) => {
       if (resp.ok) {
         resp.json()
@@ -31,9 +31,8 @@ export const fetchMessages = id => dispatch => {
           });
       } else {
         resp.json()
-          .then((err) => { console.log(err); }
-          );
+          .then((err) => { console.log(err); });
       }
-    }
-  );
-};
+    },
+  )
+);

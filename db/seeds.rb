@@ -5,8 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+demo = User.create(
+    username: 'greatengineer',
+    first_name: 'demo',
+    last_name: 'user',
+    email: 'demo@email.com',
+    password: 'pleasehireme',
+    img_url: 'https://avatars2.githubusercontent.com/u/8896924?v=3&s=400',
+    latitude: 37.774446,
+    longitude: -122.443914,
+    description: "Dedicated bug squasher and Golden Doodle owner with a talent for belly rubs and finding the toughest bugs. The only thing more diverse than my skillset is my Spotify playlist."
+)
 
-User.destroy_all
 eric = User.create(
     username: 'eadams',
     first_name: 'Eric',
@@ -65,18 +75,6 @@ allen = User.create(
     latitude: 37.738141,
     longitude: -122.415761,
     description: "I'm a huge techie! Technically a nerd if you want to be specific, and I absolutely love getting my hands dirty. Of course, I'm talking about coding."
-)
-
-brandon = User.create(
-    username: 'btat',
-    first_name: 'Brandon',
-    last_name: 'Tat',
-    email: 'btat@email.com',
-    password: 'password',
-    img_url: 'https://avatars1.githubusercontent.com/u/26292622?v=3&s=400',
-    latitude: 37.745200,
-    longitude: -122.490091,
-    description: "I'm currently pursuing a career as a software engineer. I'm an easy-going person and patient communicator who loves learning and building things."
 )
 
 brandon = User.create(
@@ -247,17 +245,13 @@ yong = User.create(
     description: "The rewards from collaboration, and experiencing (somewhat cliché, yet very true saying) that the whole is greater than the sum of its parts. These are the reasons I am a software engineer."
 )
 
-Category.destroy_all
-
-tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497223490/tech_grpthk.png')
-movies = Category.create(title: 'Movies & TV', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/movies_tv_vddkul.png')
-music = Category.create(title: 'Music', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/music_ryngux.png')
-sports = Category.create(title: 'Sports', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/sports_z51wqc.png')
-food = Category.create(title: 'Food', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/food_etzz7k.png')
-travel = Category.create(title: 'Travel', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/travel_am4tsn.png')
-art = Category.create(title: 'Art', img_url: 'https://res.cloudinary.com/explorewanderlust/image/upload/v1497225166/art_xzcjyz.png')
-
-UserCategory.destroy_all
+tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499840647/tech_qllksg.jpg')
+movies = Category.create(title: 'Movies & TV', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499842570/movies.jpg')
+music = Category.create(title: 'Music', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499843574/music2.jpg')
+sports = Category.create(title: 'Sports', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499844443/sports.jpg')
+food = Category.create(title: 'Food', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499845157/food.jpg')
+travel = Category.create(title: 'Travel', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499846054/travel.jpg')
+art = Category.create(title: 'Art', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499848439/art.jpg')
 
 UserCategory.create(user_id: eric.id, category_id: tech.id)
 UserCategory.create(user_id: jill.id, category_id: tech.id)

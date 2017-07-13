@@ -1,11 +1,11 @@
 export const fetchMessages = id => (
-    fetch(`http://localhost:3000/api/messages?chatID=${id}`, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        }
-    })
+  fetch(`http://localhost:3000/api/messages?chatID=${id}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
 );
 
 export const createMessage = message => (
@@ -15,12 +15,10 @@ export const createMessage = message => (
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        message
-      })
-    }
+      body: JSON.stringify({ message }),
+    },
   )
 );
 
@@ -31,8 +29,8 @@ export const deleteMessage = messageID => (
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }
+        'Content-Type': 'application/json',
+      },
+    },
   )
 );

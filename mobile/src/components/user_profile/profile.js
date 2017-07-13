@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, View, Image, Button } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import geolib from 'geolib';
-import NavBar from '../../nav_bar';
+import PropTypes from 'prop-types';
+import NavBar from '../nav_bar/NavBarContainer';
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -17,23 +16,21 @@ export default class Profile extends React.Component {
 
   createChat() {
     const chatroom = {
-      user_two_id: this.props.userId
+      user_two_id: this.props.userId,
     };
     this.props.createChatroom(chatroom);
   }
 
   render() {
-    const { user, profilePic, aboutMe, location } = this.props;
+    const { user } = this.props;
 
     return (
-      <View
-        linkAction={ Actions.Profile }
-        style={styles.viewStyle}>
+      <View style={styles.viewStyle}>
         <View style={styles.containerStyle}>
 
           <Image
-            style={{width: 200, height: 200}}
-            source={{uri: `${user.img_url}`}}
+            style={styles.profilePic}
+            source={{ uri: `${user.img_url}` }}
           />
 
           <Text style={styles.username}>
@@ -51,12 +48,11 @@ export default class Profile extends React.Component {
 
           <View style={styles.chatButton}>
             <Button
-              color='#ffffff'
+              color="#ffffff"
               title="Message"
               onPress={this.createChat}
             />
           </View>
-
         </View>
         <NavBar />
       </View>
@@ -64,47 +60,71 @@ export default class Profile extends React.Component {
   }
 }
 
+Profile.propTypes = {
+  requestUser: PropTypes.func.isRequired,
+  createChatroom: PropTypes.func.isRequired,
+  user: PropTypes.objectOf(Object).isRequired,
+  userId: PropTypes.number.isRequired,
+  distance: PropTypes.number,
+};
+
+Profile.defaultProps = {
+  distance: null,
+};
+
 const styles = {
   viewStyle: {
+    flex: 1,
     justifyContent: 'space-between',
-    flex: 1
+    backgroundColor: '#F0F2EB',
   },
   containerStyle: {
+    flex: 1,
+    justifyContent: 'flex-start',
     marginTop: 50,
     padding: 20,
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  profilePic: {
+    borderRadius: 75,
+    width: 150,
+    height: 150,
+    marginTop: 10,
+    marginBottom: 10,
   },
   username: {
+    color: '#FF4242',
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#26628c',
-    margin: 10
   },
   location: {
     fontSize: 16,
-    margin: 10
   },
   descriptionContainer: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: 30,
   },
   aboutMe: {
     fontSize: 18,
-    margin: 10,
+    fontWeight: 'bold',
+    margin: 5,
   },
   description: {
     fontSize: 16,
-    margin: 10
+    margin: 5,
   },
   chatButton: {
     margin: 10,
-    backgroundColor: '#8abcdf',
-    borderRadius: 10,
+    backgroundColor: '#FF4242',
+    borderColor: '#FF4242',
+    borderWidth: 3,
+    borderRadius: 5,
   },
   background: {
     flex: 1,
     alignSelf: 'stretch',
-    width: null
-  }
+    width: null,
+  },
 };

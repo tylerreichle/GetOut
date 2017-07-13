@@ -80,15 +80,7 @@ export default class LoginForm extends Component {
   renderError() {
     if (this.props.errors.length > 0) {
       const error = this.props.errors[0];
-      return (
-        <Text
-          style={{
-            textAlign: 'center',
-            fontSize: 20,
-            color: 'white',
-          }}
-        >{error}</Text>
-      );
+      return (<Text style={styles.error}>{error}</Text>);
     }
     return null;
   }
@@ -147,7 +139,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 50,
+    marginBottom: 25,
   },
   loginInput: {
     width: 300,
@@ -169,6 +161,11 @@ const styles = StyleSheet.create({
     borderColor: '#FF4242',
     borderWidth: 3,
     borderRadius: 5,
+  },
+  error: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: 'white',
   },
 });
 

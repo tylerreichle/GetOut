@@ -24,14 +24,12 @@ const Routes = () => (
     <Scene
       key="LoginForm"
       component={LoginForm}
-      title="Login"
       hideNavBar={false}
     />
 
     <Scene
       key="SignupForm"
       component={SignUpForm}
-      title="Register"
       hideNavBar={false}
     />
 

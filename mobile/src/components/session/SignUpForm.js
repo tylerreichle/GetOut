@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 50,
+    marginBottom: 25,
   },
   signupInput: {
     width: 300,

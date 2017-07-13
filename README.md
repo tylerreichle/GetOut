@@ -16,24 +16,24 @@
 
 ## Implementation
 
-User's session tokens are stored in AsyncStorage allowing them to persist after app close. When returning to AfternoonDelight the session token is authenticated using a custom route then redirected to the home page. This takes advantage af ES7's new async and await functions.
+User's session tokens are stored in AsyncStorage allowing them to persist after app close. When returning to GetOut the session token is authenticated using a custom route then redirected to the home page. This takes advantage af ES7's new async and await functions.
 
 ```javascript
 async verifyToken(token) {
   const sessionToken = token;
 
   try {
-    const response = await fetch('http://localhost:3000/api/verify?session%5Bsession_token%5D=' + sessionToken);
+    const response = await fetch(`http://localhost:3000/api/verify?session%5Bsession_token%5D=${sessionToken}`);
     const res = await response.text();
     if (response.status >= 200 && response.status < 300) {
-      currentUserID = await this.props.storage.getItem('id');
-      Actions.categoriesIndex(currentUserID);
+      const currentUserID = await AsyncStorage.getItem('id');
+      Actions.CategoriesIndex(currentUserID);
     } else {
       const error = res;
       throw error;
     }
   } catch (error) {
-    console.log("Error: " + error);
+    console.log(`Error: ${error}`);
   }
 }
 ```
@@ -42,16 +42,18 @@ Cateogories are rendered using React Native's included classes TouchableHighligh
 
 ```javascript
 <ListView
-    dataSource={categories}
-    enableEmptySections
-    renderRow={(rowData) =>
-      <TouchableHighlight onPress={val => this.handlePress(val, rowData.id)}>
-        <Image
-          style={{ width: 300, height: 50, marginBottom: 20, alignSelf: 'center' }}
-          source={{ uri: `${rowData.img_url}` }}
-        />
-      </TouchableHighlight>
-    }
+  enableEmptySections
+  style={styles.categoriesList}
+  dataSource={categories}
+  renderRow={category => (
+    <TouchableHighlight onPress={val => this.handlePress(val, category.id)}>
+      <View style={styles.categoriesItem}>
+        <Image source={{ uri: `${category.img_url}` }} style={styles.categoryPic}>
+          <Text style={styles.categoryTitle}>{category.title}</Text>
+        </Image>
+      </View>
+    </TouchableHighlight>
+  )}
 />
 ```
 

@@ -93,7 +93,6 @@ class CategoriesIndexItem extends Component {
 const styles = StyleSheet.create({
   categoryIndex: {
     flex: 1,
-    marginTop: 60,
   },
   header: {
     borderBottomWidth: 2,

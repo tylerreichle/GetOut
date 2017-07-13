@@ -47,7 +47,6 @@ ChatroomIndex.defaultProps = {
 const styles = StyleSheet.create({
   chatroomIndex: {
     flex: 1,
-    marginTop: 60,
   },
   header: {
     borderBottomWidth: 2,

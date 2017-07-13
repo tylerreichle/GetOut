@@ -36,15 +36,15 @@ const Routes = () => (
     />
 
     <Scene
+      hideNavBar
       key="CategoriesIndex"
       component={CategoriesIndex}
-      hideNavBar
     />
 
     <Scene
+      hideNavBar
       key="CategoriesIndexItem"
       component={CategoriesIndexItem}
-      hideNavBar={false}
     />
 
     <Scene
@@ -60,9 +60,9 @@ const Routes = () => (
     />
 
     <Scene
+      hideNavBar
       key="ChatroomIndex"
       component={ChatroomIndex}
-      hideNavBar={false}
     />
 
     <Scene

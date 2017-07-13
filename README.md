@@ -11,8 +11,8 @@
 - Filter users by interests and conversational topics
 - Chat with other users to schedule meetups
 
-<img src="docs/images/splash.png" alt="splash page" width="290" height="500"/> <img src="docs/images/categories.png" alt="categories list" width="290" height="500"/> <img src="docs/images/category-show.png" alt="category detail" width="290" height="500"/>
-<img src="docs/images/user-show.png" alt="user profile" width="290" height="500"/> <img src="docs/images/chat.png" alt="chat" width="290" height="500"/>
+<img src="docs/images/splash.png" alt="splash page" width="290" height="500"/> <img src="docs/images/categories.png" alt="categories list" width="290" height="500"/> <img src="docs/images/users.png" alt="category detail" width="290" height="500"/>
+<img src="docs/images/profile.png" alt="user profile" width="290" height="500"/> <img src="docs/images/chat.png" alt="chat" width="290" height="500"/>
 
 ## Implementation
 

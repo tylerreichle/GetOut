@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     backgroundColor: '#0084ff',
     overflow: 'hidden',
-    textAlign: 'right',
     fontSize: 16,
     margin: 2,
     marginRight: 5,

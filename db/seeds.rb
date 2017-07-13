@@ -5,8 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+demo = User.create(
+    username: 'greatengineer',
+    first_name: 'demo',
+    last_name: 'user',
+    email: 'demo@email.com',
+    password: 'pleasehireme',
+    img_url: 'https://avatars2.githubusercontent.com/u/8896924?v=3&s=400',
+    latitude: 37.774446,
+    longitude: -122.443914,
+    description: "Dedicated bug squasher and Golden Doodle owner with a talent for belly rubs and finding the toughest bugs. The only thing more diverse than my skillset is my Spotify playlist."
+)
 
-User.destroy_all
 eric = User.create(
     username: 'eadams',
     first_name: 'Eric',
@@ -235,8 +245,6 @@ yong = User.create(
     description: "The rewards from collaboration, and experiencing (somewhat cliché, yet very true saying) that the whole is greater than the sum of its parts. These are the reasons I am a software engineer."
 )
 
-Category.destroy_all
-
 tech = Category.create(title: 'Technology', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499840647/tech_qllksg.jpg')
 movies = Category.create(title: 'Movies & TV', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499842570/movies.jpg')
 music = Category.create(title: 'Music', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499843574/music2.jpg')
@@ -244,8 +252,6 @@ sports = Category.create(title: 'Sports', img_url: 'https://res.cloudinary.com/d
 food = Category.create(title: 'Food', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499845157/food.jpg')
 travel = Category.create(title: 'Travel', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499846054/travel.jpg')
 art = Category.create(title: 'Art', img_url: 'https://res.cloudinary.com/dkuqs8yz1/image/upload/v1499848439/art.jpg')
-
-UserCategory.destroy_all
 
 UserCategory.create(user_id: eric.id, category_id: tech.id)
 UserCategory.create(user_id: jill.id, category_id: tech.id)

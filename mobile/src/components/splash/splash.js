@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 const Splash = () => (
   <Image source={require('../../images/splash.jpg')} style={styles.backgroundImage}>
 
-    <Text style={styles.title}>AppName</Text>
+    <Text style={styles.title}>GetOut</Text>
 
     <View>
       <View style={styles.splashButton}>

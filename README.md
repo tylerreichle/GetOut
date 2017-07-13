@@ -1,8 +1,8 @@
-# AfternoonDelight
+# GetOut
 
- Finding new people around you to discuss similar interests can be difficult. AfternoonDelight allows users to discover new places and new people with similar interests in their area. Users will be able to find people based on location, search by category, and schedule a meet up with chat functionality.
+ Finding new people around you to discuss similar interests can be difficult. GetOut allows users to discover new places and new people with similar interests in their area. Users will be able to find people based on location, search by category, and schedule a meet up with chat functionality.
 
-[AfternoonDelight](https://jetflex.github.io/AfternoonDelight/) is a collaborative project by [Eric Adams](https://github.com/eadams17), [Jill de los Angeles](https://github.com/jilldela), and [Tyler Reichle](https://github.com/tylerreichle)
+[GetOut](https://jetflex.github.io/AfternoonDelight/) is a collaborative project by [Tyler Reichle](https://github.com/tylerreichle), [Jill de los Angeles](https://github.com/jilldela), and [Eric Adams](https://github.com/eadams17).
 
 ## Features
 
@@ -109,7 +109,7 @@ export default class ChatroomShow extends React.Component {
 
 ### Frontend
 
-AfternoonDelight follows the Redux implementation of the Flux design pattern, using a single store to manage the state of the application and enforce an unidirectional data flow. React Native is used to render React components in a mobile application. Components throughout the app are styled using React Native's integrated stylesheet system with pure JavaScript.
+GetOut follows the Redux implementation of the Flux design pattern, using a single store to manage the state of the application and enforce an unidirectional data flow. React Native is used to render React components in a mobile application. Components throughout the app are styled using React Native's integrated stylesheet system with pure JavaScript.
 
 We used npm to manage all of the JavaScript packages, and the Babel transpiler to convert ES6 to ES5 and bundle it into a single file.
 

@@ -46,17 +46,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'stretch',
     height: 75,
-    padding: 10,
     borderColor: '#000000',
     borderBottomWidth: 2,
-  },
-  chatUsername: {
-    margin: 15,
-    fontSize: 22,
   },
   profilePic: {
     width: 50,
     height: 50,
+    margin: 15,
     borderRadius: 25,
+  },
+  chatUsername: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

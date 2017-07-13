@@ -102,9 +102,8 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#F0F2EB',
+    color: '#FFFFFF',
     backgroundColor: '#FF4242',
-    opacity: 0.8,
     padding: 15,
     textAlign: 'center',
   },

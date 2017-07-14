@@ -1,6 +1,6 @@
 export const login = user => (
   fetch(
-    'https://afternoondelight.herokuapp.com/api/session',
+    'https://getout-ios.herokuapp.com/api/session',
     {
       method: 'POST',
       headers: {
@@ -14,7 +14,7 @@ export const login = user => (
 
 export const logout = () => (
   fetch(
-    'https://afternoondelight.herokuapp.com/api/session',
+    'https://getout-ios.herokuapp.com/api/session',
     {
       method: 'DELETE',
       headers: {
@@ -27,7 +27,7 @@ export const logout = () => (
 
 export const signup = user => (
   fetch(
-    'https://afternoondelight.herokuapp.com/api/users',
+    'https://getout-ios.herokuapp.com/api/users',
     {
       method: 'POST',
       headers: {

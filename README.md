@@ -37,8 +37,7 @@ async verifyToken(token) {
 }
 ```
 
-<img src="docs/images/splash.png" alt="splash page" width="290" height="500"/>
-<img src="docs/images/categories.png" alt="categories list" width="290" height="500"/>
+<img src="docs/images/splash.png" alt="splash page" width="290" height="500"/> <img src="docs/images/categories.png" alt="categories list" width="290" height="500"/>
 
 Cateogories are rendered using React Native's included classes TouchableHighlight and ListView, allowing the app to respond to user touch.
 
@@ -110,8 +109,7 @@ export default class ChatroomShow extends React.Component {
     });
   }
 ```
-<img src="docs/images/profile.png" alt="user profile" width="290" height="500"/>
-<img src="docs/images/chat.png" alt="chat" width="290" height="500"/>
+<img src="docs/images/profile.png" alt="user profile" width="290" height="500"/> <img src="docs/images/chat.png" alt="chat" width="290" height="500"/>
 
 ## Technology
 

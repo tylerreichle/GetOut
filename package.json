@@ -1,0 +1,24 @@
+{
+  "name": "GetOut",
+  "version": "1.0.0",
+  "description": "Finding new people around you to discuss similar interests can be difficult. GetOut allows users to discover new places and new people with similar interests in their area. Users will be able to find people based on location, search by category, and schedule a meet up with chat functionality.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test",
+    "postinstall": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerreichle/GetOut.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tylerreichle/GetOut/issues"
+  },
+  "homepage": "https://github.com/tylerreichle/GetOut#readme"
+}

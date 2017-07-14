@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   error: {
     textAlign: 'center',
     fontSize: 20,
-    color: 'white',
+    color: '#000000',
   },
 });
 

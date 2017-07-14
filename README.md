@@ -13,9 +13,6 @@
 - Filter users by interests and conversational topics
 - Chat with other users to schedule meetups
 
-<img src="docs/images/splash.png" alt="splash page" width="290" height="500"/> <img src="docs/images/categories.png" alt="categories list" width="290" height="500"/> <img src="docs/images/users.png" alt="category detail" width="290" height="500"/>
-<img src="docs/images/profile.png" alt="user profile" width="290" height="500"/> <img src="docs/images/chat.png" alt="chat" width="290" height="500"/>
-
 ## Implementation
 
 User's session tokens are stored in AsyncStorage allowing them to persist after app close. When returning to GetOut the session token is authenticated using a custom route then redirected to the home page. This takes advantage af ES7's new async and await functions.
@@ -39,6 +36,9 @@ async verifyToken(token) {
   }
 }
 ```
+
+<img src="docs/images/splash.png" alt="splash page" width="290" height="500"/>
+<img src="docs/images/categories.png" alt="categories list" width="290" height="500"/>
 
 Cateogories are rendered using React Native's included classes TouchableHighlight and ListView, allowing the app to respond to user touch.
 
@@ -68,6 +68,8 @@ json.users @category.users do |user|
   end
 end
 ```
+
+<img src="docs/images/users.png" alt="category detail" width="290" height="500"/>
 
 Real time updates while chatting accomplished with the Pusher gem and pusher-js package. When a chat component mounts it begins listenening for a new message event through a dedicated websocket port.
 
@@ -108,6 +110,8 @@ export default class ChatroomShow extends React.Component {
     });
   }
 ```
+<img src="docs/images/profile.png" alt="user profile" width="290" height="500"/>
+<img src="docs/images/chat.png" alt="chat" width="290" height="500"/>
 
 ## Technology
 

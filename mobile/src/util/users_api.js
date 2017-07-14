@@ -1,5 +1,5 @@
 export const fetchUser = id => (
-  fetch(`http://localhost:3000/api/users/${id}`, {
+  fetch(`https://afternoondelight.herokuapp.com/api/users/${id}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -9,7 +9,7 @@ export const fetchUser = id => (
 );
 
 export const updateUser = (id, user) => (
-  fetch(`http://localhost:3000/api/users/${id}`, {
+  fetch(`https://afternoondelight.herokuapp.com/api/users/${id}`, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',

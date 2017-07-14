@@ -47,7 +47,7 @@ export default class LoginForm extends Component {
     const sessionToken = token;
 
     try {
-      const response = await fetch(`https://afternoondelight.herokuapp.com/api/verify?session%5Bsession_token%5D=${sessionToken}`);
+      const response = await fetch(`https://getout-ios.herokuapp.com/api/verify?session%5Bsession_token%5D=${sessionToken}`);
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         const currentUserID = await AsyncStorage.getItem('id');
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   error: {
     textAlign: 'center',
     fontSize: 20,
-    color: 'white',
+    color: '#000000',
   },
 });
 

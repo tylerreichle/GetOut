@@ -1,5 +1,5 @@
 export const fetchMessages = id => (
-  fetch(`https://afternoondelight.herokuapp.com/api/messages?chatID=${id}`, {
+  fetch(`https://getout-ios.herokuapp.com/api/messages?chatID=${id}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -9,7 +9,7 @@ export const fetchMessages = id => (
 );
 
 export const createMessage = message => (
-  fetch('https://afternoondelight.herokuapp.com/api/messages',
+  fetch('https://getout-ios.herokuapp.com/api/messages',
     {
       method: 'POST',
       headers: {
@@ -22,7 +22,7 @@ export const createMessage = message => (
 );
 
 export const deleteMessage = messageID => (
-  fetch(`https://afternoondelight.herokuapp.com/api/messages/${messageID}`,
+  fetch(`https://getout-ios.herokuapp.com/api/messages/${messageID}`,
     {
       method: 'DELETE',
       headers: {

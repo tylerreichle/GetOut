@@ -1,5 +1,5 @@
 export const fetchChatrooms = () => (
-  fetch('https://afternoondelight.herokuapp.com/api/chatrooms', {
+  fetch('https://getout-ios.herokuapp.com//api/chatrooms', {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -9,7 +9,7 @@ export const fetchChatrooms = () => (
 );
 
 export const fetchSingleChatroom = chatroomID => (
-  fetch(`https://afternoondelight.herokuapp.com/api/chatrooms/${chatroomID}`, {
+  fetch(`https://getout-ios.herokuapp.com//api/chatrooms/${chatroomID}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -20,7 +20,7 @@ export const fetchSingleChatroom = chatroomID => (
 
 export const createChatroom = chatroom => (
   fetch(
-    'https://afternoondelight.herokuapp.com/api/chatrooms',
+    'https://getout-ios.herokuapp.com//api/chatrooms',
     {
       method: 'POST',
       headers: {
@@ -34,7 +34,7 @@ export const createChatroom = chatroom => (
 
 export const deleteChatroom = chatroomID => (
   fetch(
-    `https://afternoondelight.herokuapp.com/api/chatrooms/${chatroomID}`,
+    `https://getout-ios.herokuapp.com/api/chatrooms/${chatroomID}`,
     {
       method: 'DELETE',
       headers: {

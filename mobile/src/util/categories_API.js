@@ -1,5 +1,5 @@
 export const fetchCategories = () => (
-  fetch('http://localhost:3000/api/categories', {
+  fetch('https://afternoondelight.herokuapp.com/api/categories', {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -9,7 +9,7 @@ export const fetchCategories = () => (
 );
 
 export const fetchSingleCategory = id => (
-  fetch(`http://localhost:3000/api/categories/${id}`, {
+  fetch(`https://afternoondelight.herokuapp.com/api/categories/${id}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',

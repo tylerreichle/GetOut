@@ -33,7 +33,7 @@ export default class App extends Component {
     const sessionToken = token;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/verify?session%5Bsession_token%5D=${sessionToken}`);
+      const response = await fetch(`https://afternoondelight.herokuapp.com/api/verify?session%5Bsession_token%5D=${sessionToken}`);
       const res = await response.text();
       if (response.status >= 200 && response.status < 300) {
         const currentUserID = await this.props.storage.getItem('id');

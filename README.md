@@ -4,6 +4,8 @@
 
 [GetOut](https://jetflex.github.io/AfternoonDelight/) is a collaborative project by [Tyler Reichle](https://github.com/tylerreichle), [Jill de los Angeles](https://github.com/jilldela), and [Eric Adams](https://github.com/eadams17).
 
+<img src="docs/images/getout.gif" alt="chat" width="290" height="500"/>
+
 ## Features
 
 - Create user accounts with secure authentication

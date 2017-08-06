@@ -3,10 +3,10 @@ import CategoriesIndexItem from './CategoriesIndexItem';
 import { requestSingleCategory } from '../../actions/category_actions';
 import { logoutUser } from '../../actions/session_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  categories: state.categories,
-  category: state.category,
-  currentUser: state.session,
+const mapStateToProps = ({ categories, category, session }, ownProps) => ({
+  categories,
+  category,
+  currentUser: session,
   categoryId: ownProps.data,
 });
 

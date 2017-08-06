@@ -14,13 +14,13 @@ export const receiveSingleCategory = category => ({
 });
 
 export const requestCategories = () => dispatch => (
-    fetchCategories()
-      .then(resp => resp.json())
-      .then(json => dispatch(receiveCategories(json)))
+  fetchCategories()
+    .then(resp => resp.json())
+    .then(json => dispatch(receiveCategories(json)))
 );
 
 export const requestSingleCategory = id => dispatch => (
-    fetchSingleCategory(id)
-      .then(resp => resp.json())
-      .then(json => dispatch(receiveSingleCategory(json)))
+  fetchSingleCategory(id)
+    .then(resp => resp.json())
+    .then(json => dispatch(receiveSingleCategory(json)))
 );

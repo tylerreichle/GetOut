@@ -3,9 +3,9 @@ import CategoriesIndex from './CategoriesIndex';
 import { requestCategories } from '../../actions/category_actions';
 import { fetchCurrentUser, logoutUser } from '../../actions/session_actions';
 
-const mapStateToProps = state => ({
-  categories: state.categories,
-  currentUser: state.session.currentUser,
+const mapStateToProps = ({ categories, session }) => ({
+  categories,
+  currentUser: session.currentUser,
 });
 
 const mapDispatchToProps = dispatch => ({

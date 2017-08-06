@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import MessageIndex from './MessageIndex';
 import { fetchMessages } from '../../actions/message_actions';
 
-const mapStateToProps = store => ({
-  currentUser: store.session,
-  messages: store.messages,
+const mapStateToProps = ({ session, messages }) => ({
+  messages,
+  currentUser: session,
 });
 
 const mapDispatchToProps = dispatch => ({

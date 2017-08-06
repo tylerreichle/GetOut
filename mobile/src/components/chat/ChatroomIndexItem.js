@@ -4,8 +4,8 @@ import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
 export default class ChatroomIndexItem extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handlePress = this.handlePress.bind(this);
   }

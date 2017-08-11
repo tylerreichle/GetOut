@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button, ListView, AsyncStorage, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  Button,
+  ListView,
+  TextInput,
+  StyleSheet,
+  AsyncStorage,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 
@@ -121,7 +130,7 @@ export default class SignUpForm extends Component {
 
   render() {
     return (
-      <View style={styles.signupForm}>
+      <KeyboardAvoidingView style={styles.signupForm}>
         <Text style={styles.header}>Create a New Account</Text>
 
         <TextInput
@@ -197,7 +206,7 @@ export default class SignUpForm extends Component {
           />
           {this.renderErrors()}
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -224,14 +233,14 @@ const styles = StyleSheet.create({
     padding: 10,
     alignSelf: 'center',
     backgroundColor: '#F0F2EB',
-    marginBottom: 15,
+    marginBottom: 10,
     borderColor: '#FF4242',
     borderWidth: 2,
     borderRadius: 5,
   },
   signupButton: {
     width: 150,
-    marginBottom: 20,
+    marginBottom: 5,
     alignSelf: 'center',
     backgroundColor: '#FF4242',
     borderColor: '#FF4242',

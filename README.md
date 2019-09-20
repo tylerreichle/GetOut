@@ -2,7 +2,7 @@
 
  Finding new people around you to discuss similar interests can be difficult. GetOut allows users to discover new places and new people with similar interests in their area. Users will be able to find people based on location, search by category, and schedule a meet up with chat functionality.
 
-[GetOut](http://treichle.com/GetOut/) is a collaborative project by [Tyler Reichle](https://github.com/tylerreichle), [Jill de los Angeles](https://github.com/jilldela), and [Eric Adams](https://github.com/eadams17).
+GetOut is a collaborative project by [Tyler Reichle](https://github.com/tylerreichle), [Jill de los Angeles](https://github.com/jilldela), and [Eric Adams](https://github.com/eadams17).
 
 <img src="docs/images/getout.gif" alt="chat" width="290" height="500"/>
 
